@@ -1,0 +1,209 @@
+# yamllint disable rule:line-length
+# yaml-language-server: $schema=https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json
+include:
+  - project: devsecops/cicd/pipeline
+    ref: v20.2.3
+    file: main.yml
+
+variables:
+  PIP_INDEX_URL: https://devpi.lion.act3-ace.ai/root/pypi/+simple/
+  GIT_USERNAME: gitlab-ci-token
+  DO_BADGES: "true"
+
+build docs:
+  stage: Build
+  allow_failure: true
+  extends: .dagger
+  image:
+    name: registry.dagger.io/engine:v0.15.1
+    entrypoint:
+      - sh
+  variables:
+    KUBERNETES_CPU_REQUEST: 8
+    KUBERNETES_CPU_LIMIT: 12
+    KUBERNETES_MEMORY_REQUEST: 12Gi
+    KUBERNETES_MEMORY_LIMIT: 24Gi
+    PAGES_PREFIX: ""
+  rules:
+    - if: !reference [.release_commit_rule]
+      when: never
+    - if:
+        $CI_COMMIT_TAG =~ /^v([0-9]+)\.([0-9]+)\.([0-9]+)$/ && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+        && $DEP_CHECK != "true"
+      exists:
+        - docs/**/hugo.toml
+    - if: $CI_COMMIT_REF_PROTECTED == "true" && $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH && $DEP_CHECK != "true"
+      exists:
+        - docs/**/hugo.toml
+      variables:
+        PAGES_PREFIX: $CI_COMMIT_BRANCH
+  before_script:
+    - dagger version
+    - dagger core version
+    - echo -e "https://gitlab-ci-token:$ACT3_TOKEN@git.act3-ace.com" > ~/.git-credentials
+    - git config --global credential.helper store
+  script:
+    - dagger call docs export --path=.
+  artifacts:
+    paths:
+      - docs/build
+
+pages:
+  allow_failure: true
+  stage: Publish
+  dependencies:
+    - build docs
+  variables:
+    PAGES_PREFIX: ""
+  rules:
+    - if: $CI_COMMIT_REF_PROTECTED == "true" && $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH && $DEP_CHECK != "true"
+      exists:
+        - docs/build
+      variables:
+        PAGES_PREFIX: $CI_COMMIT_BRANCH
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $DEP_CHECK != "true"
+      exists:
+        - docs/build
+  pages:
+    path_prefix: ${PAGES_PREFIX}
+  environment:
+    name: "$CI_COMMIT_BRANCH"
+    url: "${CI_PAGES_URL}/${PAGES_PREFIX}"
+  script:
+    - mkdir -p public/
+    - cp -rf docs/build/* public/
+  artifacts:
+    paths:
+      - public/
+
+# ci image
+build image:
+  extends: .dagger
+  stage: Build
+  image:
+    name: registry.dagger.io/engine:v0.15.1
+    entrypoint:
+      - sh
+  rules:
+    - if: !reference [.release_commit_rule]
+      when: never
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME != null && $DEP_CHECK != "true" && $KANIKO_ENABLED != "true"
+      exists:
+        - dagger.json
+    - if: $CI_COMMIT_TAG =~ /^v([0-9]+)\.([0-9]+)\.([0-9]+)$|^v([0-9]+)\.([0-9]+)\.([0-9]+)-.*$/ && $DEP_CHECK != "true" && $KANIKO_ENABLED != "true"
+      exists:
+        - dagger.json
+    - if: $CI_COMMIT_REF_PROTECTED == "true" && $DEP_CHECK != "true" && $KANIKO_ENABLED != "true"
+      exists:
+        - dagger.json
+  before_script:
+    - dagger version
+    - dagger core version
+    - echo -e "https://gitlab-ci-token:$ACT3_TOKEN@git.act3-ace.com" > ~/.git-credentials
+    - git config --global credential.helper store
+  script:
+    - dagger call build-images
+      --git-auth-user="act3-token" --git-auth-token=env:ACT3_TOKEN
+      --ci-project-title="${CI_PROJECT_TITLE}" --ci-project-description="${CI_PROJECT_DESCRIPTION}" --ci-project-url="${CI_PROJECT_URL}"
+      --ci-commit-tag="${CI_COMMIT_TAG}" --ci-commit-sha="${CI_COMMIT_SHA}" --ci-job-url="${CI_JOB_URL}"
+
+build tagged image:
+  stage: Containerize
+  extends: .dagger
+  image:
+    name: registry.dagger.io/engine:v0.15.1
+    entrypoint:
+      - sh
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^v([0-9]+)\.([0-9]+)\.([0-9]+)$|^v([0-9]+)\.([0-9]+)\.([0-9]+)-.*$/ && $DEP_CHECK != "true" && $KANIKO_ENABLED != "true"
+      exists:
+        - dagger.json
+  before_script:
+    - dagger version
+    - dagger core version
+    - echo -e "https://gitlab-ci-token:$ACT3_TOKEN@git.act3-ace.com" > ~/.git-credentials
+    - git config --global credential.helper store
+  script:
+    - dagger call publish-tagged-images --tags-list=tags.txt
+      --ci-registry="${CI_REGISTRY}" --ci-registry-image="${CI_REGISTRY_IMAGE}" --ci-registry-user="${CI_REGISTRY_USER}" --ci-registry-password=env:CI_REGISTRY_PASSWORD
+      --git-auth-user="act3-token" --git-auth-token=env:ACT3_TOKEN
+      --ci-project-name="${CI_PROJECT_NAME}" --ci-project-title="${CI_PROJECT_TITLE}" --ci-project-description="${CI_PROJECT_DESCRIPTION}" --ci-project-url="${CI_PROJECT_URL}"
+      --ci-commit-tag="${CI_COMMIT_TAG}" --ci-commit-sha="${CI_COMMIT_SHA}" --ci-job-url="${CI_JOB_URL}"
+      export --path=.
+
+python package-build:
+  extends: .dagger
+  stage: Test
+  image:
+    name: registry.dagger.io/engine:v0.15.1
+    entrypoint:
+      - sh
+  before_script:
+    - dagger version
+    - dagger core version
+    - echo -e "https://gitlab-ci-token:$ACT3_TOKEN@git.act3-ace.com" > ~/.git-credentials
+    - git config --global credential.helper store
+  script:
+    - dagger call build-python-package
+
+python publish package:
+  extends: .dagger
+  stage: Publish
+  image:
+    name: registry.dagger.io/engine:v0.15.1
+    entrypoint:
+      - sh
+  before_script:
+    - dagger version
+    - dagger core version
+    - echo -e "https://gitlab-ci-token:$ACT3_TOKEN@git.act3-ace.com" > ~/.git-credentials
+    - git config --global credential.helper store
+  script:
+    - dagger call build-python-package export --path=.
+    - dagger call publish-python-package --pypi-repository-url="${PYPI_REPOSITORY_URL}" --pypi-username="${PYPI_USERNAME}" --pypi-password=env:PYPI_PASSWORD
+
+python lint:
+  extends: .dagger
+  image:
+    name: registry.dagger.io/engine:v0.15.1
+    entrypoint:
+      - sh
+  allow_failure: true
+  before_script:
+    - dagger version
+    - dagger core version
+    - echo -e "https://gitlab-ci-token:$ACT3_TOKEN@git.act3-ace.com" > ~/.git-credentials
+    - git config --global credential.helper store
+  script:
+    # caches the output of the first call so we can export the badges and code report even if the job fails
+    # then it finally passes/fails
+    - dagger call lint --git-auth-user=gitlab-ci-token --git-auth-token=env:ACT3_TOKEN report-directory export --path=. # pragma: allowlist secret
+    - exit $(dagger call lint --git-auth-user=gitlab-ci-token --git-auth-token=env:ACT3_TOKEN exit-code) # pragma: allowlist secret
+  artifacts:
+    paths:
+      - "public/*"
+      - "linting_reports/*"
+
+python unit test:
+  extends: .dagger
+  image:
+    name: registry.dagger.io/engine:v0.15.1
+    entrypoint:
+      - sh
+  allow_failure: true # TODO: fix unit tests in pipeline (works on dev image)
+  variables:
+    KUBERNETES_CPU_REQUEST: 4
+    KUBERNETES_CPU_LIMIT: 6
+    KUBERNETES_MEMORY_REQUEST: 5Gi
+    KUBERNETES_MEMORY_LIMIT: 10Gi
+  before_script:
+    - dagger version
+    - dagger core version
+    - echo -e "https://gitlab-ci-token:$ACT3_TOKEN@git.act3-ace.com" > ~/.git-credentials
+    - git config --global credential.helper store
+  script:
+    - echo OPENBLAS_NUM_THREADS=${OPENBLAS_NUM_THREADS}
+    - |
+      dagger call test report-directory export --path=.
+      exit $(dagger call test exit-code)
+  coverage: "/TOTAL.*\\s+(\\d+\\%)$/"

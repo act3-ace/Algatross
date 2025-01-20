@@ -1,0 +1,226 @@
+!merge
+- !include config/ma_inspection/inspection/algatross.yml
+- rich_console: false
+  epochs: 1
+  log_level: 20 # INFO
+  visualize: false
+  island_iterations: 1
+  mainland_iterations: 1
+  ckpt_interval_epochs: 5
+  experiment_name: ablation
+  log_dir: "placeholder"
+
+  environment_map:
+    # generated with xc_home/reward_search/generate_tr_map.ipynb
+    task_reward_sa_sims_inspection_x1: !ConstructorData
+      constructor: !function algatross.environments.ma_inspection.inspection.rendered_env.RenderedParallelPettingZooInspection
+      config:
+        env: !ConstructorData
+          constructor: !function algatross.environments.ma_inspection.inspection.task_reward_env.TaskRewardMultiInspectionEnv
+          config:
+            num_agents: 2
+            max_time: 1_000
+            max_distance: 800
+            success_threshold: 100
+            crash_radius: 15
+            # task reward
+            dense_observed_points_weight: 0.01
+            dense_delta_v_weight: 0.5
+            sparse_inspection_success_weight: 1.0
+            sparse_crash_weight: 1.0
+
+    task_reward_sa_sims_inspection_x2: !ConstructorData
+      constructor: !function algatross.environments.ma_inspection.inspection.rendered_env.RenderedParallelPettingZooInspection
+      config:
+        env: !ConstructorData
+          constructor: !function algatross.environments.ma_inspection.inspection.task_reward_env.TaskRewardMultiInspectionEnv
+          config:
+            num_agents: 2
+            max_time: 1_000
+            max_distance: 800
+            success_threshold: 100
+            crash_radius: 15
+            # task reward
+            dense_observed_points_weight: 0.01
+            dense_delta_v_weight: 1.0
+            sparse_inspection_success_weight: 1.0
+            sparse_crash_weight: 1.0
+
+    task_reward_sa_sims_inspection_x3: !ConstructorData
+      constructor: !function algatross.environments.ma_inspection.inspection.rendered_env.RenderedParallelPettingZooInspection
+      config:
+        env: !ConstructorData
+          constructor: !function algatross.environments.ma_inspection.inspection.task_reward_env.TaskRewardMultiInspectionEnv
+          config:
+            num_agents: 2
+            max_time: 1_000
+            max_distance: 800
+            success_threshold: 100
+            crash_radius: 15
+            # task reward
+            dense_observed_points_weight: 0.05
+            dense_delta_v_weight: 0.5
+            sparse_inspection_success_weight: 1.0
+            sparse_crash_weight: 1.0
+
+    task_reward_sa_sims_inspection_x4: !ConstructorData
+      constructor: !function algatross.environments.ma_inspection.inspection.rendered_env.RenderedParallelPettingZooInspection
+      config:
+        env: !ConstructorData
+          constructor: !function algatross.environments.ma_inspection.inspection.task_reward_env.TaskRewardMultiInspectionEnv
+          config:
+            num_agents: 2
+            max_time: 1_000
+            max_distance: 800
+            success_threshold: 100
+            crash_radius: 15
+            # task reward
+            dense_observed_points_weight: 0.05
+            dense_delta_v_weight: 1.0
+            sparse_inspection_success_weight: 1.0
+            sparse_crash_weight: 1.0
+
+    task_reward_sa_sims_inspection_x5: !ConstructorData
+      constructor: !function algatross.environments.ma_inspection.inspection.rendered_env.RenderedParallelPettingZooInspection
+      config:
+        env: !ConstructorData
+          constructor: !function algatross.environments.ma_inspection.inspection.task_reward_env.TaskRewardMultiInspectionEnv
+          config:
+            num_agents: 2
+            max_time: 1_000
+            max_distance: 800
+            success_threshold: 100
+            crash_radius: 15
+            # task reward
+            dense_observed_points_weight: 0.1
+            dense_delta_v_weight: 0.5
+            sparse_inspection_success_weight: 1.0
+            sparse_crash_weight: 1.0
+
+    task_reward_sa_sims_inspection_x6: !ConstructorData
+      constructor: !function algatross.environments.ma_inspection.inspection.rendered_env.RenderedParallelPettingZooInspection
+      config:
+        env: !ConstructorData
+          constructor: !function algatross.environments.ma_inspection.inspection.task_reward_env.TaskRewardMultiInspectionEnv
+          config:
+            num_agents: 2
+            max_time: 1_000
+            max_distance: 800
+            success_threshold: 100
+            crash_radius: 15
+            # task reward
+            dense_observed_points_weight: 0.1
+            dense_delta_v_weight: 1.0
+            sparse_inspection_success_weight: 1.0
+            sparse_crash_weight: 1.0
+
+    task_reward_sa_sims_inspection_x7: !ConstructorData
+      constructor: !function algatross.environments.ma_inspection.inspection.rendered_env.RenderedParallelPettingZooInspection
+      config:
+        env: !ConstructorData
+          constructor: !function algatross.environments.ma_inspection.inspection.task_reward_env.TaskRewardMultiInspectionEnv
+          config:
+            num_agents: 2
+            max_time: 1_000
+            max_distance: 800
+            success_threshold: 100
+            crash_radius: 15
+            # task reward
+            dense_observed_points_weight: 0.2
+            dense_delta_v_weight: 0.5
+            sparse_inspection_success_weight: 1.0
+            sparse_crash_weight: 1.0
+
+    task_reward_sa_sims_inspection_x8: !ConstructorData
+      constructor: !function algatross.environments.ma_inspection.inspection.rendered_env.RenderedParallelPettingZooInspection
+      config:
+        env: !ConstructorData
+          constructor: !function algatross.environments.ma_inspection.inspection.task_reward_env.TaskRewardMultiInspectionEnv
+          config:
+            num_agents: 2
+            max_time: 1_000
+            max_distance: 800
+            success_threshold: 100
+            crash_radius: 15
+            # task reward
+            dense_observed_points_weight: 0.2
+            dense_delta_v_weight: 1.0
+            sparse_inspection_success_weight: 1.0
+            sparse_crash_weight: 1.0
+
+  common_island_config: &common_island_config # used below
+    agent_constructors:
+      deputy_0: !ConstructorData
+        constructor: !function algatross.agents.on_policy.ppo.TorchPPOAgent
+        config: !include config/ma_inspection/ppo_agent_base.yml
+      deputy_1: !ConstructorData
+        constructor: !function algatross.agents.on_policy.ppo.TorchPPOAgent
+        config: !include config/ma_inspection/ppo_agent_base.yml
+    max_trajectory_length: null
+
+- islands:
+    - !include config/ma_inspection/inspection/mo-aim_island.yml # baseline island x0
+
+    - !merge # next island
+      - !include config/ma_inspection/inspection/mo-aim_island.yml
+      - island_constructor: !ConstructorData
+          constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMIslandUDI
+          config: !merge # cf config/ma_inspection/inspection/mo-aim_island.yml
+            - env_name: "task_reward_sa_sims_inspection_x1" # note env_name
+            - *common_island_config
+
+    - !merge # next island
+      - !include config/ma_inspection/inspection/mo-aim_island.yml
+      - island_constructor: !ConstructorData
+          constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMIslandUDI
+          config: !merge # cf config/ma_inspection/inspection/mo-aim_island.yml
+            - env_name: "task_reward_sa_sims_inspection_x2" # note env_name
+            - *common_island_config
+
+    - !merge # next island
+      - !include config/ma_inspection/inspection/mo-aim_island.yml
+      - island_constructor: !ConstructorData
+          constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMIslandUDI
+          config: !merge # cf config/ma_inspection/inspection/mo-aim_island.yml
+            - env_name: "task_reward_sa_sims_inspection_x3" # note env_name
+            - *common_island_config
+
+    - !merge # next island
+      - !include config/ma_inspection/inspection/mo-aim_island.yml
+      - island_constructor: !ConstructorData
+          constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMIslandUDI
+          config: !merge # cf config/ma_inspection/inspection/mo-aim_island.yml
+            - env_name: "task_reward_sa_sims_inspection_x4" # note env_name
+            - *common_island_config
+
+    - !merge # next island
+      - !include config/ma_inspection/inspection/mo-aim_island.yml
+      - island_constructor: !ConstructorData
+          constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMIslandUDI
+          config: !merge # cf config/ma_inspection/inspection/mo-aim_island.yml
+            - env_name: "task_reward_sa_sims_inspection_x5" # note env_name
+            - *common_island_config
+
+    - !merge # next island
+      - !include config/ma_inspection/inspection/mo-aim_island.yml
+      - island_constructor: !ConstructorData
+          constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMIslandUDI
+          config: !merge # cf config/ma_inspection/inspection/mo-aim_island.yml
+            - env_name: "task_reward_sa_sims_inspection_x6" # note env_name
+            - *common_island_config
+
+    - !merge # next island
+      - !include config/ma_inspection/inspection/mo-aim_island.yml
+      - island_constructor: !ConstructorData
+          constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMIslandUDI
+          config: !merge # cf config/ma_inspection/inspection/mo-aim_island.yml
+            - env_name: "task_reward_sa_sims_inspection_x7" # note env_name
+            - *common_island_config
+
+    - !merge # next island
+      - !include config/ma_inspection/inspection/mo-aim_island.yml
+      - island_constructor: !ConstructorData
+          constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMIslandUDI
+          config: !merge # cf config/ma_inspection/inspection/mo-aim_island.yml
+            - env_name: "task_reward_sa_sims_inspection_x8" # note env_name
+            - *common_island_config

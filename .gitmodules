@@ -1,0 +1,4 @@
+[submodule "scientific-python-hugo-theme"]
+path = docs/source/hugo/themes/scientific-python-hugo-theme
+url = https://github.com/scientific-python/scientific-python-hugo-theme
+branch = main

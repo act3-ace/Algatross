@@ -1,0 +1,4 @@
+conspecific_data_keys:
+  - obs
+  - actions
+training_iterations: 50

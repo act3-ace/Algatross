@@ -1,0 +1,442 @@
+common_conspecific_data_keys: &common_conspecific_data_keys
+  - obs
+  - actions
+common_conspecific_utility_keys: &common_conspecific_utility_keys
+  - tag_score
+  - minimum_ally_speed
+  - minimum_adversary_speed
+  - closest_ally_distance
+  - closest_adversary_distance
+  - closest_landmark_distance
+  - boundary_penalty
+conspecific_utility_objectives: &common_conspecific_utility_objectives
+  - max
+  - min
+  - max
+  - min
+  - max
+  - min
+  - max
+
+island_iterations: 1
+mainland_iterations: 1
+softmax_reset_interval: 100
+epochs: 1000
+seed: 1000
+experiment_name: null
+log_dir: "experiments"
+ray_config: {}
+debug: true
+
+topology_constructor: !ConstructorData
+  constructor: !function algatross.algorithms.genetic.mo_aim.topology.MOAIMTopology
+  config:
+    nu: 0.01
+    alpha: 0.0003
+
+archipelago_constructor: !ConstructorData
+  constructor: !function algatross.algorithms.genetic.mo_aim.archipelago.RayMOAIMArchipelago
+  config:
+    conspecific_utility_keys: *common_conspecific_utility_keys
+    n_workers: 10
+    n_envs: 2
+    training_iterations: 10
+
+islands:
+  # High Value Asset: Landmark Occupier
+  - island_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMIslandUDI
+      # config:
+      #   island_id: 0
+    algorithm_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.algorithm.MOAIMIslandUDA
+      config: !include config/simple_tag/island_uda_config_base.yml
+    problem_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.MOAIMIslandUDP
+      config: !merge
+        - !include config/simple_tag/island_udp_config_base.yml
+        - fitness_multiplier:
+            - 0.00 # tag score
+            - 0.25 # min ally speed
+            - 0.50 # min adversary speed
+            - 0.25 # min ally dist
+            - 1.00 # min adversary dist
+            - 1.00 # min landmark dist
+            - 1.00 # boundary penalty
+        - conspecific_data_keys: *common_conspecific_data_keys
+        - conspecific_utility_keys: *common_conspecific_utility_keys
+    population_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.population.MOAIMIslandPopulation
+      config: !include config/simple_tag/test_island_pop_config_base.yml
+
+  # High Value Asset: Tag Dude
+  - island_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMIslandUDI
+      # config:
+      #   island_id: 1
+    algorithm_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.algorithm.MOAIMIslandUDA
+      config: !include config/simple_tag/island_uda_config_base.yml
+    problem_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.MOAIMIslandUDP
+      config: !merge
+        - !include config/simple_tag/island_udp_config_base.yml
+        - fitness_multiplier:
+            - 1.00 # tag score
+            - 0.25 # min ally speed
+            - 0.50 # min adversary speed
+            - 0.25 # min ally dist
+            - 1.00 # min adversary dist
+            - 0.00 # min landmark dist
+            - 1.00 # boundary penalty
+        - conspecific_data_keys: *common_conspecific_data_keys
+        - conspecific_utility_keys: *common_conspecific_utility_keys
+    population_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.population.MOAIMIslandPopulation
+      config: !include config/simple_tag/test_island_pop_config_base.yml
+
+  # Interceptor: Blocker
+  - island_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMIslandUDI
+      # config:
+      #   island_id: 2
+    algorithm_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.algorithm.MOAIMIslandUDA
+      config: !include config/simple_tag/island_uda_config_base.yml
+    problem_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.MOAIMIslandUDP
+      config: !merge
+        - !include config/simple_tag/island_udp_config_base.yml
+        - fitness_multiplier:
+            - 0.00 # tag score
+            - 0.00 # min ally speed
+            - 0.50 # min adversary speed
+            - 0.00 # min ally dist
+            - 1.00 # min adversary dist
+            - 0.00 # min landmark dist
+            - 1.00 # boundary penalty
+        - fitness_metric_optimization_type:
+            - max
+            - min
+            - min
+            - min
+            - min
+            - min
+            - max
+        - conspecific_data_keys: *common_conspecific_data_keys
+        - conspecific_utility_keys: *common_conspecific_utility_keys
+    population_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.population.MOAIMIslandPopulation
+      config: !include config/simple_tag/test_island_pop_config_base.yml
+
+  # Interceptor: Destroyer
+  - island_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMIslandUDI
+      # config:
+      #   island_id: 3
+    algorithm_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.algorithm.MOAIMIslandUDA
+      config: !include config/simple_tag/island_uda_config_base.yml
+    problem_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.MOAIMIslandUDP
+      config: !merge
+        - !include config/simple_tag/island_udp_config_base.yml
+        - fitness_multiplier:
+            - 0.00 # tag score
+            - 0.00 # min ally speed
+            - 1.00 # min adversary speed
+            - 0.00 # min ally dist
+            - 1.00 # min adversary dist
+            - 0.00 # min landmark dist
+            - 1.00 # boundary penalty
+        - fitness_metric_optimization_type:
+            - max
+            - min
+            - min
+            - min
+            - min
+            - min
+            - max
+        - conspecific_data_keys: *common_conspecific_data_keys
+        - conspecific_utility_keys: *common_conspecific_utility_keys
+    population_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.population.MOAIMIslandPopulation
+      config: !include config/simple_tag/test_island_pop_config_base.yml
+
+  # High Value Asset: Flex Tagger
+  - island_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMIslandUDI
+      # config:
+      #   island_id: 4
+    algorithm_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.algorithm.MOAIMIslandUDA
+      config: !include config/simple_tag/island_uda_config_base.yml
+    problem_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.MOAIMIslandUDP
+      config: !merge
+        - !include config/simple_tag/island_udp_config_base.yml
+        - fitness_multiplier:
+            - 1.00 # tag score
+            - 0.25 # min ally speed
+            - 1.00 # min adversary speed
+            - 0.25 # min ally dist
+            - 1.00 # min adversary dist
+            - 1.00 # min landmark dist
+            - 1.00 # boundary penalty
+        - conspecific_data_keys: *common_conspecific_data_keys
+        - conspecific_utility_keys: *common_conspecific_utility_keys
+    population_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.population.MOAIMIslandPopulation
+      config: !include config/simple_tag/test_island_pop_config_base.yml
+
+  # Adversary: Tag Interceptor
+  - island_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMIslandUDI
+      # config:
+      #   island_id: 5
+    algorithm_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.algorithm.MOAIMIslandUDA
+      config: !include config/simple_tag/island_uda_config_base.yml
+    problem_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.MOAIMIslandUDP
+      config: !merge
+        - !include config/simple_tag/island_udp_config_base.yml
+        - training_agents: [adversary_0]
+        - ally_teams:
+            allies_0:
+              - adversary_0
+              - adversary_1
+              - adversary_2
+        - opponent_teams:
+            adversaries_0:
+              - agent_0
+              - agent_1
+        - fitness_multiplier:
+            - 1.00 # tag score
+            - 0.00 # min ally speed
+            - 0.125 # min adversary speed
+            - 0.00 # min ally dist
+            - 1.00 # min adversary dist
+            - 0.00 # min landmark dist
+            - 0.00 # boundary penalty
+        - fitness_metric_optimization_type:
+            - max
+            - min
+            - min
+            - min
+            - min
+            - min
+            - max
+        - conspecific_data_keys: *common_conspecific_data_keys
+        - conspecific_utility_keys: *common_conspecific_utility_keys
+    population_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.population.MOAIMIslandPopulation
+      config: !merge
+        - !include config/simple_tag/test_island_pop_config_base.yml
+        - team_size: 3
+
+  # Adversary: Landmark Interceptor
+  - island_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMIslandUDI
+      # config:
+      #   island_id: 6
+    algorithm_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.algorithm.MOAIMIslandUDA
+      config: !include config/simple_tag/island_uda_config_base.yml
+    problem_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.MOAIMIslandUDP
+      config: !merge
+        - !include config/simple_tag/island_udp_config_base.yml
+        - training_agents: [adversary_0]
+        - ally_teams:
+            allies_0:
+              - adversary_0
+              - adversary_1
+              - adversary_2
+        - opponent_teams:
+            adversaries_0:
+              - agent_0
+              - agent_1
+        - fitness_multiplier:
+            - 1.00 # tag score
+            - 0.00 # min ally speed
+            - 0.125 # min adversary speed
+            - 0.00 # min ally dist
+            - 1.00 # min adversary dist
+            - 0.75 # min landmark dist
+            - 0.00 # boundary penalty
+        - fitness_metric_optimization_type:
+            - max
+            - min
+            - min
+            - min
+            - min
+            - min
+            - max
+        - conspecific_data_keys: *common_conspecific_data_keys
+        - conspecific_utility_keys: *common_conspecific_utility_keys
+    population_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.population.MOAIMIslandPopulation
+      config: !merge
+        - !include config/simple_tag/test_island_pop_config_base.yml
+        - team_size: 3
+
+mainlands:
+  # Tag Only
+  - island_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMMainlandUDI
+      # config:
+      #   island_id: 7
+    algorithm_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.algorithm.MOAIMMainlandUDA
+      config: !merge
+        - !include config/simple_tag/mainland_uda_config_base.yml
+        - conspecific_utility_keys: *common_conspecific_utility_keys
+        - conspecific_utility_objectives: *common_conspecific_utility_objectives
+    problem_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.MOAIMMainlandUDP
+      config: !merge
+        - !include config/simple_tag/mainland_udp_config_base.yml
+        - fitness_metric_keys:
+            - tag_score
+            - boundary_penalty
+        - fitness_metric_optimization_type:
+            - max
+            - max
+    population_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.population.MOAIMMainlandPopulation
+      config: !include config/simple_tag/mainland_pop_config_base.yml
+
+  # Landmarks Only
+  - island_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMMainlandUDI
+      # config:
+      #   island_id: 8
+    algorithm_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.algorithm.MOAIMMainlandUDA
+      config: !merge
+        - !include config/simple_tag/mainland_uda_config_base.yml
+        - conspecific_utility_keys: *common_conspecific_utility_keys
+        - conspecific_utility_objectives: *common_conspecific_utility_objectives
+    problem_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.MOAIMMainlandUDP
+      config: !merge
+        - !include config/simple_tag/mainland_udp_config_base.yml
+        - fitness_metric_keys:
+            - closest_landmark_distance
+            - boundary_penalty
+        - fitness_metric_optimization_type:
+            - min
+            - max
+    population_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.population.MOAIMMainlandPopulation
+      config: !include config/simple_tag/mainland_pop_config_base.yml
+
+  # Tag + Landmarks
+  - island_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMMainlandUDI
+      # config:
+      #   island_id: 9
+    algorithm_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.algorithm.MOAIMMainlandUDA
+      config: !merge
+        - !include config/simple_tag/mainland_uda_config_base.yml
+        - conspecific_utility_keys: *common_conspecific_utility_keys
+        - conspecific_utility_objectives: *common_conspecific_utility_objectives
+    problem_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.MOAIMMainlandUDP
+      config: !merge
+        - !include config/simple_tag/mainland_udp_config_base.yml
+        - fitness_metric_keys:
+            - tag_score
+            - closest_landmark_distance
+            - boundary_penalty
+        - fitness_metric_optimization_type:
+            - max
+            - min
+            - max
+    population_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.population.MOAIMMainlandPopulation
+      config: !include config/simple_tag/mainland_pop_config_base.yml
+
+  # Adversary: Tag Only
+  - island_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMMainlandUDI
+      # config:
+      #   island_id: 10
+    algorithm_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.algorithm.MOAIMMainlandUDA
+      config: !merge
+        - !include config/simple_tag/mainland_uda_config_base.yml
+        - conspecific_utility_keys: *common_conspecific_utility_keys
+        - conspecific_utility_objectives: *common_conspecific_utility_objectives
+    problem_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.MOAIMMainlandUDP
+      config: !merge
+        - !include config/simple_tag/mainland_udp_config_base.yml
+        - training_agents:
+            - adversary_0
+            - adversary_1
+            - adversary_2
+        - ally_teams:
+            allies_0:
+              - adversary_0
+              - adversary_1
+              - adversary_2
+        - opponent_teams:
+            adversaries_0:
+              - agent_0
+              - agent_1
+        - fitness_metric_keys:
+            - tag_score
+            - closest_adversary_distance
+        - fitness_metric_optimization_type:
+            - max
+            - min
+    population_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.population.MOAIMMainlandPopulation
+      config: !merge
+        - !include config/simple_tag/mainland_pop_config_base.yml
+        - team_size: 3
+
+  # Adversary: Landmark + Tag
+  - island_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMMainlandUDI
+      # config:
+      #   island_id: 11
+    algorithm_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.algorithm.MOAIMMainlandUDA
+      config: !merge
+        - !include config/simple_tag/mainland_uda_config_base.yml
+        - conspecific_utility_keys: *common_conspecific_utility_keys
+        - conspecific_utility_objectives: *common_conspecific_utility_objectives
+    problem_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.MOAIMMainlandUDP
+      config: !merge
+        - !include config/simple_tag/mainland_udp_config_base.yml
+        - training_agents:
+            - adversary_0
+            - adversary_1
+            - adversary_2
+        - ally_teams:
+            allies_0:
+              - adversary_0
+              - adversary_1
+              - adversary_2
+        - opponent_teams:
+            adversaries_0:
+              - agent_0
+              - agent_1
+        - fitness_metric_keys:
+            - tag_score
+            - closest_adversary_distance
+            - closest_landmark_distance
+        - fitness_metric_optimization_type:
+            - max
+            - min
+            - min
+    population_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.population.MOAIMMainlandPopulation
+      config: !merge
+        - !include config/simple_tag/mainland_pop_config_base.yml
+        - team_size: 3

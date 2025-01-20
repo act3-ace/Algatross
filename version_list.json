@@ -1,0 +1,15 @@
+[
+    {
+        "name": "v1.0.0 (stable)",
+        "version": "1.0.0",
+        "url": "https://stalwart.git.act3-ace.com/ascension/mo-marl/documentation/html",
+        "preferred": "true",
+        "channel": "main"
+    },
+    {
+        "name": "dev",
+        "version": "1.0.0-dev.22",
+        "url": "https://stalwart.git.act3-ace.com/ascension/mo-marl/dev/documentation/html",
+        "channel": "dev"
+    }
+]

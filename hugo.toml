@@ -1,0 +1,121 @@
+baseURL = 'https://stalwart.git.act3-ace.com/'
+languageCode = 'en-us'
+title = 'MO-MARL Documentation'
+theme = "scientific-python-hugo-theme"
+relativeURLs = true
+disableKinds = ["taxonomy"]
+archetypeDir = "docs/source/hugo/archetypes"
+assetDir = "docs/source/hugo/assets"
+contentDir = "docs/source/hugo/content"
+dataDir = "docs/source/hugo/data"
+layoutDir = "docs/source/hugo/layouts"
+publishDir = "docs/build/public"
+resourceDir = "docs/source/hugo/resources"
+staticDir = "docs/source/hugo/static"
+themesDir = "docs/source/hugo/themes"
+enableEmoji = true
+
+[markup.highlight]
+noClasses = false
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[markup.goldmark.renderHooks.link]
+enableDefault = true
+
+[params]
+description = "Example"
+images = ["/images/logo.svg"]
+search = true
+subtitle = "Multi-Objective Multi-Agent Reinforcement Learning"
+favicon = "static/images/favicon.ico"
+
+[params.author]
+name = "Air Force Research Laboratory"
+
+[params.navbarlogo]
+image = "text-logo-2.svg"
+# text = "MO-MARL"
+link = "/"
+
+[[params.fonts]]
+name = "Lato"
+weights = [400, 900]
+
+[params.hero]
+# title = "MO-MARL"
+image = "text-logo-2.svg"
+buttontext = "Get Started"
+buttonlink = "/getting_started"
+
+[[params.navbar]]
+title = "Installation"
+url = "/installation"
+
+[[params.navbar]]
+title = "API Documentation"
+url = "/docs"
+
+[[params.navbar]]
+title = "User Guide"
+url = "/user_guide"
+
+[[params.navbar]]
+title = "Developer Guide"
+url = "/developer_guide"
+
+[params.footer]
+logo = "logo.svg"
+socialmediatitle = ""
+
+[[params.footer.socialmedia]]
+link = "https://git.act3-ace.com/stalwart/ascension/mo-marl"
+icon = "gitlab"
+
+[[params.footer.socialmedia]]
+link = "https://github.com/gresavage/mo-marl"
+icon = "github"
+
+[[params.footer.socialmedia]]
+link = "https://git.act3-ace.com/stalwart/ascension/mo-marl"
+icon = "docker"
+
+[params.footer.quicklinks.column1]
+title = ""
+
+[[params.footer.quicklinks.column1.links]]
+text = "About"
+link = "/"
+
+[[params.footer.quicklinks.column1.links]]
+text = "Gitlab"
+link = "https://git.act3-ace.com/stalwart/ascension/mo-marl"
+
+[[params.footer.quicklinks.column1.links]]
+text = "Github"
+link = "https://github.com/gresavage/mo-marl"
+
+[[params.footer.quicklinks.column2.links]]
+text = "Installation"
+link = "/installation"
+
+[[params.footer.quicklinks.column2.links]]
+text = "API Documentation"
+link = "/api"
+
+[[params.footer.quicklinks.column2.links]]
+text = "User Guide"
+link = "/user_guide"
+
+[[params.footer.quicklinks.column2.links]]
+text = "Developer Guide"
+link = "/developer_guide"
+
+[[params.footer.quicklinks.column3.links]]
+text = "Theme GitHub"
+link = "https://github.com/scientific-python/scientific-python-hugo-theme"
+
+[[params.footer.quicklinks.column3.links]]
+text = "Scientific Python Forum"
+link = "https://discuss.scientific-python.org"

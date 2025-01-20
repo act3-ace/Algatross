@@ -1,0 +1,35 @@
+!merge
+- !include config/ma_inspection/algatross_base.yml
+- rich_console: false
+- log_level: 20 # INFO
+- visualize: false
+- islands:
+    - island_constructor: !ConstructorData &common_island_constructor
+        constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMIslandUDI
+        config: &common_island_config
+          env_name: "sa_sims_inspection"
+          agent_constructors:
+            deputy_0: !ConstructorData
+              constructor: !function algatross.agents.on_policy.ppo.TorchPPOAgent
+              config: !include config/ma_inspection/ppo_agent_base.yml
+            deputy_1: !ConstructorData
+              constructor: !function algatross.agents.on_policy.ppo.TorchPPOAgent
+              config: !include config/ma_inspection/ppo_agent_base.yml
+          max_trajectory_length: null
+
+      algorithm_constructor: !ConstructorData
+        constructor: !function algatross.algorithms.genetic.mo_aim.classic_rl.algorithm.MOAIMRLUDA
+        config: !include config/ma_inspection/rl_uda_config_base.yml
+      problem_constructor: !ConstructorData
+        constructor: !function algatross.algorithms.genetic.mo_aim.classic_rl.problem.MOAIMRLUDP
+        config: !merge
+          - !include config/ma_inspection/rl_udp_config_base.yml
+          - fitness_multiplier:
+              - 1.00 # rewards
+          - conspecific_data_keys: []
+          - conspecific_utility_keys: []
+      population_constructor: !ConstructorData
+        constructor: !function algatross.algorithms.genetic.mo_aim.classic_rl.population.MOAIMRLPopulation
+        config: !include config/ma_inspection/rl_pop_config_base.yml
+
+  mainlands: []

@@ -1,0 +1,131 @@
+# Temporary Python files
+*.pyc
+__pycache__
+.pkl_memoize_py3
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+/junit.xml
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# PyBuilder
+.pybuilder/
+target/
+
+# IPython
+profile_default/
+ipython_config.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# mkdocs documentation
+/site
+/docs/**/generated
+/docs/**/api
+/docs/**/docs
+/.hugo_build.lock
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# ruff
+.ruff_cache
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# secrets
+*auth*
+
+# Cython debug symbols
+cython_debug/
+.devcontainer/.ssh/
+docs/corl/
+
+# Ray logs
+ray_logs/
+docker-compose-di2e.yml
+docker-compose-kr.yml
+
+# Julia output
+*.jl.*.cov
+*.jl.cov
+*.jl.mem
+
+# Boost
+boost*/
+boost*.tar.bz2
+
+# trial outputs
+events.out.tfevents.*
+*results.json
+**/fields/*.json
+**/fields/*.lock
+**/fields/**/info
+**/props/*.json
+**/props/*.lock
+**/props/**/info
+experiments/**
+
+# NumPy arrays
+*.npy
+*.npz
+
+# memray
+*.bin

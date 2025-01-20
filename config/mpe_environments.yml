@@ -1,0 +1,32 @@
+simple_spread_continuous: !ConstructorData
+  constructor: !function algatross.environments.pettingzoo_env.ParallelPettingZooEnv
+  config:
+    env: !ConstructorData
+      constructor: !function pettingzoo.mpe.simple_spread_v3.parallel_env
+      config:
+        continuous_actions: True
+        render_mode: "rgb_array"
+simple_spread_discrete: !ConstructorData
+  constructor: !function algatross.environments.pettingzoo_env.ParallelPettingZooEnv
+  config:
+    env: !ConstructorData
+      constructor: !function pettingzoo.mpe.simple_spread_v3.parallel_env
+      config:
+        continuous_actions: False
+        render_mode: "rgb_array"
+simple_tag_continuous: !ConstructorData
+  constructor: !function algatross.environments.pettingzoo_env.ParallelPettingZooEnv
+  config:
+    env: !ConstructorData
+      constructor: !function pettingzoo.mpe.simple_tag_v3.parallel_env
+      config:
+        continuous_actions: True
+        render_mode: "rgb_array"
+simple_tag_discrete: !ConstructorData
+  constructor: !function algatross.environments.pettingzoo_env.ParallelPettingZooEnv
+  config:
+    env: !ConstructorData
+      constructor: !function pettingzoo.mpe.simple_tag_v3.parallel_env
+      config:
+        continuous_actions: False
+        render_mode: "rgb_array"

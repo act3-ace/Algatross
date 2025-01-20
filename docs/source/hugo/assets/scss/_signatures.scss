@@ -1,0 +1,160 @@
+@use "_colors.scss";
+
+@mixin section-color($section_name, $color, $bg_color, $object_type) {
+    section.py-#{$object_type} {
+        h1 {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            column-gap: 0.5em;
+            margin-top: 0;
+            padding: 0.125em 0.5em;
+            background-color: $bg_color;
+            color: $color;
+            border-radius: 0.5em;
+        }
+    }
+
+    section[id$="#{$section_name}"] {
+        margin-top: 2.75rem;
+
+        .toctree-wrapper > ul {
+            padding-left: 0.75em;
+            & > li[class^="toctree-l"] {
+                padding-left: 0.75em;
+                margin-bottom: unset;
+                padding-top: 0.625em;
+                padding-bottom: 0.625em;
+                &:first-child {
+                    border-top-left-radius: var(--bs-border-radius-lg);
+                    border-top-right-radius: var(--bs-border-radius-lg);
+                }
+                &:last-child {
+                    border-bottom-left-radius: var(--bs-border-radius-lg);
+                    border-bottom-right-radius: var(--bs-border-radius-lg);
+                }
+                &:nth-child(odd) {
+                    background-color: var(--pst-color-table-row-zebra-low-bg);
+                }
+                &:nth-child(even) {
+                    background-color: var(--pst-color-table-row-zebra-high-bg);
+                }
+            }
+        }
+        @for $i from 1 through 3 {
+            h#{$i} {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                column-gap: 0.5em;
+                margin-top: 0;
+                padding: 0.125em 0.5em;
+                background-color: $bg_color;
+                color: $color;
+                border-radius: 0.5em;
+            }
+        }
+    }
+    p.#{$section_name}.rubric {
+        flex-direction: row;
+        align-items: center;
+        column-gap: 0.5em;
+        color: $color;
+        background-color: $bg_color;
+        padding-left: 0.5em;
+        border-radius: 0.5em;
+        margin-left: 1em;
+        margin-right: 1em;
+    }
+}
+
+html {
+    // make the sections and rubrics colorful based on the object type
+    @include section-color("submodules", var(--pst-color-info-bg), var(--pst-color-info), "module");
+    @include section-color("module-contents", var(--pst-color-info-bg), var(--pst-color-info), "module-contents");
+    @include section-color("functions", var(--pst-color-success-bg), var(--pst-color-success), "function");
+    @include section-color("exceptions", var(--pst-color-danger-bg), var(--pst-color-danger), "exception");
+    @include section-color("classes", var(--pst-color-info), var(--pst-color-info-bg), "class");
+    @include section-color("methods", var(--pst-color-success-bg), var(--pst-color-success-highlight), "method");
+    @include section-color("attributes", var(--pst-color-danger-bg), var(--pst-color-danger-highlight), "attribute");
+    @include section-color("properties", var(--pst-color-warning-bg), var(--pst-color-warning), "property");
+
+    .sig.sig-object {
+        a {
+            color: colors.$primary;
+        }
+        .sig-param {
+            color: #ffd2b3;
+            .o {
+                color: var(--pst-color-white);
+            }
+        }
+    }
+
+    &[data-theme="light"] {
+        @include section-color("submodules", var(--pst-color-primary-text), var(--pst-color-primary-bg), "module");
+        @include section-color(
+            "module-contents",
+            var(--pst-color-primary-text),
+            var(--pst-color-primary-bg),
+            "module-contents"
+        );
+
+        .sig.sig-object {
+            a:hover {
+                color: var(--pst-color-secondary-highlight-text);
+            }
+            .sig-param .default_value {
+                color: var(--pst-gray-400);
+            }
+        }
+
+        dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) {
+            dt.field-even,
+            dt.field-odd {
+                background-color: var(--bs-color-dark-bg-subtle);
+            }
+        }
+    }
+}
+
+table.autosummary.longtable {
+    margin-left: 2em;
+    width: 90%;
+}
+
+// make the signatures look like cards
+dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) {
+    margin-bottom: 1rem;
+    padding-bottom: 2rem;
+    border-radius: 0.5rem;
+    background-color: var(--pst-color-surface);
+    dd {
+        margin-right: 2rem;
+        dl.py {
+            background-color: var(--pst-color-surface);
+            & > dt > em.property {
+                color: colors.$core-b-150;
+            }
+        }
+    }
+    .sig.sig-object {
+        border-top-left-radius: 0.5em;
+        border-top-right-radius: 0.5em;
+    }
+    dt.field-odd,
+    dt.field-even {
+        background-color: var(--pst-color-background);
+    }
+}
+.sig.sig-object {
+    padding: 0em 0.75em;
+    color: #{colors.$core-c-180};
+    background-color: #{colors.$core-c-30};
+    .sig-prename {
+        color: colors.$core-b-170;
+    }
+    .sig-prename.descclass {
+        color: var(--pst-color-inline-code);
+    }
+}

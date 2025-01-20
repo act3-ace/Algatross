@@ -1,0 +1,40 @@
+@use "_code-highlight-dracula.scss";
+@use "_code-highlight-manni.scss";
+
+// just make the behavior in hugo match sphinx
+html {
+    .highlight pre {
+        &,
+        &.chroma {
+            @include code-highlight-dracula.highlight();
+            line-height: 125%;
+            border-radius: 0.375em;
+            &,
+            & .copy-button button {
+                background-color: var(--pst-color-dracula-bg);
+            }
+        }
+    }
+
+    &[data-theme="dark"] {
+        .highlight pre {
+            &,
+            &.chroma {
+                @include code-highlight-dracula.highlight();
+            }
+        }
+    }
+
+    &[data-theme="light"] {
+        .highlight pre {
+            &,
+            &.chroma {
+                @include code-highlight-manni.highlight();
+                &,
+                & .copy-button button {
+                    background-color: var(--pst-color-surface);
+                }
+            }
+        }
+    }
+}

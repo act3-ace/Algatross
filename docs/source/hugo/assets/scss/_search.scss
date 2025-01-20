@@ -1,0 +1,93 @@
+@use "_colors.scss";
+
+.search-dialog input {
+    color: var(--pagefind-ui-text);
+}
+
+.pagefind-ui__results-area {
+    background-color: rgba(0, 0, 0, 0.65);
+    padding-left: 1em;
+    padding-right: 1em;
+    border-radius: 1em;
+    color: var(--pst-color-text-base);
+    mark {
+        background-color: var(--pst-color-secondary);
+        border-radius: 0.5em;
+        padding-left: 0.25em;
+        padding-right: 0.25em;
+    }
+}
+.pagefind-ui__drawer button.pagefind-ui__button {
+    margin-top: calc(20px * var(--pagefind-ui-scale));
+    margin-bottom: calc(20px * var(--pagefind-ui-scale));
+    color: var(--pst-color-text-muted);
+
+    &:hover {
+        color: var(--pagefind-ui-text);
+        border-color: var(--pst-color-secondary);
+        box-shadow: inset 0 0 1em var(--pst-color-secondary);
+        border-radius: 2em;
+    }
+}
+
+input.pagefind-ui__search-input::placeholder {
+    color: var(--pst-color-dark-text);
+}
+
+dialog {
+    &.search-dialog {
+        border: none;
+        background-color: transparent;
+        width: 80%;
+        .pagefind-ui {
+            form.pagefind-ui__form::before {
+                background-color: var(--pst-color-dark-text);
+            }
+        }
+        &::backdrop {
+            backdrop-filter: blur(0.25rem);
+        }
+        input.pagefind-ui__search-input {
+            border-radius: 2rem;
+        }
+    }
+    &.pst-search-dialog form {
+        &::before {
+            top: calc(46px * var(--pagefind-ui-scale));
+            left: calc(50px * var(--pagefind-ui-scale));
+        }
+        &:focus-within {
+            box-shadow: none;
+        }
+        button {
+            top: calc(24px * var(--pagefind-ui-scale));
+            right: calc(12px * var(--pagefind-ui-scale));
+        }
+        border: hidden;
+        background: none;
+    }
+}
+
+button.pagefind-ui__search-clear.svelte-e9gkc3 {
+    border-radius: 2em;
+    border: hidden;
+    margin-right: calc(15px * var(--pagefind-ui-scale));
+}
+.search-button__default-text {
+    width: -webkit-fill-available;
+}
+
+html[data-theme="light"] {
+    .pagefind-ui__results-area.svelte-e9gkc3 {
+        color: var(--pst-color-white-highlight);
+        .pagefind-ui__result-title .pagefind-ui__result-link {
+            color: var(--pst-color-black-text);
+        }
+        .pagefind-ui__result-excerpt mark {
+            color: var(--pst-color-black-text);
+        }
+    }
+    dialog.search-dialog .pagefind-ui form.pagefind-ui__form::before {
+        background-color: var(--pagefind-ui-text);
+    }
+}

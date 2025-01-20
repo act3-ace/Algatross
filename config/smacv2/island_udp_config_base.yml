@@ -1,0 +1,56 @@
+# agent_constructor_data: !ConstructorData
+#   constructor: !function algatross.agents.on_policy.ppo.TorchPPOAgent
+#   config: !include config/smacv2/ppo_agent_base.yml
+trainer_constructor_data: !ConstructorData
+  constructor: !function algatross.environments.smac.smac_runner.SMACV2Runner
+  config:
+    rollout_config:
+      batch_size: 300
+      gamma: 0.85
+      gae_lambda: 0.85
+    train_config:
+      device: cpu
+      sgd_minibatch_size: 30
+      num_sgd_iter: 20
+training_agents:
+  - allies_0
+ally_teams:
+  allies:
+    - allies_0
+    - allies_1
+    - allies_2
+    - allies_3
+    - allies_4
+    # - allies_5
+    # - allies_6
+    # - allies_7
+    # - allies_8
+    # - allies_9
+conspecific_data_keys:
+  - obs
+  - actions
+conspecific_utility_keys:
+  - own_health
+  - dead_enemies
+  - dead_allies
+  - ally_health
+  - battle_won
+fitness_metric_keys:
+  - own_health
+  - dead_enemies
+  - dead_allies
+  - ally_health
+  - battle_won
+fitness_metric_optimization_type:
+  - max
+  - max
+  - min
+  - max
+  - max
+fitness_multiplier:
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+fitness_reduce_fn: sum

@@ -1,0 +1,3 @@
+!merge
+- !include config/simple_spread/algatross.yml
+- debug: True

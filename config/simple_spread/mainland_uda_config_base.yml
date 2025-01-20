@@ -1,0 +1,11 @@
+mutation_noise: 0.1
+conspecific_utility_keys:
+  - landmarks_occupied
+  - success
+  - time_penalty
+  - collisions
+conspecific_utility_objectives:
+  - max
+  - max
+  - max
+  - min

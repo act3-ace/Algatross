@@ -1,0 +1,31 @@
+@use "_colors.scss";
+
+.table {
+    border: hidden;
+    border-color: var(--pst-color-table-inner-border);
+}
+
+td {
+    border-style: none solid solid none;
+}
+
+tr:first-child td:first-child {
+    border-top-left-radius: var(--bs-border-radius-lg);
+}
+tr:first-child td:last-child {
+    border-top-right-radius: var(--bs-border-radius-lg);
+}
+
+tr:last-child td:first-child {
+    border-bottom-left-radius: var(--bs-border-radius-lg);
+}
+tr:last-child td:last-child {
+    border-bottom-right-radius: var(--bs-border-radius-lg);
+}
+
+tr:first-child td {
+    border-top-style: solid;
+}
+tr td:first-child {
+    border-left-style: solid;
+}

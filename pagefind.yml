@@ -1,0 +1,4 @@
+site: docs/build/public
+root_selector: main
+exclude_selectors:
+  - a.headerlink

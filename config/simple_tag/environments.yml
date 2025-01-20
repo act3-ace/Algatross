@@ -1,0 +1,11 @@
+tag_2v3_3L: !ConstructorData
+  constructor: !function algatross.environments.pettingzoo_env.ParallelPettingZooEnv
+  config:
+    env: !ConstructorData
+      constructor: !function pettingzoo.mpe.simple_tag_v3.parallel_env
+      config:
+        continuous_actions: True
+        num_good: 2
+        num_adversaries: 3
+        num_obstacles: 2
+        render_mode: "rgb_array"

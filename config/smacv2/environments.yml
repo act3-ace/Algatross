@@ -1,0 +1,101 @@
+# =======
+# PROTOSS
+# =======
+protoss_5_vs_5: !ConstructorData
+  constructor: !function algatross.environments.smac.smac_wrapper.SMACV2RllibEnv
+  config: !merge
+    - !include config/smacv2/env_base.yml
+    - map_name: 10gen_protoss
+      capability_config: !include config/smacv2/capability_configs/protoss_5_vs_5.yml
+protoss_10_vs_10: !ConstructorData
+  constructor: !function algatross.environments.smac.smac_wrapper.SMACV2RllibEnv
+  config: !merge
+    - !include config/smacv2/env_base.yml
+    - map_name: 10gen_protoss
+      capability_config: !include config/smacv2/capability_configs/protoss_10_vs_10.yml
+protoss_10_vs_11: !ConstructorData
+  constructor: !function algatross.environments.smac.smac_wrapper.SMACV2RllibEnv
+  config: !merge
+    - !include config/smacv2/env_base.yml
+    - map_name: 10gen_protoss
+      capability_config: !include config/smacv2/capability_configs/protoss_10_vs_11.yml
+protoss_20_vs_20: !ConstructorData
+  constructor: !function algatross.environments.smac.smac_wrapper.SMACV2RllibEnv
+  config: !merge
+    - !include config/smacv2/env_base.yml
+    - map_name: 10gen_protoss
+      capability_config: !include config/smacv2/capability_configs/protoss_20_vs_20.yml
+protoss_20_vs_23: !ConstructorData
+  constructor: !function algatross.environments.smac.smac_wrapper.SMACV2RllibEnv
+  config: !merge
+    - !include config/smacv2/env_base.yml
+    - map_name: 10gen_protoss
+      capability_config: !include config/smacv2/capability_configs/protoss_20_vs_23.yml
+
+# ======
+# TERRAN
+# ======
+terran_5_vs_5: !ConstructorData
+  constructor: !function algatross.environments.smac.smac_wrapper.SMACV2RllibEnv
+  config: !merge
+    - !include config/smacv2/env_base.yml
+    - map_name: 10gen_terran
+      capability_config: !include config/smacv2/capability_configs/terran_5_vs_5.yml
+terran_10_vs_10: !ConstructorData
+  constructor: !function algatross.environments.smac.smac_wrapper.SMACV2RllibEnv
+  config: !merge
+    - !include config/smacv2/env_base.yml
+    - map_name: 10gen_terran
+      capability_config: !include config/smacv2/capability_configs/terran_10_vs_10.yml
+terran_10_vs_11: !ConstructorData
+  constructor: !function algatross.environments.smac.smac_wrapper.SMACV2RllibEnv
+  config: !merge
+    - !include config/smacv2/env_base.yml
+    - map_name: 10gen_terran
+      capability_config: !include config/smacv2/capability_configs/terran_10_vs_11.yml
+terran_20_vs_20: !ConstructorData
+  constructor: !function algatross.environments.smac.smac_wrapper.SMACV2RllibEnv
+  config: !merge
+    - !include config/smacv2/env_base.yml
+    - map_name: 10gen_terran
+      capability_config: !include config/smacv2/capability_configs/terran_20_vs_20.yml
+terran_20_vs_23: !ConstructorData
+  constructor: !function algatross.environments.smac.smac_wrapper.SMACV2RllibEnv
+  config: !merge
+    - !include config/smacv2/env_base.yml
+    - map_name: 10gen_terran
+      capability_config: !include config/smacv2/capability_configs/terran_20_vs_23.yml
+
+# ====
+# ZERG
+# ====
+zerg_5_vs_5: !ConstructorData
+  constructor: !function algatross.environments.smac.smac_wrapper.SMACV2RllibEnv
+  config: !merge
+    - !include config/smacv2/env_base.yml
+    - map_name: 10gen_zerg
+      capability_config: !include config/smacv2/capability_configs/zerg_5_vs_5.yml
+zerg_10_vs_10: !ConstructorData
+  constructor: !function algatross.environments.smac.smac_wrapper.SMACV2RllibEnv
+  config: !merge
+    - !include config/smacv2/env_base.yml
+    - map_name: 10gen_zerg
+      capability_config: !include config/smacv2/capability_configs/zerg_10_vs_10.yml
+zerg_10_vs_11: !ConstructorData
+  constructor: !function algatross.environments.smac.smac_wrapper.SMACV2RllibEnv
+  config: !merge
+    - !include config/smacv2/env_base.yml
+    - map_name: 10gen_zerg
+      capability_config: !include config/smacv2/capability_configs/zerg_10_vs_11.yml
+zerg_20_vs_20: !ConstructorData
+  constructor: !function algatross.environments.smac.smac_wrapper.SMACV2RllibEnv
+  config: !merge
+    - !include config/smacv2/env_base.yml
+    - map_name: 10gen_zerg
+      capability_config: !include config/smacv2/capability_configs/zerg_20_vs_20.yml
+zerg_20_vs_23: !ConstructorData
+  constructor: !function algatross.environments.smac.smac_wrapper.SMACV2RllibEnv
+  config: !merge
+    - !include config/smacv2/env_base.yml
+    - map_name: 10gen_zerg
+      capability_config: !include config/smacv2/capability_configs/zerg_20_vs_23.yml

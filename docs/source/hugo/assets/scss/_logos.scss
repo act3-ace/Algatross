@@ -1,0 +1,64 @@
+@use "_colors.scss";
+@use "_transitions.scss";
+
+$shadow-radius: 0.125rem;
+
+@mixin logo-icon-color($name) {
+    #footer {
+        svg.icon.#{$name}-icon:hover {
+            fill: var(--pst-color-rgba-#{$name});
+        }
+    }
+
+    .navbar-icon-links li,
+    .footer-icon-links li {
+        @include transitions.mixin_transition(var(--transition-fast));
+        &:hover a {
+            &::before {
+                border: none;
+            }
+            svg.fa-#{$name} {
+                @include transitions.mixin_transition(var(--transition-fast));
+                color: var(--pst-color-rgba-#{$name});
+            }
+        }
+    }
+}
+
+@each $name in docker, gitlab, github, mattermost, numpy, pandas, pre-commit, pytorch, ray, ruff, scipy,
+    semantic-release, tensorflow, uv, vs-code
+{
+    @include logo-icon-color($name);
+}
+
+.bd-header .navbar-nav li,
+.footer-icon-links .footer-item li {
+    p.footer-icon-note {
+        margin-top: auto;
+        margin-bottom: auto;
+        padding-right: max(8px, 0.5rem, 0.32em);
+    }
+}
+// make footer brand icons appear and behave the same as header icons
+.footer-icon-links {
+    list-style-type: none;
+    .footer-item {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: max(1px, 0.0625rem, 0.04em);
+    }
+    a {
+        color: var(--pst-color-text-muted);
+    }
+}
+.footer-icon-links-item {
+    align-self: center;
+    border: max(2px, 0.125rem, 0.08em) solid transparent;
+}
+
+// make gitlab logo in automatic link shortening match brand color
+a.gitlab:before {
+    color: var(--pst-color-rgba-gitlab);
+}

@@ -1,0 +1,7 @@
+{# Displays icon-links as list items. #} {%- from "!components/icon-links.html" import icon_link_nav_item -%} {%- if theme_icon_links -%}
+<ul class="footer-icon-links" aria-label="{{ theme_icon_links_label }}">
+  {%- for icon_link in theme_icon_links -%} {%- if icon_link.get("footer", False) -%} {{ icon_link_nav_item(icon_link["url"],
+  icon_link["icon"], icon_link["name"], icon_link.get("type", "fontawesome"), icon_link.get("attributes", {})) -}} {%- endif -%} {%- endfor
+  %}
+</ul>
+{%- endif -%}

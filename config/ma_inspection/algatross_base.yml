@@ -1,0 +1,50 @@
+common_conspecific_data_keys: &common_conspecific_data_keys
+  - obs
+  - actions
+common_conspecific_utility_keys: &common_conspecific_utility_keys
+  - rewards
+conspecific_utility_objectives: &common_conspecific_utility_objectives
+  - max
+
+common_island_config: &common_island_config
+  env_name: "sa_sims_inspection"
+  agent_constructors:
+    deputy_0: !ConstructorData
+      constructor: !function algatross.agents.on_policy.ppo.TorchPPOAgent
+      config: !include config/ma_inspection/ppo_agent_base.yml
+    deputy_1: !ConstructorData
+      constructor: !function algatross.agents.on_policy.ppo.TorchPPOAgent
+      config: !include config/ma_inspection/ppo_agent_base.yml
+  max_trajectory_length: null
+
+island_iterations: 10
+mainland_iterations: 10
+softmax_reset_interval: 100
+epochs: 0
+seed: 1000
+experiment_name: null
+log_dir: "experiments"
+ray_config: {}
+ckpt_interval_epochs: 1
+
+environment_map: !include config/ma_inspection/environments.yml
+
+topology_constructor: !ConstructorData
+  constructor: !function algatross.algorithms.genetic.mo_aim.topology.MOAIMTopology
+  config:
+    nu: 0.01
+    alpha: 0.0003
+
+archipelago_constructor: !ConstructorData
+  constructor: !function algatross.algorithms.genetic.mo_aim.archipelago.RayMOAIMArchipelago
+  config:
+    conspecific_utility_keys: *common_conspecific_utility_keys
+    n_workers: 10
+    n_envs: 2
+    warmup_iterations: 1
+    warmup_generations: 10
+
+    behavior_classification:
+      trajectory_length: 25
+      num_samples: 4
+      reduction_method: mean

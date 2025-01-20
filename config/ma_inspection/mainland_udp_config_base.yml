@@ -1,0 +1,23 @@
+trainer_constructor_data: !ConstructorData
+  constructor: !function algatross.environments.runners.BaseRunner
+  config:
+    rollout_config:
+      batch_size: 128
+training_agents:
+  - deputy_0
+  - deputy_1
+ally_teams:
+  allies_0:
+    - deputy_0
+    - deputy_1
+conspecific_data_keys:
+  - obs
+  - actions
+conspecific_utility_keys:
+  - rewards
+fitness_metric_keys:
+  - rewards
+fitness_metric_optimization_type:
+  - max
+fitness_reduce_fn: null
+max_envs: 2

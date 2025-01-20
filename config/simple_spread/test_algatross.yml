@@ -1,0 +1,150 @@
+common_conspecific_data_keys: &common_conspecific_data_keys
+  - obs
+  - actions
+common_conspecific_utility_keys: &common_conspecific_utility_keys
+  - landmarks_occupied
+  - success
+  - time_penalty
+  - collisions
+conspecific_utility_objectives: &common_conspecific_utility_objectives
+  - max
+  - max
+  - max
+  - min
+
+config: &common_island_config
+  env_name: "simple_spread_continuous"
+  agent_constructors:
+    agent_0: !ConstructorData
+      constructor: !function algatross.agents.on_policy.ppo.TorchPPOAgent
+      config: !include config/simple_spread/ppo_agent_base.yml
+    agent_1: !ConstructorData
+      constructor: !function algatross.agents.on_policy.ppo.TorchPPOAgent
+      config: !include config/simple_spread/ppo_agent_base.yml
+    agent_2: !ConstructorData
+      constructor: !function algatross.agents.on_policy.ppo.TorchPPOAgent
+      config: !include config/simple_spread/ppo_agent_base.yml
+  max_trajectory_length: null
+
+island_iterations: 1
+mainland_iterations: 1
+softmax_reset_interval: 100
+epochs: 10
+seed: 1000
+experiment_name: null
+log_dir: "experiments"
+ckpt_interval_epochs: 1
+ray_config:
+  log_to_driver: true
+
+rich_console: false
+log_level: 20  # INFO
+debug: false
+visualize: false
+
+environment_map: !include config/mpe_environments.yml
+
+topology_constructor: !ConstructorData
+  constructor: !function algatross.algorithms.genetic.mo_aim.topology.MOAIMTopology
+  config:
+    nu: 0.01
+    alpha: 0.0003
+
+archipelago_constructor: !ConstructorData
+  constructor: !function algatross.algorithms.genetic.mo_aim.archipelago.RayMOAIMArchipelago
+  config:
+    conspecific_utility_keys: *common_conspecific_utility_keys
+    n_workers: 10
+    n_envs: 2
+    warmup_iterations: 1
+    warmup_generations: 10
+
+    behavior_classification:
+      trajectory_length: 25
+      num_samples: 4
+      reduction_method: mean
+
+islands:
+  - island_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMIslandUDI
+      config: *common_island_config
+
+    algorithm_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.algorithm.MOAIMIslandUDA
+      config: !include config/simple_spread/island_uda_config_base.yml
+    problem_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.MOAIMIslandUDP
+      config: !merge
+        - !include config/simple_spread/island_udp_config_base.yml
+        - fitness_multiplier:
+            - 1.00 # landmarks_occupied
+            - 1.00 # success
+            - 0.00 # time_penalty
+            - 0.00 # collisions
+        - conspecific_data_keys: *common_conspecific_data_keys
+        - conspecific_utility_keys: *common_conspecific_utility_keys
+    population_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.population.MOAIMIslandPopulation
+      config: !include config/simple_spread/island_pop_config_base.yml
+
+  - island_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMIslandUDI
+      config: *common_island_config
+
+    algorithm_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.algorithm.MOAIMIslandUDA
+      config: !include config/simple_spread/island_uda_config_base.yml
+    problem_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.MOAIMIslandUDP
+      config: !merge
+        - !include config/simple_spread/island_udp_config_base.yml
+        - fitness_multiplier:
+            - 0.00 # landmarks_occupied
+            - 1.00 # success
+            - 0.00 # time_penalty
+            - 1.00 # collisions
+        - conspecific_data_keys: *common_conspecific_data_keys
+        - conspecific_utility_keys: *common_conspecific_utility_keys
+    population_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.population.MOAIMIslandPopulation
+      config: !include config/simple_spread/island_pop_config_base.yml
+
+  - island_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMIslandUDI
+      config: *common_island_config
+
+    algorithm_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.algorithm.MOAIMIslandUDA
+      config: !include config/simple_spread/island_uda_config_base.yml
+    problem_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.MOAIMIslandUDP
+      config: !merge
+        - !include config/simple_spread/island_udp_config_base.yml
+        - fitness_multiplier:
+            - 1.00 # landmarks_occupied
+            - 1.00 # success
+            - 0.00 # time_penalty
+            - 1.00 # collisions
+        - conspecific_data_keys: *common_conspecific_data_keys
+        - conspecific_utility_keys: *common_conspecific_utility_keys
+    population_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.population.MOAIMIslandPopulation
+      config: !include config/simple_spread/island_pop_config_base.yml
+
+mainlands:
+  - island_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMMainlandUDI
+      config: *common_island_config
+
+    algorithm_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.algorithm.MOAIMMainlandUDA
+      config: !merge
+        - !include config/simple_spread/mainland_uda_config_base.yml
+        - conspecific_utility_keys: *common_conspecific_utility_keys
+        - conspecific_utility_objectives: *common_conspecific_utility_objectives
+    problem_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.MOAIMMainlandUDP
+      config: !include config/simple_spread/mainland_udp_config_base.yml
+    population_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.population.MOAIMMainlandPopulation
+      config: !include config/simple_spread/mainland_pop_config_base.yml

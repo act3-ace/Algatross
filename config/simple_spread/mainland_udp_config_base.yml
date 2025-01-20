@@ -1,0 +1,30 @@
+trainer_constructor_data: !ConstructorData
+  constructor: !function algatross.environments.mpe.simple_spread.MPESimpleSpreadRunner
+  config:
+    rollout_config:
+      batch_size: 100
+training_agents:
+  - agent_0
+  - agent_1
+  - agent_2
+ally_teams:
+  allies_0:
+    - agent_0
+    - agent_1
+    - agent_2
+conspecific_data_keys:
+  - obs
+  - actions
+conspecific_utility_keys:
+  - landmarks_occupied
+  - success
+  - time_penalty
+  - collisions
+fitness_metric_keys:
+  - success
+  - collisions
+fitness_metric_optimization_type:
+  - max
+  - min
+fitness_reduce_fn: null
+max_envs: 2

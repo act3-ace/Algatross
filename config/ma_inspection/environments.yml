@@ -1,0 +1,62 @@
+# env_config: &common_env_config
+# sa_sims_docking: !ConstructorData
+#   constructor: !function algatross.environments.pettingzoo_env.ParallelPettingZooEnv
+#   config:
+#     env: !ConstructorData
+#       constructor: !function safe_autonomy_sims.pettingzoo.MultiDockingEnv
+#       config: !merge
+#         - *common_env_config
+#         - max_time: 2_000
+#           max_distance: 10_000
+#           docking_radius: 0.2
+#           max_v_violation: 5
+
+sa_sims_inspection: !ConstructorData
+  constructor: !function algatross.environments.ma_inspection.inspection.rendered_env.RenderedParallelPettingZooInspection
+  config:
+    env: !ConstructorData
+      constructor: !function safe_autonomy_sims.pettingzoo.MultiInspectionEnv
+      config:
+        num_agents: 2
+        max_time: 1_000
+        max_distance: 800
+        success_threshold: 100
+        crash_radius: 15
+task_reward_sa_sims_inspection: !ConstructorData
+  constructor: !function algatross.environments.ma_inspection.inspection.rendered_env.RenderedParallelPettingZooInspection
+  config:
+    env: !ConstructorData
+      constructor: !function algatross.environments.ma_inspection.inspection.task_reward_env.TaskRewardMultiInspectionEnv
+      config:
+        num_agents: 2
+        max_time: 1_000
+        max_distance: 800
+        success_threshold: 100
+        crash_radius: 15
+        # task reward
+        dense_observed_points_weight: 0.01
+        dense_delta_v_weight: 1.0
+        sparse_inspection_success_weight: 1.0
+        sparse_crash_weight: 1.0
+sa_sims_weighted_inspection: !ConstructorData
+  constructor: !function algatross.environments.pettingzoo_env.ParallelPettingZooEnv
+  config:
+    env: !ConstructorData
+      constructor: !function safe_autonomy_sims.pettingzoo.WeightedMultiInspectionEnv
+      config:
+        num_agents: 2
+        max_time: 1_000
+        max_distance: 800
+        success_threshold: 0.95
+        crash_radius: 15
+sa_sims_six_dof: !ConstructorData
+  constructor: !function algatross.environments.pettingzoo_env.ParallelPettingZooEnv
+  config:
+    env: !ConstructorData
+      constructor: !function safe_autonomy_sims.pettingzoo.WeightedSixDofMultiInspectionEnv
+      config:
+        num_agents: 2
+        max_time: 1_000
+        max_distance: 800
+        success_threshold: 0.95
+        crash_radius: 15

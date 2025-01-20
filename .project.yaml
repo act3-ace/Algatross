@@ -1,0 +1,32 @@
+# Project configuration file for ACT3 Project Tool
+kind: Project
+apiVersion: project.act3-ace.io/v1beta1
+
+# Project metadata used in Blueprints
+meta:
+  description: A multi-objective multi-agent reinforcement learning library centered around asymmetric coevolution in PyTorch
+
+# List of Blueprints configured for this project
+blueprints:
+  - ref: https://git.act3-ace.com/devsecops/project-templates/python-library.git@v3.0.0
+    inputs:
+      packageName: algatross # Python package name
+      registryURL: reg.git.act3-ace.com/stalwart/ascension/mo-marl
+    ignore:
+      - test/test_RPSLS.py
+      - compose.yml
+      - algatross/RPSLS.py
+      - .gitlab/**
+      - docs/**
+      - mkdocs.yml
+      - Makefile
+# Edit configuration interactively:
+#   Edit metadata:         act3-pt edit
+#   Edit CI config:        act3-pt ci edit
+#   Edit Blueprint config: act3-pt blueprint edit
+# Manage Blueprints:
+#   Add Blueprints:  act3-pt blueprint add
+#   Update versions: act3-pt blueprint update
+# Use CI/CD:
+#   Set up CI/CD:  act3-pt ci setup
+#   Run pipelines: act3-pt ci run

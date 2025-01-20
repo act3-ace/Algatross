@@ -1,0 +1,36 @@
+solution_dim: Null
+archive_base_class: !function algatross.quality_diversity.archives.unstructured.UnstructuredArchive
+archive_config:
+  measure_dim: 20
+  k_neighbors: 20
+  max_size: 100
+  novelty_threshold: 75 # sqrt(measure_dim)
+  qd_score_offset: -500
+  visualize: False
+
+use_result_archive: False
+result_archive_base_class: !function algatross.quality_diversity.archives.unstructured.UnstructuredArchive
+result_archive_config:
+  measure_dim: 20
+  k_neighbors: 20
+  max_size: 100
+  novelty_threshold: 75 # sqrt(measure_dim)
+  qd_score_offset: -500
+  visualize: False
+
+emitter_base_class: !function ribs.emitters.GaussianEmitter
+emitter_config:
+  batch_size: 1
+  sigma: 0.1
+
+random_emitter_base_class: !function algatross.quality_diversity.emitters.random.RandomEmitter
+random_emitter_config:
+  batch_size: 1
+  sigma: 0.1
+
+scheduler_base_class: !function ribs.schedulers.Scheduler
+scheduler_config: {}
+encoder_loss_fn: !function torch.nn.functional.mse_loss
+team_size: 3
+qd_samples: 3
+qd_experience_buffer_size: 1_000_000

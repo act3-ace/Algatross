@@ -1,0 +1,43 @@
+{%- extends "!layout.html" %} {%- block content %} {# A tiny helper pixel to detect if we've scrolled #}
+<div id="pst-scroll-pixel-helper"></div>
+
+{%- if theme_back_to_top_button %} {# the scroll to top button #}
+<button type="button" class="btn rounded-pill" id="backtotop">
+  <i class="fa-solid fa-arrow-up"></i>
+  {{- _("Back to top") -}}
+</button>
+{%- endif %} {# A search field pop-up that will only show when the search button is clicked #}
+<dialog class="search-dialog pst-search-dialog"></dialog>
+
+{% include "sections/announcement.html" %} {% block docs_navbar %} {{ super() }} {% endblock docs_navbar %}
+
+<div class="bd-container">
+  <div class="bd-container__inner bd-page-width">
+    {# Primary sidebar #} {# If we have no sidebar TOC, pop the TOC component from the sidebars list #} {% if
+    suppress_sidebar_toctree(includehidden=theme_sidebar_includehidden | tobool) %} {% set sidebars = sidebars | reject("in",
+    "sidebar-nav-bs.html") | list %} {% endif %}
+    <dialog id="pst-primary-sidebar-modal"></dialog>
+    <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar{% if not sidebars %} hide-on-wide{% endif %}">
+      {% include "sections/sidebar-primary.html" %}
+    </div>
+    {# Using an ID here so that the skip-link works #}
+    <main id="main-content" class="bd-main" role="main">
+      {# Main content area #} {% block docs_main %}{{ super() }}{% endblock docs_main %}
+    </main>
+  </div>
+</div>
+{# Scripts placed at the end of the page to cut down on time to first content #} {%- block scripts_end %} {{ super() }} {# finally load the
+Hugo bundled JS #}
+<script src="{{ pathto('_static/js/bundle.js', 1)|replace('_static', '..')}}"></script>
+<script src="{{ pathto('_static/pagefind/pagefind-ui.js', 1)|replace('_static', '..')}}"></script>
+
+{%- endblock scripts_end %} {%- endblock content %} {%- block css %} {{ super() }} {# preload the Hugo bundled JS since it might be big a.f.
+#}
+<link rel="preload" as="script" href="{{ pathto('_static/js/bundle.js', 1)|replace('_static', '..') }}" />
+<link rel="preload" as="script" href="{{ pathto('_static/pagefind/pagefind-ui.js', 1)|replace('_static', '..')}}" />
+{# link the stylesheets from Hugo - these should have dummy files under sphinx's static source directory so Sphinx can construct the
+relative paths correctly #}
+<link rel="stylesheet" type="text/css" href="{{ pathto('_static/css/custom.css', 1)|replace('_static', '..') }}" />
+<link rel="stylesheet" type="text/css" href="{{ pathto('_static/theme-css/backtotop.css', 1)|replace('_static', '..') }}" />
+<link rel="stylesheet" type="text/css" href="{{ pathto('_static/pagefind/pagefind-ui.css', 1)|replace('_static', '..') }}" />
+{%- endblock css %}

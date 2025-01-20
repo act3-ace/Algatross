@@ -1,0 +1,15 @@
+epochs: 15
+island_iterations: 1 # Number of iterations per epoch. Each triggers a pull from archive (new allies)
+mainland_iterations: 0 # Number of iterations per epoch
+checkpoint_folder: experiments/6f21b0a6
+resume_epoch: null # use latest
+
+log_dir: "experiments"
+ray_config:
+  log_to_driver: true
+
+debug: false
+rich_console: false
+log_level: 20 # INFO
+ckpt_interval_epochs: 1
+visualize: false

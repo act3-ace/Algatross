@@ -1,0 +1,17 @@
+mutation_noise: 0.1
+conspecific_utility_keys:
+  - tag_score
+  - minimum_ally_speed
+  - minimum_adversary_speed
+  - closest_ally_distance
+  - closest_adversary_distance
+  - closest_landmark_distance
+  - boundary_penalty
+conspecific_utility_objectives:
+  - max
+  - min
+  - max
+  - min
+  - max
+  - min
+  - max

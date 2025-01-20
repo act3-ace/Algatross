@@ -1,0 +1,70 @@
+@use "_colors.scss";
+
+button[id="search-button"] {
+    background-color: var(--pst-color-on-background);
+    border-color: var(--pst-color-primary);
+    // for some reason hovering the neighboring links makes this
+    // content change sizes slightly
+    width: 36px;
+    &:hover {
+        & > i {
+            color: var(--pst-color-secondary);
+        }
+    }
+    & > i {
+        color: var(--pst-color-text-base);
+    }
+}
+
+.sidebar-primary-item button[id="search-button"] {
+    width: -webkit-fill-available;
+}
+
+button.cta-button {
+    &:hover {
+        color: var(--pst-color-link-hover);
+        filter: drop-shadow(0px 0px 8px var(--pst-color-secondary));
+    }
+}
+
+button.theme-switch-button {
+    border-width: 3;
+    &:hover {
+        .theme-switch.nav-link {
+            box-shadow: none;
+            svg path {
+                color: var(--pst-color-link-hover);
+            }
+        }
+    }
+}
+
+button#backtotop.btn.rounded-pill {
+    top: 85vh;
+    left: 50vw;
+    display: flex;
+    column-gap: 0.5em;
+    align-items: center;
+    padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
+    bottom: unset;
+    width: fit-content;
+
+    color: var(--pst-color-secondary-text);
+    background-color: var(--pst-color-secondary);
+    svg {
+        transition: none;
+    }
+
+    &.visible {
+        transform: translate(0, -50%);
+    }
+    &:hover {
+        color: var(--pst-color-secondary);
+        background-color: var(--pst-color-accent-bg);
+        border-color: var(--pst-color-accent);
+    }
+}
+
+html[data-theme="light"] .bd-header button.theme-switch-button:hover .theme-switch.nav-link svg path {
+    color: var(--pst-color-primary);
+}

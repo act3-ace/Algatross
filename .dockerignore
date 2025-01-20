@@ -1,0 +1,17 @@
+# Ignore everything
+**
+
+# Allow these files and directories
+!/.scripts/**
+!/.devcontainer/**
+!/.vscode/**
+!/algatross/**
+!/docs/**
+!/config/**
+!/scripts/**
+!/Dockerfile
+!/LICENSE
+!/VERSION
+!/README.md
+!/pyproject.toml
+!/uv.lock

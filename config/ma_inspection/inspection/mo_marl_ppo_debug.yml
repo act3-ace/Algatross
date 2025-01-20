@@ -1,0 +1,3 @@
+!merge
+- !include config/ma_inspection/inspection/algatross_ppo.yml
+- debug: True

@@ -1,0 +1,15 @@
+critic_outs: 1
+shared_encoder: False
+free_log_std: True
+entropy_coeff: 0.0
+kl_target: 0.2
+kl_coeff: 0.2
+vf_coeff: 1.0
+seed: 1000
+logp_clip_param: 0.2
+vf_clip_param: Null
+critic_grad_clip: 0.0
+actor_grad_clip: 0.0
+optimizer_class: !function torch.optim.Adam
+optimizer_kwargs:
+  lr: 0.0003

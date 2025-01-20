@@ -1,0 +1,374 @@
+@use "_colors.scss";
+@use "_logos.scss";
+@use "_transitions.scss";
+
+.hero-title,
+.navbar-logo-text {
+    font-family: "Lato";
+    margin-top: 0.2em;
+}
+
+@mixin gradient-navbar-hover($top_color, $bottom_color) {
+    nav:has(ul[id="breadcrumbs"]) {
+        z-index: 98;
+    }
+    .bd-header,
+    .navbar-menu,
+    .sidebar-header-items {
+        .navbar-nav a.nav-link,
+        .navbar-item button,
+        .navbar-item a {
+            &:not(:has(img)):not(:has(svg)) {
+                background-color: var(--pst-color-on-background);
+            }
+        }
+    }
+    .bd-header,
+    .navbar-menu,
+    .sidebar-header-items {
+        .navbar-nav a.nav-link,
+        .navbar-item button,
+        .navbar-item a {
+            margin: 1px 1px 3px 1px;
+            border-radius: calc(3 * var(--bs-border-radius-sm));
+            justify-content: center;
+            &:hover {
+                text-decoration: inherit;
+                &::before {
+                    border-style: none;
+                }
+            }
+        }
+    }
+
+    .bd-header {
+        ul.navbar-nav {
+            flex-wrap: wrap;
+            align-content: center;
+            & > li.nav-item > a.nav-link {
+                text-wrap-mode: nowrap;
+                &:has(span svg.svg-inline--fa) {
+                    transition: none;
+                    &:hover {
+                        color: inherit;
+                    }
+                }
+            }
+        }
+    }
+    .bd-header div.navbar-item {
+        nav {
+            width: -webkit-fill-available;
+            height: -webkit-fill-available;
+        }
+    }
+    &[data-theme="light"] {
+        .bd-header .navbar-nav li.nav-item,
+        .navbar-menu li {
+            .nav-link {
+                background-color: var(--pst-color-secondary-bg);
+            }
+            &:hover {
+                a:not(:has(svg)):not(:has(image)) {
+                    color: var(--pst-color-primary);
+                }
+            }
+        }
+    }
+    .bd-header .navbar-nav li.nav-item,
+    .navbar-menu li,
+    .navbar-menu li {
+        .nav-link:hover:before {
+            border-style: none;
+        }
+        background: none;
+        border-style: none;
+        border-radius: calc(3 * var(--bs-border-radius-sm));
+
+        .nav-link {
+            background-color: var(--pst-color-on-background);
+        }
+
+        &:hover {
+            text-decoration: inherit;
+            background-image: -webkit-gradient(
+                linear,
+                left bottom,
+                left top,
+                color-stop(0.33, $bottom_color),
+                color-stop(0.67, $top_color)
+            );
+            a:not(:has(svg)):not(:has(image)) {
+                color: var(--pst-color-link-hover);
+            }
+        }
+        &.nav-internal {
+            &:hover {
+                background-image: linear-gradient(
+                    to bottom,
+                    transparentize(colors.$primary, 0.8),
+                    #00000000,
+                    transparentize(colors.$secondary, 0.8)
+                );
+            }
+        }
+    }
+}
+
+html {
+    nav.navbar {
+        background-color: var(--pst-color-on-background);
+    }
+    .pst-navbar-icon:has(svg.svg-inline--fa):hover {
+        color: inherit;
+    }
+    .navbar-brand.logo:has(img) {
+        transition: all var(--transition-fast);
+        &:hover {
+            img {
+                transition: all var(--transition-fast);
+                filter: drop-shadow(2px 4px 6px var(--pst-color-black));
+            }
+        }
+    }
+    // pst-color-on-background looks weird in light theme
+    .navbar-header-items .navbar-item nav.navbar {
+        background-color: inherit;
+    }
+
+    // HEADER
+    ul.bd-navbar-elements.navbar-nav li.nav-item:has(a.nav-link.nav-internal) {
+        display: none;
+    }
+    .bd-header .navbar-nav {
+        height: -webkit-fill-available;
+        li {
+            height: -webkit-fill-available;
+        }
+    }
+    ul.bd-breadcrumbs li.breadcrumb-item {
+        a {
+            @include transitions.mixin_transition(var(--transition-fast));
+
+            &:hover {
+                color: var(--pst-color-secondary);
+                text-decoration-line: none;
+            }
+        }
+        &:has(svg) {
+            align-items: center;
+        }
+        &:not(.breadcrumb-home):before {
+            align-self: center;
+            padding-top: 0.25em;
+            padding-left: 0.25em;
+            padding-right: 0.25em;
+        }
+        &:not(.breadcrumb-home)a {
+            padding-left: 0.375em;
+            padding-right: 0.375em;
+            border-radius: 1em;
+            &:hover {
+                background-color: var(--pst-color-secondary-bg);
+            }
+        }
+    }
+    &[data-theme="dark"] {
+        .bd-header-announcement,
+        .news-container {
+            background-color: #341a61;
+        }
+    }
+    &[data-theme="light"] {
+        .bd-header-announcement,
+        .news-container {
+            background-color: colors.$core-b-80;
+        }
+        ul.bd-breadcrumbs li.breadcrumb-item a:hover {
+            color: var(--pst-color-secondary-highlight);
+        }
+    }
+
+    .news-container {
+        .news-title a,
+        .news-date a {
+            color: var(--pst-color-secondary);
+        }
+    }
+    // Make header navlink border & background gradient on hover
+    @include gradient-navbar-hover(var(--pst-color-primary), var(--pst-color-secondary));
+    .bd-header .navbar-header-items__center .navbar-item {
+        margin-left: 2em;
+        margin-right: 2em;
+    }
+
+    div.navbar-item ul.navbar-icon-links {
+        column-gap: 0.25em;
+        li.nav-item {
+            width: 3em;
+            a.nav-link {
+                padding: 1em 0.5em;
+                &:hover {
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+
+    // make the spacing a little smaller
+    .navbar-header-items__end {
+        column-gap: 0.125rem;
+    }
+
+    // FOOTER
+
+    // change the text behavior to match the body
+    footer .container,
+    footer .container a {
+        color: var(--pst-color-text-base);
+        a:hover {
+            color: var(--pst-color-link-hover);
+        }
+    }
+
+    // SIDEBARS
+
+    // rounded edges
+    .bd-sidebar-primary {
+        justify-content: space-between;
+        .sidebar-primary-items__end {
+            margin-top: unset;
+            margin-bottom: unset;
+        }
+        .sidebar-primary-item nav {
+            &.bd-links {
+                margin-right: inherit;
+            }
+            background-color: var(--pst-color-on-background);
+            padding: 0.5em;
+            border-radius: 0.5em;
+        }
+        div.bd-toc-item ul.bd-sidenav,
+        nav.sidebar-indices-items ul.indices-link {
+            li a:hover {
+                border-radius: 1em;
+                text-decoration-line: none;
+                background-color: var(--pst-color-shadow);
+                color: var(--pst-color-link-hover);
+                box-shadow: inset max(3px, 0.1875rem, 0.12em) 0 0.25em var(--pst-color-primary);
+            }
+        }
+        nav.sidebar-indices-items ul.indices-link li a {
+            padding-left: 1em;
+            padding-right: 1em;
+            margin-right: 2em;
+        }
+    }
+    .bd-sidebar-secondary {
+        max-width: 38.2%;
+        width: -webkit-fill-available;
+        .sidebar-secondary-item .tocsection a {
+            @include transitions.mixin_transition(var(--transition-fast));
+
+            svg {
+                transition: none;
+            }
+            padding: 0.5em;
+            border-radius: 1em;
+            &:hover {
+                background-color: var(--pst-color-secondary-bg);
+            }
+        }
+    }
+    .bd-sidebar-primary .sidebar-primary-items__start .sidebar-primary-item:first-child {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        button {
+            border-color: var(--pst-color-on-surface);
+            background-color: var(--pst-color-dark);
+            &:hover {
+                color: var(--pst-color-text-muted);
+                border: 1px solid var(--pst-color-secondary);
+                box-shadow: none;
+                filter: drop-shadow(0 0 6px var(--pst-color-secondary));
+                & > svg {
+                    color: var(--pst-color-on-surface);
+                }
+                kbd {
+                    border-color: var(--pst-color-secondary);
+                }
+            }
+        }
+    }
+    &:not([data-theme="dark"]) .pst-navbar-icon:has(svg) {
+        color: var(--pst-color-white);
+    }
+    &[data-theme="light"] {
+        // HEADER
+        .bd-header {
+            background-color: colors.$core-c-30 !important;
+            // make the SVG icon links default color white
+            .navbar-nav li a.nav-link {
+                color: white;
+            }
+            // the default color is a dark white
+            .theme-switch-button.nav-link path {
+                color: white;
+            }
+        }
+        .bd-sidebar-primary .sidebar-primary-items__start .sidebar-primary-item:first-child {
+            button {
+                color: var(--pst-color-text-muted);
+                background-color: var(--pst-color-on-background);
+                &:hover {
+                    & > svg {
+                        color: var(--pst-color-secondary-bg);
+                    }
+                }
+            }
+        }
+
+        // Make header navlink border & background gradient on hover
+        @include gradient-navbar-hover(var(--pst-color-primary), colors.$core-c-100);
+        .bd-sidebar-secondary .sidebar-secondary-item .tocsection a:hover {
+            color: var(--pst-color-white);
+        }
+        .toc-entry a.nav-link.active,
+        nav.bd-links .current > a {
+            color: var(--pst-color-secondary);
+        }
+    }
+    .bd-sidebar-primary {
+        background-color: var(--pst-color-surface);
+        color: var(--pst-color-on-surface);
+        .sidebar-primary-item nav {
+            background-color: var(--pst-color-on-background);
+        }
+    }
+    .toc-entry a.nav-link {
+        &.active {
+            border-radius: max(3px, 0.1875rem, 0.12em);
+            box-shadow: inset min(3px, 0.1875rem, 0.12em) 0 0 var(--pst-color-primary);
+        }
+        &:hover {
+            text-decoration-thickness: inherit;
+            border-radius: max(24px, 1.125rem, 1em);
+            box-shadow: inset max(3px, 0.1875rem, 0.12em) 0 0.25em var(--pst-color-primary);
+        }
+    }
+    nav.bd-links .current > a {
+        border-radius: max(3px, 0.1875rem, 0.12em);
+        box-shadow: inset min(3px, 0.1875rem, 0.12em) 0 0 var(--pst-color-primary);
+    }
+
+    .footer-item ul.footer-icon-links {
+        display: flex;
+        flex-direction: column;
+        padding-left: unset;
+        a {
+            padding: 0.5em 1em;
+            width: fit-content;
+        }
+    }
+}

@@ -1,0 +1,5 @@
+mutation_noise: 0.1
+conspecific_utility_keys:
+  - rewards
+conspecific_utility_objectives:
+  - max

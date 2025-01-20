@@ -1,0 +1,274 @@
+$core-a-10: #060613;
+$core-a-20: #0c0c27;
+$core-a-30: #12123b;
+$core-a-40: #18184e;
+$core-a-50: #202060;
+$core-a-60: #262673;
+$core-a-70: #2c2c86;
+$core-a-80: #32329a;
+$core-a-90: #3838ad;
+$core-a-100: #3e3ec1;
+$core-a-110: #5252c7;
+$core-a-120: #6565cd;
+$core-a-130: #7878d4;
+$core-a-140: #8b8bda;
+$core-a-150: #9e9ee0;
+$core-a-160: #b2b2e6;
+$core-a-170: #c5c5ec;
+$core-a-180: #d9d9f2;
+$core-a-190: #ececf9;
+
+$core-b-10: #001a12;
+$core-b-20: #003323;
+$core-b-30: #004d35;
+$core-b-40: #006646;
+$core-b-50: #008058;
+$core-b-60: #009969;
+$core-b-70: #00b27b;
+$core-b-80: #00cc8d;
+$core-b-90: #00e59f;
+$core-b-100: #00ffa9;
+$core-b-110: #1affb2;
+$core-b-120: #33ffba;
+$core-b-130: #4cffc3;
+$core-b-140: #66ffcc;
+$core-b-150: #80ffd4;
+$core-b-160: #99ffdc;
+$core-b-170: #b3ffe5;
+$core-b-180: #ccffee;
+$core-b-190: #e5fff7;
+
+$core-c-10: #1a0016;
+$core-c-20: #33002c;
+$core-c-30: #4d0042;
+$core-c-40: #660058;
+$core-c-50: #80006e;
+$core-c-60: #990084;
+$core-c-70: #b20099;
+$core-c-80: #cc00af;
+$core-c-90: #e500c5;
+$core-c-100: #ff00db;
+$core-c-110: #ff1ae2;
+$core-c-120: #ff33e5;
+$core-c-130: #ff4ce8;
+$core-c-140: #ff66eb;
+$core-c-150: #ff80ee;
+$core-c-160: #ff99f2;
+$core-c-170: #ffb3f5;
+$core-c-180: #ffccf8;
+$core-c-190: #ffe5fc;
+
+$core-a: #4040bf;
+$core-b: #00ffa9;
+$core-c: #ff00db;
+$core-a-dark: #9f9fdf;
+$core-b-dark: #008054;
+$core-c-dark: #80006e;
+
+// $primary: $core-a;
+$primary: $core-a-dark;
+$primary-light: $core-a-dark;
+$secondary: $core-b;
+$secondary-light: $core-c-dark;
+
+$light-surface: #f0f1f5;
+$field-list-surface: #e1e3ea;
+
+$docker: #2496ed;
+$gitlab: #fc6d26;
+$github: #4078c0;
+$mattermost: #0058cc;
+$numpy: #013243;
+$pandas: #150458;
+$poetry: #60a5fa;
+$pre-commit: #fab040;
+$pydantic: #e92063;
+$pytest: #0a9edc;
+$pytorch: #ee4c2c;
+$ray: #028cf0;
+$ruff: #d7ff64;
+$scipy: #8caae6;
+$semantic-release: #494949;
+$tensorflow: #ff6f00;
+$uv: #de5fe9;
+$vs-code: #007acc;
+
+$algo-color: #f93943;
+$env-color: #3bb273;
+$eval-color: #bbbe64;
+$explore-color: #ed6a5a;
+$exper-color: #4d9de0;
+$model-color: #87255b;
+$opt-color: #b9e28c;
+$policy-color: #5ca4a9;
+$rewards-color: #e1bc29;
+$utils-color: #b0c7bd;
+
+// shift colors for dark themes (15% lighter)
+$numpy-dark: #0385b0;
+$pandas-dark: #8d71f7;
+$semantic-release-dark: #999999;
+
+@mixin fancy-py-dl() {
+    padding-right: max(6px, 0.375rem, 0.24em);
+    padding-left: max(6px, 0.375rem, 0.24em);
+    border-radius: max(6px, 0.375rem, 0.24em);
+    border-style: outset;
+    border-width: max(2px, 0.125rem, 0.08em);
+}
+
+@mixin color-version-btn($color) {
+    background-color: $color;
+    border-color: $color;
+    color: white;
+}
+@mixin gradient-text($direction: to right, $stop: 40%) {
+    background: linear-gradient($direction, var(--pst-color-secondary) $stop, var(--pst-color-primary));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+@mixin gradient-border() {
+    border-color: transparent;
+    background:
+        linear-gradient(var(--pst-color-surface) 0 0) padding-box,
+        conic-gradient(from -90deg, var(--pst-color-secondary), var(--pst-color-primary), var(--pst-color-secondary));
+}
+
+@mixin gradient-row-hover($direction: to right, $alpha: 0.8) {
+    background-image: linear-gradient(
+        $direction,
+        transparentize($secondary, $alpha),
+        transparentize($primary, $alpha),
+        #00000000
+    );
+}
+
+@mixin code-link-gradient() {
+    font-style: italic;
+    @include gradient-border();
+}
+
+@mixin theme-mixin($color) {
+    // colorize and add shadow
+    color: $color;
+    box-shadow: 0 max(3px, 0.1875rem, 0.12em) 0 $color;
+}
+
+@mixin type-color() {
+    // unique colors for each section heading
+
+    & > .sig.sig-object {
+        padding: 0em 0.75em;
+        color: var(--pst-color-primary-bg);
+        background-color: var(--pst-color-primary-highlight);
+    }
+
+    &[class$="py class"] > .sig.sig-object {
+        background-color: var(--pst-color-info);
+    }
+}
+
+@mixin h1-gradient-text($color1: $secondary, $color2: $primary) {
+    background: linear-gradient(-77deg, transparentize($color1, 0.2) 0% 30%, transparentize($color2, 0.2));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@mixin h1-gradient-border($direction: to right, $slice: 0 0 1, $style: solid, $width: 0 0 3px 0) {
+    border-image-source: linear-gradient(
+        $direction,
+        #00000000,
+        var(--pst-color-secondary),
+        var(--pst-color-primary),
+        var(--pst-color-secondary),
+        #00000000
+    );
+    border-image-slice: $slice;
+    border-style: $style;
+    border-width: $width;
+}
+
+html {
+    --pst-color-primary: #{$primary};
+    --pst-color-primary-highlight: #{$core-a-50};
+    --pst-color-primary-bg: #{$core-a-30};
+    --pst-color-secondary: #{$secondary};
+    --pst-color-secondary-highlight: #{$core-b-170};
+    --pst-color-secondary-bg: #{$core-b-30};
+    --pst-color-inline-code-links: #{$secondary};
+    --pst-color-link: var(--pst-color-primary);
+    --pst-color-link-hover: var(--pst-color-secondary);
+
+    --pst-color-accent: #{$core-c};
+    --pst-color-inline-code: var(--pst-teal-200);
+
+    --sd-color-shadow: var(--pst-color-secondary);
+
+    --pst-color-rgba-docker: #{$docker};
+    --pst-color-rgba-gitlab: #{$gitlab};
+    --pst-color-rgba-github: #{$github};
+    --pst-color-rgba-mattermost: #{$mattermost};
+    --pst-color-rgba-numpy: #{$numpy};
+    --pst-color-rgba-pandas: #{$pandas};
+    --pst-color-rgba-poetry: #{$poetry};
+    --pst-color-rgba-pre-commit: #{$pre-commit};
+    --pst-color-rgba-pydantic: #{$pydantic};
+    --pst-color-rgba-pytest: #{$pytest};
+    --pst-color-rgba-pytorch: #{$pytorch};
+    --pst-color-rgba-ray: #{$ray};
+    --pst-color-rgba-ruff: #{$ruff};
+    --pst-color-rgba-scipy: #{$scipy};
+    --pst-color-rgba-sematic-release: #{$semantic-release};
+    --pst-color-rgba-tensorflow: #{$tensorflow};
+    --pst-color-rgba-uv: #{$uv};
+    --pst-color-rgba-vs-code: #{$vs-code};
+
+    --spht-color-dark: var(--pst-color-on-background);
+
+    --pst-color-dracula-bg: #282a36;
+    --sd-color-card-border-hover: #526cfe;
+
+    --pagefind-ui-background: var(--pst-color-on-background);
+    --pagefind-ui-text: var(--pst-color-dark-text);
+
+    &[data-theme="dark"] {
+        --pst-color-primary: #{$primary};
+        --pst-color-primary-highlight: #{$core-a-50};
+        --pst-color-primary-bg: #{$core-a-30};
+        --pst-color-secondary: #{$secondary};
+        --pst-color-secondary-highlight: #{$core-b-170};
+        --pst-color-secondary-bg: #{$core-b-30};
+        --pst-color-inline-code-links: #{$secondary};
+        --pst-color-link: var(--pst-color-primary);
+        --pst-color-link-hover: var(--pst-color-secondary);
+        --sd-color-shadow: var(--pst-color-secondary);
+        --sd-color-secondary-highlight: #{$core-c-dark};
+        --pst-color-accent: #{$core-c};
+        --pst-color-inline-code: var(--pst-teal-200); // these brands don't show up well on dark bg
+        --pst-color-rgba-numpy: #{$numpy-dark};
+        --pst-color-rgba-pandas: #{$pandas-dark};
+        --pst-color-semantic-release: #{$semantic-release-dark};
+        --spht-color-dark: var(--pst-color-on-background);
+        --pagefind-ui-background: var(--pst-color-on-background);
+        --pagefind-ui-text: var(--pst-color-dark-text);
+    }
+    &[data-theme="light"] {
+        --pst-color-primary: #{$primary-light};
+        --pst-color-primary-highlight: #{$core-a-30};
+        --pst-color-primary-bg: #{$core-a-50};
+        --pst-color-secondary: #{$secondary-light};
+        --pst-color-secondary-highlight: #{$core-c-180};
+        --pst-color-secondary-bg: #{$core-c-30};
+        --pst-color-inline-code-links: #{$secondary-light};
+        --pst-color-link: var(--pst-color--secondary);
+        --pst-color-link-hover: var(--pst-color-secondary-bg);
+        --pst-color-accent: #{$core-c};
+        --pst-color-background: var(--pst-gray-50);
+        --pst-color-surface: #{$light-surface};
+        --pst-color-inline-code: var(--pst-pink-500);
+        --sd-color-shadow: var(--pst-color-secondary);
+        --sd-color-secondary-highlight: #{$core-a};
+    }
+}

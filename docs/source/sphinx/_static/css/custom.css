@@ -1,0 +1,3352 @@
+html {
+  --pst-color-primary: #9f9fdf;
+  --pst-color-primary-highlight: #202060;
+  --pst-color-primary-bg: #12123b;
+  --pst-color-secondary: #00ffa9;
+  --pst-color-secondary-highlight: #b3ffe5;
+  --pst-color-secondary-bg: #004d35;
+  --pst-color-inline-code-links: #00ffa9;
+  --pst-color-link: var(--pst-color-primary);
+  --pst-color-link-hover: var(--pst-color-secondary);
+  --pst-color-accent: #ff00db;
+  --pst-color-inline-code: var(--pst-teal-200);
+  --sd-color-shadow: var(--pst-color-secondary);
+  --pst-color-rgba-docker: #2496ed;
+  --pst-color-rgba-gitlab: #fc6d26;
+  --pst-color-rgba-github: #4078c0;
+  --pst-color-rgba-mattermost: #0058cc;
+  --pst-color-rgba-numpy: #013243;
+  --pst-color-rgba-pandas: #150458;
+  --pst-color-rgba-poetry: #60a5fa;
+  --pst-color-rgba-pre-commit: #fab040;
+  --pst-color-rgba-pydantic: #e92063;
+  --pst-color-rgba-pytest: #0a9edc;
+  --pst-color-rgba-pytorch: #ee4c2c;
+  --pst-color-rgba-ray: #028cf0;
+  --pst-color-rgba-ruff: #d7ff64;
+  --pst-color-rgba-scipy: #8caae6;
+  --pst-color-rgba-sematic-release: #494949;
+  --pst-color-rgba-tensorflow: #ff6f00;
+  --pst-color-rgba-uv: #de5fe9;
+  --pst-color-rgba-vs-code: #007acc;
+  --spht-color-dark: var(--pst-color-on-background);
+  --pst-color-dracula-bg: #282a36;
+  --sd-color-card-border-hover: #526cfe;
+  --pagefind-ui-background: var(--pst-color-on-background);
+  --pagefind-ui-text: var(--pst-color-dark-text);
+}
+html[data-theme=dark] {
+  --pst-color-primary: #9f9fdf;
+  --pst-color-primary-highlight: #202060;
+  --pst-color-primary-bg: #12123b;
+  --pst-color-secondary: #00ffa9;
+  --pst-color-secondary-highlight: #b3ffe5;
+  --pst-color-secondary-bg: #004d35;
+  --pst-color-inline-code-links: #00ffa9;
+  --pst-color-link: var(--pst-color-primary);
+  --pst-color-link-hover: var(--pst-color-secondary);
+  --sd-color-shadow: var(--pst-color-secondary);
+  --sd-color-secondary-highlight: #80006e;
+  --pst-color-accent: #ff00db;
+  --pst-color-inline-code: var(--pst-teal-200);
+  --pst-color-rgba-numpy: #0385b0;
+  --pst-color-rgba-pandas: #8d71f7;
+  --pst-color-semantic-release: #999999;
+  --spht-color-dark: var(--pst-color-on-background);
+  --pagefind-ui-background: var(--pst-color-on-background);
+  --pagefind-ui-text: var(--pst-color-dark-text);
+}
+html[data-theme=light] {
+  --pst-color-primary: #9f9fdf;
+  --pst-color-primary-highlight: #12123b;
+  --pst-color-primary-bg: #202060;
+  --pst-color-secondary: #80006e;
+  --pst-color-secondary-highlight: #ffccf8;
+  --pst-color-secondary-bg: #4d0042;
+  --pst-color-inline-code-links: #80006e;
+  --pst-color-link: var(--pst-color--secondary);
+  --pst-color-link-hover: var(--pst-color-secondary-bg);
+  --pst-color-accent: #ff00db;
+  --pst-color-background: var(--pst-gray-50);
+  --pst-color-surface: #f0f1f5;
+  --pst-color-inline-code: var(--pst-pink-500);
+  --sd-color-shadow: var(--pst-color-secondary);
+  --sd-color-secondary-highlight: #4040bf;
+}
+
+button[id=search-button] {
+  background-color: var(--pst-color-on-background);
+  border-color: var(--pst-color-primary);
+  width: 36px;
+}
+button[id=search-button]:hover > i {
+  color: var(--pst-color-secondary);
+}
+button[id=search-button] > i {
+  color: var(--pst-color-text-base);
+}
+
+.sidebar-primary-item button[id=search-button] {
+  width: -webkit-fill-available;
+}
+
+button.cta-button:hover {
+  color: var(--pst-color-link-hover);
+  filter: drop-shadow(0px 0px 8px var(--pst-color-secondary));
+}
+
+button.theme-switch-button {
+  border-width: 3;
+}
+button.theme-switch-button:hover .theme-switch.nav-link {
+  box-shadow: none;
+}
+button.theme-switch-button:hover .theme-switch.nav-link svg path {
+  color: var(--pst-color-link-hover);
+}
+
+button#backtotop.btn.rounded-pill {
+  top: 85vh;
+  left: 50vw;
+  display: flex;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  align-items: center;
+  padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
+  bottom: unset;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: var(--pst-color-secondary-text);
+  background-color: var(--pst-color-secondary);
+}
+button#backtotop.btn.rounded-pill svg {
+  transition: none;
+}
+button#backtotop.btn.rounded-pill.visible {
+  transform: translate(0, -50%);
+}
+button#backtotop.btn.rounded-pill:hover {
+  color: var(--pst-color-secondary);
+  background-color: var(--pst-color-accent-bg);
+  border-color: var(--pst-color-accent);
+}
+
+html[data-theme=light] .bd-header button.theme-switch-button:hover .theme-switch.nav-link svg path {
+  color: var(--pst-color-primary);
+}
+
+html {
+  --transition-very-fast: 0.25s;
+  --transition-fast: 0.5s;
+  --transition-med: 1s;
+  --transition-slow: 2s;
+  --transition-very-slow: 4s;
+}
+html a:not(.sd-button):not(.nav-link):not(.bd-side-nav):not(.sd-octicon),
+html button:not(.nav-link):not(.bd-side-nav):not(.sd-octicon),
+html kbd:not(.nav-link):not(.bd-side-nav):not(.sd-octicon),
+html svg:not(.nav-link):not(.bd-side-nav):not(.sd-octicon),
+html table:not(.nav-link):not(.bd-side-nav):not(.sd-octicon),
+html ul:not(.nav-link):not(.bd-side-nav):not(.sd-octicon) {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+}
+html .sidebar-primary-item a:not(.sd-button).nav-link,
+html .sidebar-secondary-item a:not(.sd-button).nav-link {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+}
+html .sidebar-primary-item a:not(.sd-button).nav-link svg,
+html .sidebar-secondary-item a:not(.sd-button).nav-link svg {
+  transition: none;
+}
+html button#search-button {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+}
+
+html .card {
+  background-color: var(--pst-color-background);
+}
+html .card img {
+  background-color: var(--pst-color-background);
+}
+html div.sd-container-fluid.sd-sphinx-override.sd-mb-4.sd-text-center.docutils > div {
+  max-width: 50rem;
+  margin: auto;
+}
+html .bd-content .sd-card .sd-card-header,
+html .bd-content .sd-card .sd-card-body,
+html .bd-content .sd-card .sd-card-footer {
+  background-color: inherit;
+}
+html .sd-card.sd-main-index-card {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+  padding: 30px 10px 20px 10px;
+  border: 1px solid transparent;
+  border-radius: 1em;
+  max-width: 25rem;
+}
+html .sd-card.sd-main-index-card:hover {
+  border: 1px solid var(--sd-color-card-border-hover);
+}
+html .sd-card.sd-main-index-card:hover .sd-btn-secondary {
+  color: #ffffff !important;
+}
+html .sd-card.sd-main-index-card .sd-card-header .sd-card-text {
+  margin: 0px;
+}
+html .sd-card.sd-main-index-card .sd-card-img-top {
+  height: 52px;
+  width: 52px;
+  background: none !important;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--pst-color-secondary);
+}
+html .sd-card.sd-main-index-card .sd-card-title {
+  color: #9f9fdf;
+  font-size: var(--pst-font-size-h5);
+  padding: 1rem 0rem 0.5rem 0rem;
+}
+html .sd-card.sd-main-index-card .sd-card-footer {
+  border: none !important;
+}
+html .sd-card.sd-main-index-card .sd-btn-secondary {
+  background-color: #727c83 !important;
+  border-color: #727c83 !important;
+  border-radius: 4em;
+}
+html .sd-card.sd-main-index-card .sd-btn-secondary:hover {
+  background-color: #6c757d !important;
+  border-color: #9f9fdf !important;
+  box-shadow: 0rem 0rem 0.75rem #9f9fdf !important;
+}
+html .sd-card.sd-main-index-card .sd-card-body {
+  display: flex;
+  flex-direction: column;
+}
+html .sd-card.sd-main-index-card .sd-card-body p.sd-card-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  margin-left: auto;
+  margin-right: auto;
+  border-image-source: linear-gradient(to right, rgba(0, 0, 0, 0), var(--pst-color-secondary), var(--pst-color-primary), var(--pst-color-secondary), rgba(0, 0, 0, 0));
+  border-image-slice: 1 0 1;
+  border-style: solid;
+  border-width: 3px 0 3px;
+}
+html .sd-card.sd-main-index-card.sd-shadow-sm {
+  box-shadow: 0 0 0.5rem #00ffa9 !important;
+}
+html .sd-card.sd-main-index-card.sd-shadow-sm:hover {
+  box-shadow: 0 0 1rem #00ffa9 !important;
+}
+html .sd-card.sd-main-index-card.sd-shadow-md {
+  box-shadow: 0 0 1rem #00ffa9 !important;
+}
+html .sd-card.sd-main-index-card.sd-shadow-md:hover {
+  box-shadow: 0 0 1.5rem #00ffa9 !important;
+}
+html .sd-card.sd-main-index-card.sd-shadow-lg {
+  box-shadow: 0 0 1.5rem #00ffa9 !important;
+}
+html .sd-card.sd-main-index-card.sd-shadow-lg:hover {
+  box-shadow: 0 0 2rem #00ffa9 !important;
+}
+html[data-theme=light] .sd-card.sd-shadow-sm {
+  box-shadow: 0 0 0.5rem #4040bf !important;
+}
+html[data-theme=light] .sd-card.sd-shadow-sm:hover {
+  box-shadow: 0 0 1rem #4040bf !important;
+}
+html[data-theme=light] .sd-card.sd-shadow-md {
+  box-shadow: 0 0 1rem #4040bf !important;
+}
+html[data-theme=light] .sd-card.sd-shadow-md:hover {
+  box-shadow: 0 0 1.5rem #4040bf !important;
+}
+html[data-theme=light] .sd-card.sd-shadow-lg {
+  box-shadow: 0 0 1.5rem #4040bf !important;
+}
+html[data-theme=light] .sd-card.sd-shadow-lg:hover {
+  box-shadow: 0 0 2rem #4040bf !important;
+}
+
+html .highlight pre, html .highlight pre.chroma {
+  /* Comment */
+  /* Error */
+  /* Generic */
+  /* Keyword */
+  /* Literal */
+  /* Name */
+  /* Operator */
+  /* Other */
+  /* Punctuation */
+  /* Comment.Hashbang */
+  /* Comment.Multiline */
+  /* Comment.Preproc */
+  /* Comment.PreprocFile */
+  /* Comment.Single */
+  /* Comment.Special */
+  /* Generic.Deleted */
+  /* Generic.Emph */
+  /* Generic.EmphStrong */
+  /* Generic.Error */
+  /* Generic.Heading */
+  /* Generic.Inserted */
+  /* Generic.Output */
+  /* Generic.Prompt */
+  /* Generic.Strong */
+  /* Generic.Subheading */
+  /* Generic.Traceback */
+  /* Keyword.Constant */
+  /* Keyword.Declaration */
+  /* Keyword.Namespace */
+  /* Keyword.Pseudo */
+  /* Keyword.Reserved */
+  /* Keyword.Type */
+  /* Literal.Date */
+  /* Literal.Number */
+  /* Literal.String */
+  /* Name.Attribute */
+  /* Name.Builtin */
+  /* Name.Class */
+  /* Name.Constant */
+  /* Name.Decorator */
+  /* Name.Entity */
+  /* Name.Exception */
+  /* Name.Function */
+  /* Name.Label */
+  /* Name.Namespace */
+  /* Name.Other */
+  /* Name.Property */
+  /* Name.Tag */
+  /* Name.Variable */
+  /* Operator.Word */
+  /* Punctuation.Marker */
+  /* Text.Whitespace */
+  /* Literal.Number.Bin */
+  /* Literal.Number.Float */
+  /* Literal.Number.Hex */
+  /* Literal.Number.Integer */
+  /* Literal.Number.Oct */
+  /* Literal.String.Affix */
+  /* Literal.String.Backtick */
+  /* Literal.String.Char */
+  /* Literal.String.Delimiter */
+  /* Literal.String.Doc */
+  /* Literal.String.Double */
+  /* Literal.String.Escape */
+  /* Literal.String.Heredoc */
+  /* Literal.String.Interpol */
+  /* Literal.String.Other */
+  /* Literal.String.Regex */
+  /* Literal.String.Single */
+  /* Literal.String.Symbol */
+  /* Name.Builtin.Pseudo */
+  /* Name.Function.Magic */
+  /* Name.Variable.Class */
+  /* Name.Variable.Global */
+  /* Name.Variable.Instance */
+  /* Name.Variable.Magic */
+  /* Literal.Number.Integer.Long */
+  line-height: 125%;
+  border-radius: 0.375em;
+}
+html .highlight pre td.linenos .normal, html .highlight pre.chroma td.linenos .normal {
+  color: #f1fa8c;
+  background-color: #44475a;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+html .highlight pre span.linenos, html .highlight pre.chroma span.linenos {
+  color: #f1fa8c;
+  background-color: #44475a;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+html .highlight pre td.linenos .special, html .highlight pre.chroma td.linenos .special {
+  color: #50fa7b;
+  background-color: #6272a4;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+html .highlight pre span.linenos.special, html .highlight pre.chroma span.linenos.special {
+  color: #50fa7b;
+  background-color: #6272a4;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+html .highlight pre .hll, html .highlight pre.chroma .hll {
+  background-color: #44475a;
+}
+html .highlight pre .c, html .highlight pre.chroma .c {
+  color: #6272a4;
+}
+html .highlight pre .err, html .highlight pre.chroma .err {
+  color: #f8f8f2;
+}
+html .highlight pre .g, html .highlight pre.chroma .g {
+  color: #f8f8f2;
+}
+html .highlight pre .k, html .highlight pre.chroma .k {
+  color: #ff79c6;
+}
+html .highlight pre .l, html .highlight pre.chroma .l {
+  color: #f8f8f2;
+}
+html .highlight pre .n, html .highlight pre.chroma .n {
+  color: #f8f8f2;
+}
+html .highlight pre .o, html .highlight pre.chroma .o {
+  color: #ff79c6;
+}
+html .highlight pre .x, html .highlight pre.chroma .x {
+  color: #f8f8f2;
+}
+html .highlight pre .p, html .highlight pre.chroma .p {
+  color: #f8f8f2;
+}
+html .highlight pre .ch, html .highlight pre.chroma .ch {
+  color: #6272a4;
+}
+html .highlight pre .cm, html .highlight pre.chroma .cm {
+  color: #6272a4;
+}
+html .highlight pre .cp, html .highlight pre.chroma .cp {
+  color: #ff79c6;
+}
+html .highlight pre .cpf, html .highlight pre.chroma .cpf {
+  color: #6272a4;
+}
+html .highlight pre .c1, html .highlight pre.chroma .c1 {
+  color: #6272a4;
+}
+html .highlight pre .cs, html .highlight pre.chroma .cs {
+  color: #6272a4;
+}
+html .highlight pre .gd, html .highlight pre.chroma .gd {
+  color: #8b080b;
+}
+html .highlight pre .ge, html .highlight pre.chroma .ge {
+  color: #f8f8f2;
+  text-decoration: underline;
+}
+html .highlight pre .ges, html .highlight pre.chroma .ges {
+  color: #f8f8f2;
+  text-decoration: underline;
+}
+html .highlight pre .gr, html .highlight pre.chroma .gr {
+  color: #f8f8f2;
+}
+html .highlight pre .gh, html .highlight pre.chroma .gh {
+  color: #f8f8f2;
+  font-weight: bold;
+}
+html .highlight pre .gi, html .highlight pre.chroma .gi {
+  color: #f8f8f2;
+  font-weight: bold;
+}
+html .highlight pre .go, html .highlight pre.chroma .go {
+  color: #44475a;
+}
+html .highlight pre .gp, html .highlight pre.chroma .gp {
+  color: #f8f8f2;
+}
+html .highlight pre .gs, html .highlight pre.chroma .gs {
+  color: #f8f8f2;
+}
+html .highlight pre .gu, html .highlight pre.chroma .gu {
+  color: #f8f8f2;
+  font-weight: bold;
+}
+html .highlight pre .gt, html .highlight pre.chroma .gt {
+  color: #f8f8f2;
+}
+html .highlight pre .kc, html .highlight pre.chroma .kc {
+  color: #ff79c6;
+}
+html .highlight pre .kd, html .highlight pre.chroma .kd {
+  color: #8be9fd;
+  font-style: italic;
+}
+html .highlight pre .kn, html .highlight pre.chroma .kn {
+  color: #ff79c6;
+}
+html .highlight pre .kp, html .highlight pre.chroma .kp {
+  color: #ff79c6;
+}
+html .highlight pre .kr, html .highlight pre.chroma .kr {
+  color: #ff79c6;
+}
+html .highlight pre .kt, html .highlight pre.chroma .kt {
+  color: #8be9fd;
+}
+html .highlight pre .ld, html .highlight pre.chroma .ld {
+  color: #f8f8f2;
+}
+html .highlight pre .m, html .highlight pre.chroma .m {
+  color: #ffb86c;
+}
+html .highlight pre .s, html .highlight pre.chroma .s {
+  color: #bd93f9;
+}
+html .highlight pre .na, html .highlight pre.chroma .na {
+  color: #50fa7b;
+}
+html .highlight pre .nb, html .highlight pre.chroma .nb {
+  color: #8be9fd;
+  font-style: italic;
+}
+html .highlight pre .nc, html .highlight pre.chroma .nc {
+  color: #50fa7b;
+}
+html .highlight pre .no, html .highlight pre.chroma .no {
+  color: #f8f8f2;
+}
+html .highlight pre .nd, html .highlight pre.chroma .nd {
+  color: #f8f8f2;
+}
+html .highlight pre .ni, html .highlight pre.chroma .ni {
+  color: #f8f8f2;
+}
+html .highlight pre .ne, html .highlight pre.chroma .ne {
+  color: #f8f8f2;
+}
+html .highlight pre .nf, html .highlight pre.chroma .nf {
+  color: #50fa7b;
+}
+html .highlight pre .nl, html .highlight pre.chroma .nl {
+  color: #8be9fd;
+  font-style: italic;
+}
+html .highlight pre .nn, html .highlight pre.chroma .nn {
+  color: #f8f8f2;
+}
+html .highlight pre .nx, html .highlight pre.chroma .nx {
+  color: #f8f8f2;
+}
+html .highlight pre .py, html .highlight pre.chroma .py {
+  color: #f8f8f2;
+}
+html .highlight pre .nt, html .highlight pre.chroma .nt {
+  color: #ff79c6;
+}
+html .highlight pre .nv, html .highlight pre.chroma .nv {
+  color: #8be9fd;
+  font-style: italic;
+}
+html .highlight pre .ow, html .highlight pre.chroma .ow {
+  color: #ff79c6;
+}
+html .highlight pre .pm, html .highlight pre.chroma .pm {
+  color: #f8f8f2;
+}
+html .highlight pre .w, html .highlight pre.chroma .w {
+  color: #f8f8f2;
+}
+html .highlight pre .mb, html .highlight pre.chroma .mb {
+  color: #ffb86c;
+}
+html .highlight pre .mf, html .highlight pre.chroma .mf {
+  color: #ffb86c;
+}
+html .highlight pre .mh, html .highlight pre.chroma .mh {
+  color: #ffb86c;
+}
+html .highlight pre .mi, html .highlight pre.chroma .mi {
+  color: #ffb86c;
+}
+html .highlight pre .mo, html .highlight pre.chroma .mo {
+  color: #ffb86c;
+}
+html .highlight pre .sa, html .highlight pre.chroma .sa {
+  color: #bd93f9;
+}
+html .highlight pre .sb, html .highlight pre.chroma .sb {
+  color: #bd93f9;
+}
+html .highlight pre .sc, html .highlight pre.chroma .sc {
+  color: #bd93f9;
+}
+html .highlight pre .dl, html .highlight pre.chroma .dl {
+  color: #bd93f9;
+}
+html .highlight pre .sd, html .highlight pre.chroma .sd {
+  color: #bd93f9;
+}
+html .highlight pre .s2, html .highlight pre.chroma .s2 {
+  color: #bd93f9;
+}
+html .highlight pre .se, html .highlight pre.chroma .se {
+  color: #bd93f9;
+}
+html .highlight pre .sh, html .highlight pre.chroma .sh {
+  color: #bd93f9;
+}
+html .highlight pre .si, html .highlight pre.chroma .si {
+  color: #bd93f9;
+}
+html .highlight pre .sx, html .highlight pre.chroma .sx {
+  color: #bd93f9;
+}
+html .highlight pre .sr, html .highlight pre.chroma .sr {
+  color: #bd93f9;
+}
+html .highlight pre .s1, html .highlight pre.chroma .s1 {
+  color: #bd93f9;
+}
+html .highlight pre .ss, html .highlight pre.chroma .ss {
+  color: #bd93f9;
+}
+html .highlight pre .bp, html .highlight pre.chroma .bp {
+  color: #f8f8f2;
+  font-style: italic;
+}
+html .highlight pre .fm, html .highlight pre.chroma .fm {
+  color: #50fa7b;
+}
+html .highlight pre .vc, html .highlight pre.chroma .vc {
+  color: #8be9fd;
+  font-style: italic;
+}
+html .highlight pre .vg, html .highlight pre.chroma .vg {
+  color: #8be9fd;
+  font-style: italic;
+}
+html .highlight pre .vi, html .highlight pre.chroma .vi {
+  color: #8be9fd;
+  font-style: italic;
+}
+html .highlight pre .vm, html .highlight pre.chroma .vm {
+  color: #8be9fd;
+  font-style: italic;
+}
+html .highlight pre .il, html .highlight pre.chroma .il {
+  color: #ffb86c;
+}
+html .highlight pre, html .highlight pre .copy-button button, html .highlight pre.chroma, html .highlight pre.chroma .copy-button button {
+  background-color: var(--pst-color-dracula-bg);
+}
+html[data-theme=dark] .highlight pre, html[data-theme=dark] .highlight pre.chroma {
+  /* Comment */
+  /* Error */
+  /* Generic */
+  /* Keyword */
+  /* Literal */
+  /* Name */
+  /* Operator */
+  /* Other */
+  /* Punctuation */
+  /* Comment.Hashbang */
+  /* Comment.Multiline */
+  /* Comment.Preproc */
+  /* Comment.PreprocFile */
+  /* Comment.Single */
+  /* Comment.Special */
+  /* Generic.Deleted */
+  /* Generic.Emph */
+  /* Generic.EmphStrong */
+  /* Generic.Error */
+  /* Generic.Heading */
+  /* Generic.Inserted */
+  /* Generic.Output */
+  /* Generic.Prompt */
+  /* Generic.Strong */
+  /* Generic.Subheading */
+  /* Generic.Traceback */
+  /* Keyword.Constant */
+  /* Keyword.Declaration */
+  /* Keyword.Namespace */
+  /* Keyword.Pseudo */
+  /* Keyword.Reserved */
+  /* Keyword.Type */
+  /* Literal.Date */
+  /* Literal.Number */
+  /* Literal.String */
+  /* Name.Attribute */
+  /* Name.Builtin */
+  /* Name.Class */
+  /* Name.Constant */
+  /* Name.Decorator */
+  /* Name.Entity */
+  /* Name.Exception */
+  /* Name.Function */
+  /* Name.Label */
+  /* Name.Namespace */
+  /* Name.Other */
+  /* Name.Property */
+  /* Name.Tag */
+  /* Name.Variable */
+  /* Operator.Word */
+  /* Punctuation.Marker */
+  /* Text.Whitespace */
+  /* Literal.Number.Bin */
+  /* Literal.Number.Float */
+  /* Literal.Number.Hex */
+  /* Literal.Number.Integer */
+  /* Literal.Number.Oct */
+  /* Literal.String.Affix */
+  /* Literal.String.Backtick */
+  /* Literal.String.Char */
+  /* Literal.String.Delimiter */
+  /* Literal.String.Doc */
+  /* Literal.String.Double */
+  /* Literal.String.Escape */
+  /* Literal.String.Heredoc */
+  /* Literal.String.Interpol */
+  /* Literal.String.Other */
+  /* Literal.String.Regex */
+  /* Literal.String.Single */
+  /* Literal.String.Symbol */
+  /* Name.Builtin.Pseudo */
+  /* Name.Function.Magic */
+  /* Name.Variable.Class */
+  /* Name.Variable.Global */
+  /* Name.Variable.Instance */
+  /* Name.Variable.Magic */
+  /* Literal.Number.Integer.Long */
+}
+html[data-theme=dark] .highlight pre td.linenos .normal, html[data-theme=dark] .highlight pre.chroma td.linenos .normal {
+  color: #f1fa8c;
+  background-color: #44475a;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+html[data-theme=dark] .highlight pre span.linenos, html[data-theme=dark] .highlight pre.chroma span.linenos {
+  color: #f1fa8c;
+  background-color: #44475a;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+html[data-theme=dark] .highlight pre td.linenos .special, html[data-theme=dark] .highlight pre.chroma td.linenos .special {
+  color: #50fa7b;
+  background-color: #6272a4;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+html[data-theme=dark] .highlight pre span.linenos.special, html[data-theme=dark] .highlight pre.chroma span.linenos.special {
+  color: #50fa7b;
+  background-color: #6272a4;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+html[data-theme=dark] .highlight pre .hll, html[data-theme=dark] .highlight pre.chroma .hll {
+  background-color: #44475a;
+}
+html[data-theme=dark] .highlight pre .c, html[data-theme=dark] .highlight pre.chroma .c {
+  color: #6272a4;
+}
+html[data-theme=dark] .highlight pre .err, html[data-theme=dark] .highlight pre.chroma .err {
+  color: #f8f8f2;
+}
+html[data-theme=dark] .highlight pre .g, html[data-theme=dark] .highlight pre.chroma .g {
+  color: #f8f8f2;
+}
+html[data-theme=dark] .highlight pre .k, html[data-theme=dark] .highlight pre.chroma .k {
+  color: #ff79c6;
+}
+html[data-theme=dark] .highlight pre .l, html[data-theme=dark] .highlight pre.chroma .l {
+  color: #f8f8f2;
+}
+html[data-theme=dark] .highlight pre .n, html[data-theme=dark] .highlight pre.chroma .n {
+  color: #f8f8f2;
+}
+html[data-theme=dark] .highlight pre .o, html[data-theme=dark] .highlight pre.chroma .o {
+  color: #ff79c6;
+}
+html[data-theme=dark] .highlight pre .x, html[data-theme=dark] .highlight pre.chroma .x {
+  color: #f8f8f2;
+}
+html[data-theme=dark] .highlight pre .p, html[data-theme=dark] .highlight pre.chroma .p {
+  color: #f8f8f2;
+}
+html[data-theme=dark] .highlight pre .ch, html[data-theme=dark] .highlight pre.chroma .ch {
+  color: #6272a4;
+}
+html[data-theme=dark] .highlight pre .cm, html[data-theme=dark] .highlight pre.chroma .cm {
+  color: #6272a4;
+}
+html[data-theme=dark] .highlight pre .cp, html[data-theme=dark] .highlight pre.chroma .cp {
+  color: #ff79c6;
+}
+html[data-theme=dark] .highlight pre .cpf, html[data-theme=dark] .highlight pre.chroma .cpf {
+  color: #6272a4;
+}
+html[data-theme=dark] .highlight pre .c1, html[data-theme=dark] .highlight pre.chroma .c1 {
+  color: #6272a4;
+}
+html[data-theme=dark] .highlight pre .cs, html[data-theme=dark] .highlight pre.chroma .cs {
+  color: #6272a4;
+}
+html[data-theme=dark] .highlight pre .gd, html[data-theme=dark] .highlight pre.chroma .gd {
+  color: #8b080b;
+}
+html[data-theme=dark] .highlight pre .ge, html[data-theme=dark] .highlight pre.chroma .ge {
+  color: #f8f8f2;
+  text-decoration: underline;
+}
+html[data-theme=dark] .highlight pre .ges, html[data-theme=dark] .highlight pre.chroma .ges {
+  color: #f8f8f2;
+  text-decoration: underline;
+}
+html[data-theme=dark] .highlight pre .gr, html[data-theme=dark] .highlight pre.chroma .gr {
+  color: #f8f8f2;
+}
+html[data-theme=dark] .highlight pre .gh, html[data-theme=dark] .highlight pre.chroma .gh {
+  color: #f8f8f2;
+  font-weight: bold;
+}
+html[data-theme=dark] .highlight pre .gi, html[data-theme=dark] .highlight pre.chroma .gi {
+  color: #f8f8f2;
+  font-weight: bold;
+}
+html[data-theme=dark] .highlight pre .go, html[data-theme=dark] .highlight pre.chroma .go {
+  color: #44475a;
+}
+html[data-theme=dark] .highlight pre .gp, html[data-theme=dark] .highlight pre.chroma .gp {
+  color: #f8f8f2;
+}
+html[data-theme=dark] .highlight pre .gs, html[data-theme=dark] .highlight pre.chroma .gs {
+  color: #f8f8f2;
+}
+html[data-theme=dark] .highlight pre .gu, html[data-theme=dark] .highlight pre.chroma .gu {
+  color: #f8f8f2;
+  font-weight: bold;
+}
+html[data-theme=dark] .highlight pre .gt, html[data-theme=dark] .highlight pre.chroma .gt {
+  color: #f8f8f2;
+}
+html[data-theme=dark] .highlight pre .kc, html[data-theme=dark] .highlight pre.chroma .kc {
+  color: #ff79c6;
+}
+html[data-theme=dark] .highlight pre .kd, html[data-theme=dark] .highlight pre.chroma .kd {
+  color: #8be9fd;
+  font-style: italic;
+}
+html[data-theme=dark] .highlight pre .kn, html[data-theme=dark] .highlight pre.chroma .kn {
+  color: #ff79c6;
+}
+html[data-theme=dark] .highlight pre .kp, html[data-theme=dark] .highlight pre.chroma .kp {
+  color: #ff79c6;
+}
+html[data-theme=dark] .highlight pre .kr, html[data-theme=dark] .highlight pre.chroma .kr {
+  color: #ff79c6;
+}
+html[data-theme=dark] .highlight pre .kt, html[data-theme=dark] .highlight pre.chroma .kt {
+  color: #8be9fd;
+}
+html[data-theme=dark] .highlight pre .ld, html[data-theme=dark] .highlight pre.chroma .ld {
+  color: #f8f8f2;
+}
+html[data-theme=dark] .highlight pre .m, html[data-theme=dark] .highlight pre.chroma .m {
+  color: #ffb86c;
+}
+html[data-theme=dark] .highlight pre .s, html[data-theme=dark] .highlight pre.chroma .s {
+  color: #bd93f9;
+}
+html[data-theme=dark] .highlight pre .na, html[data-theme=dark] .highlight pre.chroma .na {
+  color: #50fa7b;
+}
+html[data-theme=dark] .highlight pre .nb, html[data-theme=dark] .highlight pre.chroma .nb {
+  color: #8be9fd;
+  font-style: italic;
+}
+html[data-theme=dark] .highlight pre .nc, html[data-theme=dark] .highlight pre.chroma .nc {
+  color: #50fa7b;
+}
+html[data-theme=dark] .highlight pre .no, html[data-theme=dark] .highlight pre.chroma .no {
+  color: #f8f8f2;
+}
+html[data-theme=dark] .highlight pre .nd, html[data-theme=dark] .highlight pre.chroma .nd {
+  color: #f8f8f2;
+}
+html[data-theme=dark] .highlight pre .ni, html[data-theme=dark] .highlight pre.chroma .ni {
+  color: #f8f8f2;
+}
+html[data-theme=dark] .highlight pre .ne, html[data-theme=dark] .highlight pre.chroma .ne {
+  color: #f8f8f2;
+}
+html[data-theme=dark] .highlight pre .nf, html[data-theme=dark] .highlight pre.chroma .nf {
+  color: #50fa7b;
+}
+html[data-theme=dark] .highlight pre .nl, html[data-theme=dark] .highlight pre.chroma .nl {
+  color: #8be9fd;
+  font-style: italic;
+}
+html[data-theme=dark] .highlight pre .nn, html[data-theme=dark] .highlight pre.chroma .nn {
+  color: #f8f8f2;
+}
+html[data-theme=dark] .highlight pre .nx, html[data-theme=dark] .highlight pre.chroma .nx {
+  color: #f8f8f2;
+}
+html[data-theme=dark] .highlight pre .py, html[data-theme=dark] .highlight pre.chroma .py {
+  color: #f8f8f2;
+}
+html[data-theme=dark] .highlight pre .nt, html[data-theme=dark] .highlight pre.chroma .nt {
+  color: #ff79c6;
+}
+html[data-theme=dark] .highlight pre .nv, html[data-theme=dark] .highlight pre.chroma .nv {
+  color: #8be9fd;
+  font-style: italic;
+}
+html[data-theme=dark] .highlight pre .ow, html[data-theme=dark] .highlight pre.chroma .ow {
+  color: #ff79c6;
+}
+html[data-theme=dark] .highlight pre .pm, html[data-theme=dark] .highlight pre.chroma .pm {
+  color: #f8f8f2;
+}
+html[data-theme=dark] .highlight pre .w, html[data-theme=dark] .highlight pre.chroma .w {
+  color: #f8f8f2;
+}
+html[data-theme=dark] .highlight pre .mb, html[data-theme=dark] .highlight pre.chroma .mb {
+  color: #ffb86c;
+}
+html[data-theme=dark] .highlight pre .mf, html[data-theme=dark] .highlight pre.chroma .mf {
+  color: #ffb86c;
+}
+html[data-theme=dark] .highlight pre .mh, html[data-theme=dark] .highlight pre.chroma .mh {
+  color: #ffb86c;
+}
+html[data-theme=dark] .highlight pre .mi, html[data-theme=dark] .highlight pre.chroma .mi {
+  color: #ffb86c;
+}
+html[data-theme=dark] .highlight pre .mo, html[data-theme=dark] .highlight pre.chroma .mo {
+  color: #ffb86c;
+}
+html[data-theme=dark] .highlight pre .sa, html[data-theme=dark] .highlight pre.chroma .sa {
+  color: #bd93f9;
+}
+html[data-theme=dark] .highlight pre .sb, html[data-theme=dark] .highlight pre.chroma .sb {
+  color: #bd93f9;
+}
+html[data-theme=dark] .highlight pre .sc, html[data-theme=dark] .highlight pre.chroma .sc {
+  color: #bd93f9;
+}
+html[data-theme=dark] .highlight pre .dl, html[data-theme=dark] .highlight pre.chroma .dl {
+  color: #bd93f9;
+}
+html[data-theme=dark] .highlight pre .sd, html[data-theme=dark] .highlight pre.chroma .sd {
+  color: #bd93f9;
+}
+html[data-theme=dark] .highlight pre .s2, html[data-theme=dark] .highlight pre.chroma .s2 {
+  color: #bd93f9;
+}
+html[data-theme=dark] .highlight pre .se, html[data-theme=dark] .highlight pre.chroma .se {
+  color: #bd93f9;
+}
+html[data-theme=dark] .highlight pre .sh, html[data-theme=dark] .highlight pre.chroma .sh {
+  color: #bd93f9;
+}
+html[data-theme=dark] .highlight pre .si, html[data-theme=dark] .highlight pre.chroma .si {
+  color: #bd93f9;
+}
+html[data-theme=dark] .highlight pre .sx, html[data-theme=dark] .highlight pre.chroma .sx {
+  color: #bd93f9;
+}
+html[data-theme=dark] .highlight pre .sr, html[data-theme=dark] .highlight pre.chroma .sr {
+  color: #bd93f9;
+}
+html[data-theme=dark] .highlight pre .s1, html[data-theme=dark] .highlight pre.chroma .s1 {
+  color: #bd93f9;
+}
+html[data-theme=dark] .highlight pre .ss, html[data-theme=dark] .highlight pre.chroma .ss {
+  color: #bd93f9;
+}
+html[data-theme=dark] .highlight pre .bp, html[data-theme=dark] .highlight pre.chroma .bp {
+  color: #f8f8f2;
+  font-style: italic;
+}
+html[data-theme=dark] .highlight pre .fm, html[data-theme=dark] .highlight pre.chroma .fm {
+  color: #50fa7b;
+}
+html[data-theme=dark] .highlight pre .vc, html[data-theme=dark] .highlight pre.chroma .vc {
+  color: #8be9fd;
+  font-style: italic;
+}
+html[data-theme=dark] .highlight pre .vg, html[data-theme=dark] .highlight pre.chroma .vg {
+  color: #8be9fd;
+  font-style: italic;
+}
+html[data-theme=dark] .highlight pre .vi, html[data-theme=dark] .highlight pre.chroma .vi {
+  color: #8be9fd;
+  font-style: italic;
+}
+html[data-theme=dark] .highlight pre .vm, html[data-theme=dark] .highlight pre.chroma .vm {
+  color: #8be9fd;
+  font-style: italic;
+}
+html[data-theme=dark] .highlight pre .il, html[data-theme=dark] .highlight pre.chroma .il {
+  color: #ffb86c;
+}
+html[data-theme=light] .highlight pre, html[data-theme=light] .highlight pre.chroma {
+  /* Background */
+  /* PreWrapper */
+  /* Other */
+  /* Error */
+  /* CodeLine */
+  /* LineLink */
+  /* LineTableTD */
+  /* LineTable */
+  /* LineHighlight */
+  /* LineNumbersTable */
+  /* LineNumbers */
+  /* Line */
+  /* Keyword */
+  /* KeywordConstant */
+  /* KeywordDeclaration */
+  /* KeywordNamespace */
+  /* KeywordPseudo */
+  /* KeywordReserved */
+  /* KeywordType */
+  /* Name */
+  /* NameAttribute */
+  /* NameBuiltin */
+  /* NameBuiltinPseudo */
+  /* NameClass */
+  /* NameConstant */
+  /* NameDecorator */
+  /* NameEntity */
+  /* NameException */
+  /* NameFunction */
+  /* NameFunctionMagic */
+  /* NameLabel */
+  /* NameNamespace */
+  /* NameOther */
+  /* NameProperty */
+  /* NameTag */
+  /* NameVariable */
+  /* NameVariableClass */
+  /* NameVariableGlobal */
+  /* NameVariableInstance */
+  /* NameVariableMagic */
+  /* Literal */
+  /* LiteralDate */
+  /* LiteralString */
+  /* LiteralStringAffix */
+  /* LiteralStringBacktick */
+  /* LiteralStringChar */
+  /* LiteralStringDelimiter */
+  /* LiteralStringDoc */
+  /* LiteralStringDouble */
+  /* LiteralStringEscape */
+  /* LiteralStringHeredoc */
+  /* LiteralStringInterpol */
+  /* LiteralStringOther */
+  /* LiteralStringRegex */
+  /* LiteralStringSingle */
+  /* LiteralStringSymbol */
+  /* LiteralNumber */
+  /* LiteralNumberBin */
+  /* LiteralNumberFloat */
+  /* LiteralNumberHex */
+  /* LiteralNumberInteger */
+  /* LiteralNumberIntegerLong */
+  /* LiteralNumberOct */
+  /* Operator */
+  /* OperatorWord */
+  /* Punctuation */
+  /* Comment */
+  /* CommentHashbang */
+  /* CommentMultiline */
+  /* CommentSingle */
+  /* CommentSpecial */
+  /* CommentPreproc */
+  /* CommentPreprocFile */
+  /* Generic */
+  /* GenericDeleted */
+  /* GenericEmph */
+  /* GenericError */
+  /* GenericHeading */
+  /* GenericInserted */
+  /* GenericOutput */
+  /* GenericPrompt */
+  /* GenericStrong */
+  /* GenericSubheading */
+  /* GenericTraceback */
+  /* GenericUnderline */
+  /* TextWhitespace */
+}
+html[data-theme=light] .highlight pre .bg, html[data-theme=light] .highlight pre.chroma .bg {
+  background-color: var(--pst-color-surface);
+}
+html[data-theme=light] .highlight pre, html[data-theme=light] .highlight pre.chroma {
+  background-color: var(--pst-color-surface);
+}
+html[data-theme=light] .highlight pre .x, html[data-theme=light] .highlight pre.chroma .x {
+  color: var(--pst-color-text-base);
+}
+html[data-theme=light] .highlight pre .err, html[data-theme=light] .highlight pre.chroma .err {
+  color: #a00;
+  background-color: #faa;
+}
+html[data-theme=light] .highlight pre .cl, html[data-theme=light] .highlight pre.chroma .cl {
+  color: var(--pst-color-text-base);
+}
+html[data-theme=light] .highlight pre .lnlinks, html[data-theme=light] .highlight pre.chroma .lnlinks {
+  outline: none;
+  text-decoration: none;
+  color: inherit;
+}
+html[data-theme=light] .highlight pre .lntd, html[data-theme=light] .highlight pre.chroma .lntd {
+  vertical-align: top;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+html[data-theme=light] .highlight pre .lntable, html[data-theme=light] .highlight pre.chroma .lntable {
+  border-spacing: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+html[data-theme=light] .highlight pre .hl, html[data-theme=light] .highlight pre.chroma .hl {
+  background-color: #d8dada;
+}
+html[data-theme=light] .highlight pre .lnt, html[data-theme=light] .highlight pre.chroma .lnt {
+  white-space: pre;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+       user-select: none;
+  margin-right: 0.4em;
+  padding: 0 0.4em 0 0.4em;
+  color: #7f7f7f;
+}
+html[data-theme=light] .highlight pre .ln, html[data-theme=light] .highlight pre.chroma .ln {
+  white-space: pre;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+       user-select: none;
+  margin-right: 0.4em;
+  padding: 0 0.4em 0 0.4em;
+  color: #7f7f7f;
+}
+html[data-theme=light] .highlight pre .line, html[data-theme=light] .highlight pre.chroma .line {
+  display: flex;
+}
+html[data-theme=light] .highlight pre .k, html[data-theme=light] .highlight pre.chroma .k {
+  color: #069;
+  font-weight: bold;
+}
+html[data-theme=light] .highlight pre .kc, html[data-theme=light] .highlight pre.chroma .kc {
+  color: #069;
+  font-weight: bold;
+}
+html[data-theme=light] .highlight pre .kd, html[data-theme=light] .highlight pre.chroma .kd {
+  color: #069;
+  font-weight: bold;
+}
+html[data-theme=light] .highlight pre .kn, html[data-theme=light] .highlight pre.chroma .kn {
+  color: #069;
+  font-weight: bold;
+}
+html[data-theme=light] .highlight pre .kp, html[data-theme=light] .highlight pre.chroma .kp {
+  color: #069;
+}
+html[data-theme=light] .highlight pre .kr, html[data-theme=light] .highlight pre.chroma .kr {
+  color: #069;
+  font-weight: bold;
+}
+html[data-theme=light] .highlight pre .kt, html[data-theme=light] .highlight pre.chroma .kt {
+  color: #078;
+  font-weight: bold;
+}
+html[data-theme=light] .highlight pre .n, html[data-theme=light] .highlight pre.chroma .n {
+  color: var(--pst-color-text-base);
+}
+html[data-theme=light] .highlight pre .na, html[data-theme=light] .highlight pre.chroma .na {
+  color: #309;
+}
+html[data-theme=light] .highlight pre .nb, html[data-theme=light] .highlight pre.chroma .nb {
+  color: #366;
+}
+html[data-theme=light] .highlight pre .bp, html[data-theme=light] .highlight pre.chroma .bp {
+  color: var(--pst-color-text-base);
+}
+html[data-theme=light] .highlight pre .nc, html[data-theme=light] .highlight pre.chroma .nc {
+  color: #0a8;
+  font-weight: bold;
+}
+html[data-theme=light] .highlight pre .no, html[data-theme=light] .highlight pre.chroma .no {
+  color: #360;
+}
+html[data-theme=light] .highlight pre .nd, html[data-theme=light] .highlight pre.chroma .nd {
+  color: #99f;
+}
+html[data-theme=light] .highlight pre .ni, html[data-theme=light] .highlight pre.chroma .ni {
+  color: #999;
+  font-weight: bold;
+}
+html[data-theme=light] .highlight pre .ne, html[data-theme=light] .highlight pre.chroma .ne {
+  color: #c00;
+  font-weight: bold;
+}
+html[data-theme=light] .highlight pre .nf, html[data-theme=light] .highlight pre.chroma .nf {
+  color: #c0f;
+}
+html[data-theme=light] .highlight pre .fm, html[data-theme=light] .highlight pre.chroma .fm {
+  color: var(--pst-color-text-base);
+}
+html[data-theme=light] .highlight pre .nl, html[data-theme=light] .highlight pre.chroma .nl {
+  color: #99f;
+}
+html[data-theme=light] .highlight pre .nn, html[data-theme=light] .highlight pre.chroma .nn {
+  color: #0cf;
+  font-weight: bold;
+}
+html[data-theme=light] .highlight pre .nx, html[data-theme=light] .highlight pre.chroma .nx {
+  color: var(--pst-color-text-base);
+}
+html[data-theme=light] .highlight pre .py, html[data-theme=light] .highlight pre.chroma .py {
+  color: var(--pst-color-text-base);
+}
+html[data-theme=light] .highlight pre .nt, html[data-theme=light] .highlight pre.chroma .nt {
+  color: #309;
+  font-weight: bold;
+}
+html[data-theme=light] .highlight pre .nv, html[data-theme=light] .highlight pre.chroma .nv {
+  color: #033;
+}
+html[data-theme=light] .highlight pre .vc, html[data-theme=light] .highlight pre.chroma .vc {
+  color: var(--pst-color-text-base);
+}
+html[data-theme=light] .highlight pre .vg, html[data-theme=light] .highlight pre.chroma .vg {
+  color: var(--pst-color-text-base);
+}
+html[data-theme=light] .highlight pre .vi, html[data-theme=light] .highlight pre.chroma .vi {
+  color: var(--pst-color-text-base);
+}
+html[data-theme=light] .highlight pre .vm, html[data-theme=light] .highlight pre.chroma .vm {
+  color: var(--pst-color-text-base);
+}
+html[data-theme=light] .highlight pre .l, html[data-theme=light] .highlight pre.chroma .l {
+  color: var(--pst-color-text-base);
+}
+html[data-theme=light] .highlight pre .ld, html[data-theme=light] .highlight pre.chroma .ld {
+  color: var(--pst-color-text-base);
+}
+html[data-theme=light] .highlight pre .s, html[data-theme=light] .highlight pre.chroma .s {
+  color: #c30;
+}
+html[data-theme=light] .highlight pre .sa, html[data-theme=light] .highlight pre.chroma .sa {
+  color: #c30;
+}
+html[data-theme=light] .highlight pre .sb, html[data-theme=light] .highlight pre.chroma .sb {
+  color: #c30;
+}
+html[data-theme=light] .highlight pre .sc, html[data-theme=light] .highlight pre.chroma .sc {
+  color: #c30;
+}
+html[data-theme=light] .highlight pre .dl, html[data-theme=light] .highlight pre.chroma .dl {
+  color: #c30;
+}
+html[data-theme=light] .highlight pre .sd, html[data-theme=light] .highlight pre.chroma .sd {
+  color: #c30;
+  font-style: italic;
+}
+html[data-theme=light] .highlight pre .s2, html[data-theme=light] .highlight pre.chroma .s2 {
+  color: #c30;
+}
+html[data-theme=light] .highlight pre .se, html[data-theme=light] .highlight pre.chroma .se {
+  color: #c30;
+  font-weight: bold;
+}
+html[data-theme=light] .highlight pre .sh, html[data-theme=light] .highlight pre.chroma .sh {
+  color: #c30;
+}
+html[data-theme=light] .highlight pre .si, html[data-theme=light] .highlight pre.chroma .si {
+  color: #a00;
+}
+html[data-theme=light] .highlight pre .sx, html[data-theme=light] .highlight pre.chroma .sx {
+  color: #c30;
+}
+html[data-theme=light] .highlight pre .sr, html[data-theme=light] .highlight pre.chroma .sr {
+  color: #3aa;
+}
+html[data-theme=light] .highlight pre .s1, html[data-theme=light] .highlight pre.chroma .s1 {
+  color: #c30;
+}
+html[data-theme=light] .highlight pre .ss, html[data-theme=light] .highlight pre.chroma .ss {
+  color: #fc3;
+}
+html[data-theme=light] .highlight pre .m, html[data-theme=light] .highlight pre.chroma .m {
+  color: #f60;
+}
+html[data-theme=light] .highlight pre .mb, html[data-theme=light] .highlight pre.chroma .mb {
+  color: #f60;
+}
+html[data-theme=light] .highlight pre .mf, html[data-theme=light] .highlight pre.chroma .mf {
+  color: #f60;
+}
+html[data-theme=light] .highlight pre .mh, html[data-theme=light] .highlight pre.chroma .mh {
+  color: #f60;
+}
+html[data-theme=light] .highlight pre .mi, html[data-theme=light] .highlight pre.chroma .mi {
+  color: #f60;
+}
+html[data-theme=light] .highlight pre .il, html[data-theme=light] .highlight pre.chroma .il {
+  color: #f60;
+}
+html[data-theme=light] .highlight pre .mo, html[data-theme=light] .highlight pre.chroma .mo {
+  color: #f60;
+}
+html[data-theme=light] .highlight pre .o, html[data-theme=light] .highlight pre.chroma .o {
+  color: #555;
+}
+html[data-theme=light] .highlight pre .ow, html[data-theme=light] .highlight pre.chroma .ow {
+  color: #000;
+  font-weight: bold;
+}
+html[data-theme=light] .highlight pre .p, html[data-theme=light] .highlight pre.chroma .p {
+  color: var(--pst-color-text-base);
+}
+html[data-theme=light] .highlight pre .c, html[data-theme=light] .highlight pre.chroma .c {
+  color: #09f;
+  font-style: italic;
+}
+html[data-theme=light] .highlight pre .ch, html[data-theme=light] .highlight pre.chroma .ch {
+  color: #09f;
+  font-style: italic;
+}
+html[data-theme=light] .highlight pre .cm, html[data-theme=light] .highlight pre.chroma .cm {
+  color: #09f;
+  font-style: italic;
+}
+html[data-theme=light] .highlight pre .c1, html[data-theme=light] .highlight pre.chroma .c1 {
+  color: #09f;
+  font-style: italic;
+}
+html[data-theme=light] .highlight pre .cs, html[data-theme=light] .highlight pre.chroma .cs {
+  color: #09f;
+  font-weight: bold;
+  font-style: italic;
+}
+html[data-theme=light] .highlight pre .cp, html[data-theme=light] .highlight pre.chroma .cp {
+  color: #099;
+}
+html[data-theme=light] .highlight pre .cpf, html[data-theme=light] .highlight pre.chroma .cpf {
+  color: #099;
+}
+html[data-theme=light] .highlight pre .g, html[data-theme=light] .highlight pre.chroma .g {
+  color: var(--pst-color-text-base);
+}
+html[data-theme=light] .highlight pre .gd, html[data-theme=light] .highlight pre.chroma .gd {
+  background-color: #fcc;
+}
+html[data-theme=light] .highlight pre .ge, html[data-theme=light] .highlight pre.chroma .ge {
+  font-style: italic;
+}
+html[data-theme=light] .highlight pre .gr, html[data-theme=light] .highlight pre.chroma .gr {
+  color: #f00;
+}
+html[data-theme=light] .highlight pre .gh, html[data-theme=light] .highlight pre.chroma .gh {
+  color: #030;
+  font-weight: bold;
+}
+html[data-theme=light] .highlight pre .gi, html[data-theme=light] .highlight pre.chroma .gi {
+  background-color: #cfc;
+}
+html[data-theme=light] .highlight pre .go, html[data-theme=light] .highlight pre.chroma .go {
+  color: #aaa;
+}
+html[data-theme=light] .highlight pre .gp, html[data-theme=light] .highlight pre.chroma .gp {
+  color: #009;
+  font-weight: bold;
+}
+html[data-theme=light] .highlight pre .gs, html[data-theme=light] .highlight pre.chroma .gs {
+  font-weight: bold;
+}
+html[data-theme=light] .highlight pre .gu, html[data-theme=light] .highlight pre.chroma .gu {
+  color: #030;
+  font-weight: bold;
+}
+html[data-theme=light] .highlight pre .gt, html[data-theme=light] .highlight pre.chroma .gt {
+  color: #9c6;
+}
+html[data-theme=light] .highlight pre .gl, html[data-theme=light] .highlight pre.chroma .gl {
+  text-decoration: underline;
+}
+html[data-theme=light] .highlight pre .w, html[data-theme=light] .highlight pre.chroma .w {
+  color: #bbb;
+}
+html[data-theme=light] .highlight pre, html[data-theme=light] .highlight pre .copy-button button, html[data-theme=light] .highlight pre.chroma, html[data-theme=light] .highlight pre.chroma .copy-button button {
+  background-color: var(--pst-color-surface);
+}
+
+div.bd-article-container:has(article.bd-article > h1[id=index]) {
+  max-width: -webkit-fill-available;
+}
+div.bd-article-container:has(article.bd-article > h1[id=index]) h2 {
+  color: var(--pst-violet-700);
+  background-color: var(--pst-color-primary);
+  padding: 0.25em 1em;
+  border-radius: 1em;
+}
+
+table.modindextable tr:not([class]) {
+  background-color: var(--pst-color-primary);
+}
+table.modindextable tr:not([class]) td a > code {
+  color: var(--pst-color-primary-text);
+}
+table.modindextable tr:not([class]) > td:first-child {
+  text-align: center;
+}
+table.modindextable tr.cap {
+  text-transform: capitalize;
+  background-color: var(--pst-violet-700);
+  color: var(--pst-color-secondary);
+}
+table.modindextable tr.cap > td:first-child {
+  border-top-left-radius: 1em;
+}
+table.modindextable tr.cap > td:not(:first-child) {
+  border-top-right-radius: 1em;
+}
+table.modindextable tr td:last-child {
+  visibility: hidden;
+}
+
+html[data-theme=light] table.modindextable tr:not([class]) {
+  background-color: var(--pst-color-secondary-highlight);
+}
+html[data-theme=light] table.modindextable tr:not([class]) td a > code {
+  color: var(--pst-color-secondary-bg);
+}
+html[data-theme=light] table.modindextable tr.cap {
+  color: var(--pst-color-secondary-highlight);
+  background-color: var(--pst-color-secondary);
+}
+
+html[data-theme=light] div.bd-article-container:has(article.bd-article > h1[id=index]) tr td ul li a {
+  color: var(--pst-color-secondary-highlight);
+}
+
+#footer svg.icon.docker-icon:hover {
+  fill: var(--pst-color-rgba-docker);
+}
+
+.navbar-icon-links li,
+.footer-icon-links li {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+}
+.navbar-icon-links li:hover a::before,
+.footer-icon-links li:hover a::before {
+  border: none;
+}
+.navbar-icon-links li:hover a svg.fa-docker,
+.footer-icon-links li:hover a svg.fa-docker {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+  color: var(--pst-color-rgba-docker);
+}
+
+#footer svg.icon.gitlab-icon:hover {
+  fill: var(--pst-color-rgba-gitlab);
+}
+
+.navbar-icon-links li,
+.footer-icon-links li {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+}
+.navbar-icon-links li:hover a::before,
+.footer-icon-links li:hover a::before {
+  border: none;
+}
+.navbar-icon-links li:hover a svg.fa-gitlab,
+.footer-icon-links li:hover a svg.fa-gitlab {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+  color: var(--pst-color-rgba-gitlab);
+}
+
+#footer svg.icon.github-icon:hover {
+  fill: var(--pst-color-rgba-github);
+}
+
+.navbar-icon-links li,
+.footer-icon-links li {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+}
+.navbar-icon-links li:hover a::before,
+.footer-icon-links li:hover a::before {
+  border: none;
+}
+.navbar-icon-links li:hover a svg.fa-github,
+.footer-icon-links li:hover a svg.fa-github {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+  color: var(--pst-color-rgba-github);
+}
+
+#footer svg.icon.mattermost-icon:hover {
+  fill: var(--pst-color-rgba-mattermost);
+}
+
+.navbar-icon-links li,
+.footer-icon-links li {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+}
+.navbar-icon-links li:hover a::before,
+.footer-icon-links li:hover a::before {
+  border: none;
+}
+.navbar-icon-links li:hover a svg.fa-mattermost,
+.footer-icon-links li:hover a svg.fa-mattermost {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+  color: var(--pst-color-rgba-mattermost);
+}
+
+#footer svg.icon.numpy-icon:hover {
+  fill: var(--pst-color-rgba-numpy);
+}
+
+.navbar-icon-links li,
+.footer-icon-links li {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+}
+.navbar-icon-links li:hover a::before,
+.footer-icon-links li:hover a::before {
+  border: none;
+}
+.navbar-icon-links li:hover a svg.fa-numpy,
+.footer-icon-links li:hover a svg.fa-numpy {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+  color: var(--pst-color-rgba-numpy);
+}
+
+#footer svg.icon.pandas-icon:hover {
+  fill: var(--pst-color-rgba-pandas);
+}
+
+.navbar-icon-links li,
+.footer-icon-links li {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+}
+.navbar-icon-links li:hover a::before,
+.footer-icon-links li:hover a::before {
+  border: none;
+}
+.navbar-icon-links li:hover a svg.fa-pandas,
+.footer-icon-links li:hover a svg.fa-pandas {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+  color: var(--pst-color-rgba-pandas);
+}
+
+#footer svg.icon.pre-commit-icon:hover {
+  fill: var(--pst-color-rgba-pre-commit);
+}
+
+.navbar-icon-links li,
+.footer-icon-links li {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+}
+.navbar-icon-links li:hover a::before,
+.footer-icon-links li:hover a::before {
+  border: none;
+}
+.navbar-icon-links li:hover a svg.fa-pre-commit,
+.footer-icon-links li:hover a svg.fa-pre-commit {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+  color: var(--pst-color-rgba-pre-commit);
+}
+
+#footer svg.icon.pytorch-icon:hover {
+  fill: var(--pst-color-rgba-pytorch);
+}
+
+.navbar-icon-links li,
+.footer-icon-links li {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+}
+.navbar-icon-links li:hover a::before,
+.footer-icon-links li:hover a::before {
+  border: none;
+}
+.navbar-icon-links li:hover a svg.fa-pytorch,
+.footer-icon-links li:hover a svg.fa-pytorch {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+  color: var(--pst-color-rgba-pytorch);
+}
+
+#footer svg.icon.ray-icon:hover {
+  fill: var(--pst-color-rgba-ray);
+}
+
+.navbar-icon-links li,
+.footer-icon-links li {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+}
+.navbar-icon-links li:hover a::before,
+.footer-icon-links li:hover a::before {
+  border: none;
+}
+.navbar-icon-links li:hover a svg.fa-ray,
+.footer-icon-links li:hover a svg.fa-ray {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+  color: var(--pst-color-rgba-ray);
+}
+
+#footer svg.icon.ruff-icon:hover {
+  fill: var(--pst-color-rgba-ruff);
+}
+
+.navbar-icon-links li,
+.footer-icon-links li {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+}
+.navbar-icon-links li:hover a::before,
+.footer-icon-links li:hover a::before {
+  border: none;
+}
+.navbar-icon-links li:hover a svg.fa-ruff,
+.footer-icon-links li:hover a svg.fa-ruff {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+  color: var(--pst-color-rgba-ruff);
+}
+
+#footer svg.icon.scipy-icon:hover {
+  fill: var(--pst-color-rgba-scipy);
+}
+
+.navbar-icon-links li,
+.footer-icon-links li {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+}
+.navbar-icon-links li:hover a::before,
+.footer-icon-links li:hover a::before {
+  border: none;
+}
+.navbar-icon-links li:hover a svg.fa-scipy,
+.footer-icon-links li:hover a svg.fa-scipy {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+  color: var(--pst-color-rgba-scipy);
+}
+
+#footer svg.icon.semantic-release-icon:hover {
+  fill: var(--pst-color-rgba-semantic-release);
+}
+
+.navbar-icon-links li,
+.footer-icon-links li {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+}
+.navbar-icon-links li:hover a::before,
+.footer-icon-links li:hover a::before {
+  border: none;
+}
+.navbar-icon-links li:hover a svg.fa-semantic-release,
+.footer-icon-links li:hover a svg.fa-semantic-release {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+  color: var(--pst-color-rgba-semantic-release);
+}
+
+#footer svg.icon.tensorflow-icon:hover {
+  fill: var(--pst-color-rgba-tensorflow);
+}
+
+.navbar-icon-links li,
+.footer-icon-links li {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+}
+.navbar-icon-links li:hover a::before,
+.footer-icon-links li:hover a::before {
+  border: none;
+}
+.navbar-icon-links li:hover a svg.fa-tensorflow,
+.footer-icon-links li:hover a svg.fa-tensorflow {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+  color: var(--pst-color-rgba-tensorflow);
+}
+
+#footer svg.icon.uv-icon:hover {
+  fill: var(--pst-color-rgba-uv);
+}
+
+.navbar-icon-links li,
+.footer-icon-links li {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+}
+.navbar-icon-links li:hover a::before,
+.footer-icon-links li:hover a::before {
+  border: none;
+}
+.navbar-icon-links li:hover a svg.fa-uv,
+.footer-icon-links li:hover a svg.fa-uv {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+  color: var(--pst-color-rgba-uv);
+}
+
+#footer svg.icon.vs-code-icon:hover {
+  fill: var(--pst-color-rgba-vs-code);
+}
+
+.navbar-icon-links li,
+.footer-icon-links li {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+}
+.navbar-icon-links li:hover a::before,
+.footer-icon-links li:hover a::before {
+  border: none;
+}
+.navbar-icon-links li:hover a svg.fa-vs-code,
+.footer-icon-links li:hover a svg.fa-vs-code {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+  color: var(--pst-color-rgba-vs-code);
+}
+
+.bd-header .navbar-nav li p.footer-icon-note,
+.footer-icon-links .footer-item li p.footer-icon-note {
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-right: max(8px, 0.5rem, 0.32em);
+}
+
+.footer-icon-links {
+  list-style-type: none;
+}
+.footer-icon-links .footer-item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: max(1px, 0.0625rem, 0.04em);
+}
+.footer-icon-links a {
+  color: var(--pst-color-text-muted);
+}
+
+.footer-icon-links-item {
+  align-self: center;
+  border: max(2px, 0.125rem, 0.08em) solid transparent;
+}
+
+a.gitlab:before {
+  color: var(--pst-color-rgba-gitlab);
+}
+
+.hero-title,
+.navbar-logo-text {
+  font-family: "Lato";
+  margin-top: 0.2em;
+}
+
+html nav.navbar {
+  background-color: var(--pst-color-on-background);
+}
+html .pst-navbar-icon:has(svg.svg-inline--fa):hover {
+  color: inherit;
+}
+html .navbar-brand.logo:has(img) {
+  transition: all var(--transition-fast);
+}
+html .navbar-brand.logo:has(img):hover img {
+  transition: all var(--transition-fast);
+  filter: drop-shadow(2px 4px 6px var(--pst-color-black));
+}
+html .navbar-header-items .navbar-item nav.navbar {
+  background-color: inherit;
+}
+html ul.bd-navbar-elements.navbar-nav li.nav-item:has(a.nav-link.nav-internal) {
+  display: none;
+}
+html .bd-header .navbar-nav {
+  height: -webkit-fill-available;
+}
+html .bd-header .navbar-nav li {
+  height: -webkit-fill-available;
+}
+html ul.bd-breadcrumbs li.breadcrumb-item a {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+}
+html ul.bd-breadcrumbs li.breadcrumb-item a:hover {
+  color: var(--pst-color-secondary);
+  text-decoration-line: none;
+}
+html ul.bd-breadcrumbs li.breadcrumb-item:has(svg) {
+  align-items: center;
+}
+html ul.bd-breadcrumbs li.breadcrumb-item:not(.breadcrumb-home):before {
+  align-self: center;
+  padding-top: 0.25em;
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+}
+html ul.bd-breadcrumbs li.breadcrumb-item:not(.breadcrumb-home) a {
+  padding-left: 0.375em;
+  padding-right: 0.375em;
+  border-radius: 1em;
+}
+html ul.bd-breadcrumbs li.breadcrumb-item:not(.breadcrumb-home) a:hover {
+  background-color: var(--pst-color-secondary-bg);
+}
+html[data-theme=dark] .bd-header-announcement,
+html[data-theme=dark] .news-container {
+  background-color: #341a61;
+}
+html[data-theme=light] .bd-header-announcement,
+html[data-theme=light] .news-container {
+  background-color: #00cc8d;
+}
+html[data-theme=light] ul.bd-breadcrumbs li.breadcrumb-item a:hover {
+  color: var(--pst-color-secondary-highlight);
+}
+html .news-container .news-title a,
+html .news-container .news-date a {
+  color: var(--pst-color-secondary);
+}
+html nav:has(ul[id=breadcrumbs]) {
+  z-index: 98;
+}
+html .bd-header .navbar-nav a.nav-link:not(:has(img)):not(:has(svg)),
+html .bd-header .navbar-item button:not(:has(img)):not(:has(svg)),
+html .bd-header .navbar-item a:not(:has(img)):not(:has(svg)),
+html .navbar-menu .navbar-nav a.nav-link:not(:has(img)):not(:has(svg)),
+html .navbar-menu .navbar-item button:not(:has(img)):not(:has(svg)),
+html .navbar-menu .navbar-item a:not(:has(img)):not(:has(svg)),
+html .sidebar-header-items .navbar-nav a.nav-link:not(:has(img)):not(:has(svg)),
+html .sidebar-header-items .navbar-item button:not(:has(img)):not(:has(svg)),
+html .sidebar-header-items .navbar-item a:not(:has(img)):not(:has(svg)) {
+  background-color: var(--pst-color-on-background);
+}
+html .bd-header .navbar-nav a.nav-link,
+html .bd-header .navbar-item button,
+html .bd-header .navbar-item a,
+html .navbar-menu .navbar-nav a.nav-link,
+html .navbar-menu .navbar-item button,
+html .navbar-menu .navbar-item a,
+html .sidebar-header-items .navbar-nav a.nav-link,
+html .sidebar-header-items .navbar-item button,
+html .sidebar-header-items .navbar-item a {
+  margin: 1px 1px 3px 1px;
+  border-radius: calc(3 * var(--bs-border-radius-sm));
+  justify-content: center;
+}
+html .bd-header .navbar-nav a.nav-link:hover,
+html .bd-header .navbar-item button:hover,
+html .bd-header .navbar-item a:hover,
+html .navbar-menu .navbar-nav a.nav-link:hover,
+html .navbar-menu .navbar-item button:hover,
+html .navbar-menu .navbar-item a:hover,
+html .sidebar-header-items .navbar-nav a.nav-link:hover,
+html .sidebar-header-items .navbar-item button:hover,
+html .sidebar-header-items .navbar-item a:hover {
+  text-decoration: inherit;
+}
+html .bd-header .navbar-nav a.nav-link:hover::before,
+html .bd-header .navbar-item button:hover::before,
+html .bd-header .navbar-item a:hover::before,
+html .navbar-menu .navbar-nav a.nav-link:hover::before,
+html .navbar-menu .navbar-item button:hover::before,
+html .navbar-menu .navbar-item a:hover::before,
+html .sidebar-header-items .navbar-nav a.nav-link:hover::before,
+html .sidebar-header-items .navbar-item button:hover::before,
+html .sidebar-header-items .navbar-item a:hover::before {
+  border-style: none;
+}
+html .bd-header ul.navbar-nav {
+  flex-wrap: wrap;
+  align-content: center;
+}
+html .bd-header ul.navbar-nav > li.nav-item > a.nav-link {
+  text-wrap-mode: nowrap;
+}
+html .bd-header ul.navbar-nav > li.nav-item > a.nav-link:has(span svg.svg-inline--fa) {
+  transition: none;
+}
+html .bd-header ul.navbar-nav > li.nav-item > a.nav-link:has(span svg.svg-inline--fa):hover {
+  color: inherit;
+}
+html .bd-header div.navbar-item nav {
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+}
+html[data-theme=light] .bd-header .navbar-nav li.nav-item .nav-link,
+html[data-theme=light] .navbar-menu li .nav-link {
+  background-color: var(--pst-color-secondary-bg);
+}
+html[data-theme=light] .bd-header .navbar-nav li.nav-item:hover a:not(:has(svg)):not(:has(image)),
+html[data-theme=light] .navbar-menu li:hover a:not(:has(svg)):not(:has(image)) {
+  color: var(--pst-color-primary);
+}
+html .bd-header .navbar-nav li.nav-item,
+html .navbar-menu li,
+html .navbar-menu li {
+  background: none;
+  border-style: none;
+  border-radius: calc(3 * var(--bs-border-radius-sm));
+}
+html .bd-header .navbar-nav li.nav-item .nav-link:hover:before,
+html .navbar-menu li .nav-link:hover:before,
+html .navbar-menu li .nav-link:hover:before {
+  border-style: none;
+}
+html .bd-header .navbar-nav li.nav-item .nav-link,
+html .navbar-menu li .nav-link,
+html .navbar-menu li .nav-link {
+  background-color: var(--pst-color-on-background);
+}
+html .bd-header .navbar-nav li.nav-item:hover,
+html .navbar-menu li:hover,
+html .navbar-menu li:hover {
+  text-decoration: inherit;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.33, var(--pst-color-secondary)), color-stop(0.67, var(--pst-color-primary)));
+}
+html .bd-header .navbar-nav li.nav-item:hover a:not(:has(svg)):not(:has(image)),
+html .navbar-menu li:hover a:not(:has(svg)):not(:has(image)),
+html .navbar-menu li:hover a:not(:has(svg)):not(:has(image)) {
+  color: var(--pst-color-link-hover);
+}
+html .bd-header .navbar-nav li.nav-item.nav-internal:hover,
+html .navbar-menu li.nav-internal:hover,
+html .navbar-menu li.nav-internal:hover {
+  background-image: linear-gradient(to bottom, rgba(159, 159, 223, 0.2), rgba(0, 0, 0, 0), rgba(0, 255, 169, 0.2));
+}
+html .bd-header .navbar-header-items__center .navbar-item {
+  margin-left: 2em;
+  margin-right: 2em;
+}
+html div.navbar-item ul.navbar-icon-links {
+  -moz-column-gap: 0.25em;
+       column-gap: 0.25em;
+}
+html div.navbar-item ul.navbar-icon-links li.nav-item {
+  width: 3em;
+}
+html div.navbar-item ul.navbar-icon-links li.nav-item a.nav-link {
+  padding: 1em 0.5em;
+}
+html div.navbar-item ul.navbar-icon-links li.nav-item a.nav-link:hover {
+  box-shadow: none;
+}
+html .navbar-header-items__end {
+  -moz-column-gap: 0.125rem;
+       column-gap: 0.125rem;
+}
+html footer .container,
+html footer .container a {
+  color: var(--pst-color-text-base);
+}
+html footer .container a:hover,
+html footer .container a a:hover {
+  color: var(--pst-color-link-hover);
+}
+html .bd-sidebar-primary {
+  justify-content: space-between;
+}
+html .bd-sidebar-primary .sidebar-primary-items__end {
+  margin-top: unset;
+  margin-bottom: unset;
+}
+html .bd-sidebar-primary .sidebar-primary-item nav {
+  background-color: var(--pst-color-on-background);
+  padding: 0.5em;
+  border-radius: 0.5em;
+}
+html .bd-sidebar-primary .sidebar-primary-item nav.bd-links {
+  margin-right: inherit;
+}
+html .bd-sidebar-primary div.bd-toc-item ul.bd-sidenav li a:hover,
+html .bd-sidebar-primary nav.sidebar-indices-items ul.indices-link li a:hover {
+  border-radius: 1em;
+  text-decoration-line: none;
+  background-color: var(--pst-color-shadow);
+  color: var(--pst-color-link-hover);
+  box-shadow: inset max(3px, 0.1875rem, 0.12em) 0 0.25em var(--pst-color-primary);
+}
+html .bd-sidebar-primary nav.sidebar-indices-items ul.indices-link li a {
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-right: 2em;
+}
+html .bd-sidebar-secondary {
+  max-width: 38.2%;
+  width: -webkit-fill-available;
+}
+html .bd-sidebar-secondary .sidebar-secondary-item .tocsection a {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+  padding: 0.5em;
+  border-radius: 1em;
+}
+html .bd-sidebar-secondary .sidebar-secondary-item .tocsection a svg {
+  transition: none;
+}
+html .bd-sidebar-secondary .sidebar-secondary-item .tocsection a:hover {
+  background-color: var(--pst-color-secondary-bg);
+}
+html .bd-sidebar-primary .sidebar-primary-items__start .sidebar-primary-item:first-child {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+html .bd-sidebar-primary .sidebar-primary-items__start .sidebar-primary-item:first-child button {
+  border-color: var(--pst-color-on-surface);
+  background-color: var(--pst-color-dark);
+}
+html .bd-sidebar-primary .sidebar-primary-items__start .sidebar-primary-item:first-child button:hover {
+  color: var(--pst-color-text-muted);
+  border: 1px solid var(--pst-color-secondary);
+  box-shadow: none;
+  filter: drop-shadow(0 0 6px var(--pst-color-secondary));
+}
+html .bd-sidebar-primary .sidebar-primary-items__start .sidebar-primary-item:first-child button:hover > svg {
+  color: var(--pst-color-on-surface);
+}
+html .bd-sidebar-primary .sidebar-primary-items__start .sidebar-primary-item:first-child button:hover kbd {
+  border-color: var(--pst-color-secondary);
+}
+html:not([data-theme=dark]) .pst-navbar-icon:has(svg) {
+  color: var(--pst-color-white);
+}
+html[data-theme=light] .bd-header {
+  background-color: #4d0042 !important;
+}
+html[data-theme=light] .bd-header .navbar-nav li a.nav-link {
+  color: white;
+}
+html[data-theme=light] .bd-header .theme-switch-button.nav-link path {
+  color: white;
+}
+html[data-theme=light] .bd-sidebar-primary .sidebar-primary-items__start .sidebar-primary-item:first-child button {
+  color: var(--pst-color-text-muted);
+  background-color: var(--pst-color-on-background);
+}
+html[data-theme=light] .bd-sidebar-primary .sidebar-primary-items__start .sidebar-primary-item:first-child button:hover > svg {
+  color: var(--pst-color-secondary-bg);
+}
+html[data-theme=light] nav:has(ul[id=breadcrumbs]) {
+  z-index: 98;
+}
+html[data-theme=light] .bd-header .navbar-nav a.nav-link:not(:has(img)):not(:has(svg)),
+html[data-theme=light] .bd-header .navbar-item button:not(:has(img)):not(:has(svg)),
+html[data-theme=light] .bd-header .navbar-item a:not(:has(img)):not(:has(svg)),
+html[data-theme=light] .navbar-menu .navbar-nav a.nav-link:not(:has(img)):not(:has(svg)),
+html[data-theme=light] .navbar-menu .navbar-item button:not(:has(img)):not(:has(svg)),
+html[data-theme=light] .navbar-menu .navbar-item a:not(:has(img)):not(:has(svg)),
+html[data-theme=light] .sidebar-header-items .navbar-nav a.nav-link:not(:has(img)):not(:has(svg)),
+html[data-theme=light] .sidebar-header-items .navbar-item button:not(:has(img)):not(:has(svg)),
+html[data-theme=light] .sidebar-header-items .navbar-item a:not(:has(img)):not(:has(svg)) {
+  background-color: var(--pst-color-on-background);
+}
+html[data-theme=light] .bd-header .navbar-nav a.nav-link,
+html[data-theme=light] .bd-header .navbar-item button,
+html[data-theme=light] .bd-header .navbar-item a,
+html[data-theme=light] .navbar-menu .navbar-nav a.nav-link,
+html[data-theme=light] .navbar-menu .navbar-item button,
+html[data-theme=light] .navbar-menu .navbar-item a,
+html[data-theme=light] .sidebar-header-items .navbar-nav a.nav-link,
+html[data-theme=light] .sidebar-header-items .navbar-item button,
+html[data-theme=light] .sidebar-header-items .navbar-item a {
+  margin: 1px 1px 3px 1px;
+  border-radius: calc(3 * var(--bs-border-radius-sm));
+  justify-content: center;
+}
+html[data-theme=light] .bd-header .navbar-nav a.nav-link:hover,
+html[data-theme=light] .bd-header .navbar-item button:hover,
+html[data-theme=light] .bd-header .navbar-item a:hover,
+html[data-theme=light] .navbar-menu .navbar-nav a.nav-link:hover,
+html[data-theme=light] .navbar-menu .navbar-item button:hover,
+html[data-theme=light] .navbar-menu .navbar-item a:hover,
+html[data-theme=light] .sidebar-header-items .navbar-nav a.nav-link:hover,
+html[data-theme=light] .sidebar-header-items .navbar-item button:hover,
+html[data-theme=light] .sidebar-header-items .navbar-item a:hover {
+  text-decoration: inherit;
+}
+html[data-theme=light] .bd-header .navbar-nav a.nav-link:hover::before,
+html[data-theme=light] .bd-header .navbar-item button:hover::before,
+html[data-theme=light] .bd-header .navbar-item a:hover::before,
+html[data-theme=light] .navbar-menu .navbar-nav a.nav-link:hover::before,
+html[data-theme=light] .navbar-menu .navbar-item button:hover::before,
+html[data-theme=light] .navbar-menu .navbar-item a:hover::before,
+html[data-theme=light] .sidebar-header-items .navbar-nav a.nav-link:hover::before,
+html[data-theme=light] .sidebar-header-items .navbar-item button:hover::before,
+html[data-theme=light] .sidebar-header-items .navbar-item a:hover::before {
+  border-style: none;
+}
+html[data-theme=light] .bd-header ul.navbar-nav {
+  flex-wrap: wrap;
+  align-content: center;
+}
+html[data-theme=light] .bd-header ul.navbar-nav > li.nav-item > a.nav-link {
+  text-wrap-mode: nowrap;
+}
+html[data-theme=light] .bd-header ul.navbar-nav > li.nav-item > a.nav-link:has(span svg.svg-inline--fa) {
+  transition: none;
+}
+html[data-theme=light] .bd-header ul.navbar-nav > li.nav-item > a.nav-link:has(span svg.svg-inline--fa):hover {
+  color: inherit;
+}
+html[data-theme=light] .bd-header div.navbar-item nav {
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+}
+html[data-theme=light][data-theme=light] .bd-header .navbar-nav li.nav-item .nav-link,
+html[data-theme=light][data-theme=light] .navbar-menu li .nav-link {
+  background-color: var(--pst-color-secondary-bg);
+}
+html[data-theme=light][data-theme=light] .bd-header .navbar-nav li.nav-item:hover a:not(:has(svg)):not(:has(image)),
+html[data-theme=light][data-theme=light] .navbar-menu li:hover a:not(:has(svg)):not(:has(image)) {
+  color: var(--pst-color-primary);
+}
+html[data-theme=light] .bd-header .navbar-nav li.nav-item,
+html[data-theme=light] .navbar-menu li,
+html[data-theme=light] .navbar-menu li {
+  background: none;
+  border-style: none;
+  border-radius: calc(3 * var(--bs-border-radius-sm));
+}
+html[data-theme=light] .bd-header .navbar-nav li.nav-item .nav-link:hover:before,
+html[data-theme=light] .navbar-menu li .nav-link:hover:before,
+html[data-theme=light] .navbar-menu li .nav-link:hover:before {
+  border-style: none;
+}
+html[data-theme=light] .bd-header .navbar-nav li.nav-item .nav-link,
+html[data-theme=light] .navbar-menu li .nav-link,
+html[data-theme=light] .navbar-menu li .nav-link {
+  background-color: var(--pst-color-on-background);
+}
+html[data-theme=light] .bd-header .navbar-nav li.nav-item:hover,
+html[data-theme=light] .navbar-menu li:hover,
+html[data-theme=light] .navbar-menu li:hover {
+  text-decoration: inherit;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.33, #ff00db), color-stop(0.67, var(--pst-color-primary)));
+}
+html[data-theme=light] .bd-header .navbar-nav li.nav-item:hover a:not(:has(svg)):not(:has(image)),
+html[data-theme=light] .navbar-menu li:hover a:not(:has(svg)):not(:has(image)),
+html[data-theme=light] .navbar-menu li:hover a:not(:has(svg)):not(:has(image)) {
+  color: var(--pst-color-link-hover);
+}
+html[data-theme=light] .bd-header .navbar-nav li.nav-item.nav-internal:hover,
+html[data-theme=light] .navbar-menu li.nav-internal:hover,
+html[data-theme=light] .navbar-menu li.nav-internal:hover {
+  background-image: linear-gradient(to bottom, rgba(159, 159, 223, 0.2), rgba(0, 0, 0, 0), rgba(0, 255, 169, 0.2));
+}
+html[data-theme=light] .bd-sidebar-secondary .sidebar-secondary-item .tocsection a:hover {
+  color: var(--pst-color-white);
+}
+html[data-theme=light] .toc-entry a.nav-link.active,
+html[data-theme=light] nav.bd-links .current > a {
+  color: var(--pst-color-secondary);
+}
+html .bd-sidebar-primary {
+  background-color: var(--pst-color-surface);
+  color: var(--pst-color-on-surface);
+}
+html .bd-sidebar-primary .sidebar-primary-item nav {
+  background-color: var(--pst-color-on-background);
+}
+html .toc-entry a.nav-link.active {
+  border-radius: max(3px, 0.1875rem, 0.12em);
+  box-shadow: inset min(3px, 0.1875rem, 0.12em) 0 0 var(--pst-color-primary);
+}
+html .toc-entry a.nav-link:hover {
+  text-decoration-thickness: inherit;
+  border-radius: max(24px, 1.125rem, 1em);
+  box-shadow: inset max(3px, 0.1875rem, 0.12em) 0 0.25em var(--pst-color-primary);
+}
+html nav.bd-links .current > a {
+  border-radius: max(3px, 0.1875rem, 0.12em);
+  box-shadow: inset min(3px, 0.1875rem, 0.12em) 0 0 var(--pst-color-primary);
+}
+html .footer-item ul.footer-icon-links {
+  display: flex;
+  flex-direction: column;
+  padding-left: unset;
+}
+html .footer-item ul.footer-icon-links a {
+  padding: 0.5em 1em;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.search-dialog input {
+  color: var(--pagefind-ui-text);
+}
+
+.pagefind-ui__results-area {
+  background-color: rgba(0, 0, 0, 0.65);
+  padding-left: 1em;
+  padding-right: 1em;
+  border-radius: 1em;
+  color: var(--pst-color-text-base);
+}
+.pagefind-ui__results-area mark {
+  background-color: var(--pst-color-secondary);
+  border-radius: 0.5em;
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+}
+
+.pagefind-ui__drawer button.pagefind-ui__button {
+  margin-top: calc(20px * var(--pagefind-ui-scale));
+  margin-bottom: calc(20px * var(--pagefind-ui-scale));
+  color: var(--pst-color-text-muted);
+}
+.pagefind-ui__drawer button.pagefind-ui__button:hover {
+  color: var(--pagefind-ui-text);
+  border-color: var(--pst-color-secondary);
+  box-shadow: inset 0 0 1em var(--pst-color-secondary);
+  border-radius: 2em;
+}
+
+input.pagefind-ui__search-input::-moz-placeholder {
+  color: var(--pst-color-dark-text);
+}
+
+input.pagefind-ui__search-input::placeholder {
+  color: var(--pst-color-dark-text);
+}
+
+dialog.search-dialog {
+  border: none;
+  background-color: transparent;
+  width: 80%;
+}
+dialog.search-dialog .pagefind-ui form.pagefind-ui__form::before {
+  background-color: var(--pst-color-dark-text);
+}
+dialog.search-dialog::backdrop {
+  -webkit-backdrop-filter: blur(0.25rem);
+          backdrop-filter: blur(0.25rem);
+}
+dialog.search-dialog input.pagefind-ui__search-input {
+  border-radius: 2rem;
+}
+dialog.pst-search-dialog form {
+  border: hidden;
+  background: none;
+}
+dialog.pst-search-dialog form::before {
+  top: calc(46px * var(--pagefind-ui-scale));
+  left: calc(50px * var(--pagefind-ui-scale));
+}
+dialog.pst-search-dialog form:focus-within {
+  box-shadow: none;
+}
+dialog.pst-search-dialog form button {
+  top: calc(24px * var(--pagefind-ui-scale));
+  right: calc(12px * var(--pagefind-ui-scale));
+}
+
+button.pagefind-ui__search-clear.svelte-e9gkc3 {
+  border-radius: 2em;
+  border: hidden;
+  margin-right: calc(15px * var(--pagefind-ui-scale));
+}
+
+.search-button__default-text {
+  width: -webkit-fill-available;
+}
+
+html[data-theme=light] .pagefind-ui__results-area.svelte-e9gkc3 {
+  color: var(--pst-color-white-highlight);
+}
+html[data-theme=light] .pagefind-ui__results-area.svelte-e9gkc3 .pagefind-ui__result-title .pagefind-ui__result-link {
+  color: var(--pst-color-black-text);
+}
+html[data-theme=light] .pagefind-ui__results-area.svelte-e9gkc3 .pagefind-ui__result-excerpt mark {
+  color: var(--pst-color-black-text);
+}
+html[data-theme=light] dialog.search-dialog .pagefind-ui form.pagefind-ui__form::before {
+  background-color: var(--pagefind-ui-text);
+}
+
+html section.py-module h1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-info);
+  color: var(--pst-color-info-bg);
+  border-radius: 0.5em;
+}
+html section[id$=submodules] {
+  margin-top: 2.75rem;
+}
+html section[id$=submodules] .toctree-wrapper > ul {
+  padding-left: 0.75em;
+}
+html section[id$=submodules] .toctree-wrapper > ul > li[class^=toctree-l] {
+  padding-left: 0.75em;
+  margin-bottom: unset;
+  padding-top: 0.625em;
+  padding-bottom: 0.625em;
+}
+html section[id$=submodules] .toctree-wrapper > ul > li[class^=toctree-l]:first-child {
+  border-top-left-radius: var(--bs-border-radius-lg);
+  border-top-right-radius: var(--bs-border-radius-lg);
+}
+html section[id$=submodules] .toctree-wrapper > ul > li[class^=toctree-l]:last-child {
+  border-bottom-left-radius: var(--bs-border-radius-lg);
+  border-bottom-right-radius: var(--bs-border-radius-lg);
+}
+html section[id$=submodules] .toctree-wrapper > ul > li[class^=toctree-l]:nth-child(odd) {
+  background-color: var(--pst-color-table-row-zebra-low-bg);
+}
+html section[id$=submodules] .toctree-wrapper > ul > li[class^=toctree-l]:nth-child(even) {
+  background-color: var(--pst-color-table-row-zebra-high-bg);
+}
+html section[id$=submodules] h1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-info);
+  color: var(--pst-color-info-bg);
+  border-radius: 0.5em;
+}
+html section[id$=submodules] h2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-info);
+  color: var(--pst-color-info-bg);
+  border-radius: 0.5em;
+}
+html section[id$=submodules] h3 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-info);
+  color: var(--pst-color-info-bg);
+  border-radius: 0.5em;
+}
+html p.submodules.rubric {
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  color: var(--pst-color-info-bg);
+  background-color: var(--pst-color-info);
+  padding-left: 0.5em;
+  border-radius: 0.5em;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+html section.py-module-contents h1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-info);
+  color: var(--pst-color-info-bg);
+  border-radius: 0.5em;
+}
+html section[id$=module-contents] {
+  margin-top: 2.75rem;
+}
+html section[id$=module-contents] .toctree-wrapper > ul {
+  padding-left: 0.75em;
+}
+html section[id$=module-contents] .toctree-wrapper > ul > li[class^=toctree-l] {
+  padding-left: 0.75em;
+  margin-bottom: unset;
+  padding-top: 0.625em;
+  padding-bottom: 0.625em;
+}
+html section[id$=module-contents] .toctree-wrapper > ul > li[class^=toctree-l]:first-child {
+  border-top-left-radius: var(--bs-border-radius-lg);
+  border-top-right-radius: var(--bs-border-radius-lg);
+}
+html section[id$=module-contents] .toctree-wrapper > ul > li[class^=toctree-l]:last-child {
+  border-bottom-left-radius: var(--bs-border-radius-lg);
+  border-bottom-right-radius: var(--bs-border-radius-lg);
+}
+html section[id$=module-contents] .toctree-wrapper > ul > li[class^=toctree-l]:nth-child(odd) {
+  background-color: var(--pst-color-table-row-zebra-low-bg);
+}
+html section[id$=module-contents] .toctree-wrapper > ul > li[class^=toctree-l]:nth-child(even) {
+  background-color: var(--pst-color-table-row-zebra-high-bg);
+}
+html section[id$=module-contents] h1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-info);
+  color: var(--pst-color-info-bg);
+  border-radius: 0.5em;
+}
+html section[id$=module-contents] h2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-info);
+  color: var(--pst-color-info-bg);
+  border-radius: 0.5em;
+}
+html section[id$=module-contents] h3 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-info);
+  color: var(--pst-color-info-bg);
+  border-radius: 0.5em;
+}
+html p.module-contents.rubric {
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  color: var(--pst-color-info-bg);
+  background-color: var(--pst-color-info);
+  padding-left: 0.5em;
+  border-radius: 0.5em;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+html section.py-function h1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-success);
+  color: var(--pst-color-success-bg);
+  border-radius: 0.5em;
+}
+html section[id$=functions] {
+  margin-top: 2.75rem;
+}
+html section[id$=functions] .toctree-wrapper > ul {
+  padding-left: 0.75em;
+}
+html section[id$=functions] .toctree-wrapper > ul > li[class^=toctree-l] {
+  padding-left: 0.75em;
+  margin-bottom: unset;
+  padding-top: 0.625em;
+  padding-bottom: 0.625em;
+}
+html section[id$=functions] .toctree-wrapper > ul > li[class^=toctree-l]:first-child {
+  border-top-left-radius: var(--bs-border-radius-lg);
+  border-top-right-radius: var(--bs-border-radius-lg);
+}
+html section[id$=functions] .toctree-wrapper > ul > li[class^=toctree-l]:last-child {
+  border-bottom-left-radius: var(--bs-border-radius-lg);
+  border-bottom-right-radius: var(--bs-border-radius-lg);
+}
+html section[id$=functions] .toctree-wrapper > ul > li[class^=toctree-l]:nth-child(odd) {
+  background-color: var(--pst-color-table-row-zebra-low-bg);
+}
+html section[id$=functions] .toctree-wrapper > ul > li[class^=toctree-l]:nth-child(even) {
+  background-color: var(--pst-color-table-row-zebra-high-bg);
+}
+html section[id$=functions] h1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-success);
+  color: var(--pst-color-success-bg);
+  border-radius: 0.5em;
+}
+html section[id$=functions] h2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-success);
+  color: var(--pst-color-success-bg);
+  border-radius: 0.5em;
+}
+html section[id$=functions] h3 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-success);
+  color: var(--pst-color-success-bg);
+  border-radius: 0.5em;
+}
+html p.functions.rubric {
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  color: var(--pst-color-success-bg);
+  background-color: var(--pst-color-success);
+  padding-left: 0.5em;
+  border-radius: 0.5em;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+html section.py-exception h1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-danger);
+  color: var(--pst-color-danger-bg);
+  border-radius: 0.5em;
+}
+html section[id$=exceptions] {
+  margin-top: 2.75rem;
+}
+html section[id$=exceptions] .toctree-wrapper > ul {
+  padding-left: 0.75em;
+}
+html section[id$=exceptions] .toctree-wrapper > ul > li[class^=toctree-l] {
+  padding-left: 0.75em;
+  margin-bottom: unset;
+  padding-top: 0.625em;
+  padding-bottom: 0.625em;
+}
+html section[id$=exceptions] .toctree-wrapper > ul > li[class^=toctree-l]:first-child {
+  border-top-left-radius: var(--bs-border-radius-lg);
+  border-top-right-radius: var(--bs-border-radius-lg);
+}
+html section[id$=exceptions] .toctree-wrapper > ul > li[class^=toctree-l]:last-child {
+  border-bottom-left-radius: var(--bs-border-radius-lg);
+  border-bottom-right-radius: var(--bs-border-radius-lg);
+}
+html section[id$=exceptions] .toctree-wrapper > ul > li[class^=toctree-l]:nth-child(odd) {
+  background-color: var(--pst-color-table-row-zebra-low-bg);
+}
+html section[id$=exceptions] .toctree-wrapper > ul > li[class^=toctree-l]:nth-child(even) {
+  background-color: var(--pst-color-table-row-zebra-high-bg);
+}
+html section[id$=exceptions] h1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-danger);
+  color: var(--pst-color-danger-bg);
+  border-radius: 0.5em;
+}
+html section[id$=exceptions] h2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-danger);
+  color: var(--pst-color-danger-bg);
+  border-radius: 0.5em;
+}
+html section[id$=exceptions] h3 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-danger);
+  color: var(--pst-color-danger-bg);
+  border-radius: 0.5em;
+}
+html p.exceptions.rubric {
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  color: var(--pst-color-danger-bg);
+  background-color: var(--pst-color-danger);
+  padding-left: 0.5em;
+  border-radius: 0.5em;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+html section.py-class h1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-info-bg);
+  color: var(--pst-color-info);
+  border-radius: 0.5em;
+}
+html section[id$=classes] {
+  margin-top: 2.75rem;
+}
+html section[id$=classes] .toctree-wrapper > ul {
+  padding-left: 0.75em;
+}
+html section[id$=classes] .toctree-wrapper > ul > li[class^=toctree-l] {
+  padding-left: 0.75em;
+  margin-bottom: unset;
+  padding-top: 0.625em;
+  padding-bottom: 0.625em;
+}
+html section[id$=classes] .toctree-wrapper > ul > li[class^=toctree-l]:first-child {
+  border-top-left-radius: var(--bs-border-radius-lg);
+  border-top-right-radius: var(--bs-border-radius-lg);
+}
+html section[id$=classes] .toctree-wrapper > ul > li[class^=toctree-l]:last-child {
+  border-bottom-left-radius: var(--bs-border-radius-lg);
+  border-bottom-right-radius: var(--bs-border-radius-lg);
+}
+html section[id$=classes] .toctree-wrapper > ul > li[class^=toctree-l]:nth-child(odd) {
+  background-color: var(--pst-color-table-row-zebra-low-bg);
+}
+html section[id$=classes] .toctree-wrapper > ul > li[class^=toctree-l]:nth-child(even) {
+  background-color: var(--pst-color-table-row-zebra-high-bg);
+}
+html section[id$=classes] h1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-info-bg);
+  color: var(--pst-color-info);
+  border-radius: 0.5em;
+}
+html section[id$=classes] h2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-info-bg);
+  color: var(--pst-color-info);
+  border-radius: 0.5em;
+}
+html section[id$=classes] h3 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-info-bg);
+  color: var(--pst-color-info);
+  border-radius: 0.5em;
+}
+html p.classes.rubric {
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  color: var(--pst-color-info);
+  background-color: var(--pst-color-info-bg);
+  padding-left: 0.5em;
+  border-radius: 0.5em;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+html section.py-method h1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-success-highlight);
+  color: var(--pst-color-success-bg);
+  border-radius: 0.5em;
+}
+html section[id$=methods] {
+  margin-top: 2.75rem;
+}
+html section[id$=methods] .toctree-wrapper > ul {
+  padding-left: 0.75em;
+}
+html section[id$=methods] .toctree-wrapper > ul > li[class^=toctree-l] {
+  padding-left: 0.75em;
+  margin-bottom: unset;
+  padding-top: 0.625em;
+  padding-bottom: 0.625em;
+}
+html section[id$=methods] .toctree-wrapper > ul > li[class^=toctree-l]:first-child {
+  border-top-left-radius: var(--bs-border-radius-lg);
+  border-top-right-radius: var(--bs-border-radius-lg);
+}
+html section[id$=methods] .toctree-wrapper > ul > li[class^=toctree-l]:last-child {
+  border-bottom-left-radius: var(--bs-border-radius-lg);
+  border-bottom-right-radius: var(--bs-border-radius-lg);
+}
+html section[id$=methods] .toctree-wrapper > ul > li[class^=toctree-l]:nth-child(odd) {
+  background-color: var(--pst-color-table-row-zebra-low-bg);
+}
+html section[id$=methods] .toctree-wrapper > ul > li[class^=toctree-l]:nth-child(even) {
+  background-color: var(--pst-color-table-row-zebra-high-bg);
+}
+html section[id$=methods] h1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-success-highlight);
+  color: var(--pst-color-success-bg);
+  border-radius: 0.5em;
+}
+html section[id$=methods] h2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-success-highlight);
+  color: var(--pst-color-success-bg);
+  border-radius: 0.5em;
+}
+html section[id$=methods] h3 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-success-highlight);
+  color: var(--pst-color-success-bg);
+  border-radius: 0.5em;
+}
+html p.methods.rubric {
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  color: var(--pst-color-success-bg);
+  background-color: var(--pst-color-success-highlight);
+  padding-left: 0.5em;
+  border-radius: 0.5em;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+html section.py-attribute h1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-danger-highlight);
+  color: var(--pst-color-danger-bg);
+  border-radius: 0.5em;
+}
+html section[id$=attributes] {
+  margin-top: 2.75rem;
+}
+html section[id$=attributes] .toctree-wrapper > ul {
+  padding-left: 0.75em;
+}
+html section[id$=attributes] .toctree-wrapper > ul > li[class^=toctree-l] {
+  padding-left: 0.75em;
+  margin-bottom: unset;
+  padding-top: 0.625em;
+  padding-bottom: 0.625em;
+}
+html section[id$=attributes] .toctree-wrapper > ul > li[class^=toctree-l]:first-child {
+  border-top-left-radius: var(--bs-border-radius-lg);
+  border-top-right-radius: var(--bs-border-radius-lg);
+}
+html section[id$=attributes] .toctree-wrapper > ul > li[class^=toctree-l]:last-child {
+  border-bottom-left-radius: var(--bs-border-radius-lg);
+  border-bottom-right-radius: var(--bs-border-radius-lg);
+}
+html section[id$=attributes] .toctree-wrapper > ul > li[class^=toctree-l]:nth-child(odd) {
+  background-color: var(--pst-color-table-row-zebra-low-bg);
+}
+html section[id$=attributes] .toctree-wrapper > ul > li[class^=toctree-l]:nth-child(even) {
+  background-color: var(--pst-color-table-row-zebra-high-bg);
+}
+html section[id$=attributes] h1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-danger-highlight);
+  color: var(--pst-color-danger-bg);
+  border-radius: 0.5em;
+}
+html section[id$=attributes] h2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-danger-highlight);
+  color: var(--pst-color-danger-bg);
+  border-radius: 0.5em;
+}
+html section[id$=attributes] h3 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-danger-highlight);
+  color: var(--pst-color-danger-bg);
+  border-radius: 0.5em;
+}
+html p.attributes.rubric {
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  color: var(--pst-color-danger-bg);
+  background-color: var(--pst-color-danger-highlight);
+  padding-left: 0.5em;
+  border-radius: 0.5em;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+html section.py-property h1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-warning);
+  color: var(--pst-color-warning-bg);
+  border-radius: 0.5em;
+}
+html section[id$=properties] {
+  margin-top: 2.75rem;
+}
+html section[id$=properties] .toctree-wrapper > ul {
+  padding-left: 0.75em;
+}
+html section[id$=properties] .toctree-wrapper > ul > li[class^=toctree-l] {
+  padding-left: 0.75em;
+  margin-bottom: unset;
+  padding-top: 0.625em;
+  padding-bottom: 0.625em;
+}
+html section[id$=properties] .toctree-wrapper > ul > li[class^=toctree-l]:first-child {
+  border-top-left-radius: var(--bs-border-radius-lg);
+  border-top-right-radius: var(--bs-border-radius-lg);
+}
+html section[id$=properties] .toctree-wrapper > ul > li[class^=toctree-l]:last-child {
+  border-bottom-left-radius: var(--bs-border-radius-lg);
+  border-bottom-right-radius: var(--bs-border-radius-lg);
+}
+html section[id$=properties] .toctree-wrapper > ul > li[class^=toctree-l]:nth-child(odd) {
+  background-color: var(--pst-color-table-row-zebra-low-bg);
+}
+html section[id$=properties] .toctree-wrapper > ul > li[class^=toctree-l]:nth-child(even) {
+  background-color: var(--pst-color-table-row-zebra-high-bg);
+}
+html section[id$=properties] h1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-warning);
+  color: var(--pst-color-warning-bg);
+  border-radius: 0.5em;
+}
+html section[id$=properties] h2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-warning);
+  color: var(--pst-color-warning-bg);
+  border-radius: 0.5em;
+}
+html section[id$=properties] h3 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-warning);
+  color: var(--pst-color-warning-bg);
+  border-radius: 0.5em;
+}
+html p.properties.rubric {
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  color: var(--pst-color-warning-bg);
+  background-color: var(--pst-color-warning);
+  padding-left: 0.5em;
+  border-radius: 0.5em;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+html .sig.sig-object a {
+  color: #9f9fdf;
+}
+html .sig.sig-object .sig-param {
+  color: #ffd2b3;
+}
+html .sig.sig-object .sig-param .o {
+  color: var(--pst-color-white);
+}
+html[data-theme=light] section.py-module h1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-primary-bg);
+  color: var(--pst-color-primary-text);
+  border-radius: 0.5em;
+}
+html[data-theme=light] section[id$=submodules] {
+  margin-top: 2.75rem;
+}
+html[data-theme=light] section[id$=submodules] .toctree-wrapper > ul {
+  padding-left: 0.75em;
+}
+html[data-theme=light] section[id$=submodules] .toctree-wrapper > ul > li[class^=toctree-l] {
+  padding-left: 0.75em;
+  margin-bottom: unset;
+  padding-top: 0.625em;
+  padding-bottom: 0.625em;
+}
+html[data-theme=light] section[id$=submodules] .toctree-wrapper > ul > li[class^=toctree-l]:first-child {
+  border-top-left-radius: var(--bs-border-radius-lg);
+  border-top-right-radius: var(--bs-border-radius-lg);
+}
+html[data-theme=light] section[id$=submodules] .toctree-wrapper > ul > li[class^=toctree-l]:last-child {
+  border-bottom-left-radius: var(--bs-border-radius-lg);
+  border-bottom-right-radius: var(--bs-border-radius-lg);
+}
+html[data-theme=light] section[id$=submodules] .toctree-wrapper > ul > li[class^=toctree-l]:nth-child(odd) {
+  background-color: var(--pst-color-table-row-zebra-low-bg);
+}
+html[data-theme=light] section[id$=submodules] .toctree-wrapper > ul > li[class^=toctree-l]:nth-child(even) {
+  background-color: var(--pst-color-table-row-zebra-high-bg);
+}
+html[data-theme=light] section[id$=submodules] h1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-primary-bg);
+  color: var(--pst-color-primary-text);
+  border-radius: 0.5em;
+}
+html[data-theme=light] section[id$=submodules] h2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-primary-bg);
+  color: var(--pst-color-primary-text);
+  border-radius: 0.5em;
+}
+html[data-theme=light] section[id$=submodules] h3 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-primary-bg);
+  color: var(--pst-color-primary-text);
+  border-radius: 0.5em;
+}
+html[data-theme=light] p.submodules.rubric {
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  color: var(--pst-color-primary-text);
+  background-color: var(--pst-color-primary-bg);
+  padding-left: 0.5em;
+  border-radius: 0.5em;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+html[data-theme=light] section.py-module-contents h1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-primary-bg);
+  color: var(--pst-color-primary-text);
+  border-radius: 0.5em;
+}
+html[data-theme=light] section[id$=module-contents] {
+  margin-top: 2.75rem;
+}
+html[data-theme=light] section[id$=module-contents] .toctree-wrapper > ul {
+  padding-left: 0.75em;
+}
+html[data-theme=light] section[id$=module-contents] .toctree-wrapper > ul > li[class^=toctree-l] {
+  padding-left: 0.75em;
+  margin-bottom: unset;
+  padding-top: 0.625em;
+  padding-bottom: 0.625em;
+}
+html[data-theme=light] section[id$=module-contents] .toctree-wrapper > ul > li[class^=toctree-l]:first-child {
+  border-top-left-radius: var(--bs-border-radius-lg);
+  border-top-right-radius: var(--bs-border-radius-lg);
+}
+html[data-theme=light] section[id$=module-contents] .toctree-wrapper > ul > li[class^=toctree-l]:last-child {
+  border-bottom-left-radius: var(--bs-border-radius-lg);
+  border-bottom-right-radius: var(--bs-border-radius-lg);
+}
+html[data-theme=light] section[id$=module-contents] .toctree-wrapper > ul > li[class^=toctree-l]:nth-child(odd) {
+  background-color: var(--pst-color-table-row-zebra-low-bg);
+}
+html[data-theme=light] section[id$=module-contents] .toctree-wrapper > ul > li[class^=toctree-l]:nth-child(even) {
+  background-color: var(--pst-color-table-row-zebra-high-bg);
+}
+html[data-theme=light] section[id$=module-contents] h1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-primary-bg);
+  color: var(--pst-color-primary-text);
+  border-radius: 0.5em;
+}
+html[data-theme=light] section[id$=module-contents] h2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-primary-bg);
+  color: var(--pst-color-primary-text);
+  border-radius: 0.5em;
+}
+html[data-theme=light] section[id$=module-contents] h3 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-top: 0;
+  padding: 0.125em 0.5em;
+  background-color: var(--pst-color-primary-bg);
+  color: var(--pst-color-primary-text);
+  border-radius: 0.5em;
+}
+html[data-theme=light] p.module-contents.rubric {
+  flex-direction: row;
+  align-items: center;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  color: var(--pst-color-primary-text);
+  background-color: var(--pst-color-primary-bg);
+  padding-left: 0.5em;
+  border-radius: 0.5em;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+html[data-theme=light] .sig.sig-object a:hover {
+  color: var(--pst-color-secondary-highlight-text);
+}
+html[data-theme=light] .sig.sig-object .sig-param .default_value {
+  color: var(--pst-gray-400);
+}
+html[data-theme=light] dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) dt.field-even,
+html[data-theme=light] dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) dt.field-odd {
+  background-color: var(--bs-color-dark-bg-subtle);
+}
+
+table.autosummary.longtable {
+  margin-left: 2em;
+  width: 90%;
+}
+
+dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) {
+  margin-bottom: 1rem;
+  padding-bottom: 2rem;
+  border-radius: 0.5rem;
+  background-color: var(--pst-color-surface);
+}
+dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) dd {
+  margin-right: 2rem;
+}
+dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) dd dl.py {
+  background-color: var(--pst-color-surface);
+}
+dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) dd dl.py > dt > em.property {
+  color: #80ffd4;
+}
+dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) .sig.sig-object {
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+}
+dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) dt.field-odd,
+dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) dt.field-even {
+  background-color: var(--pst-color-background);
+}
+
+.sig.sig-object {
+  padding: 0em 0.75em;
+  color: #ffccf8;
+  background-color: #4d0042;
+}
+.sig.sig-object .sig-prename {
+  color: #b3ffe5;
+}
+.sig.sig-object .sig-prename.descclass {
+  color: var(--pst-color-inline-code);
+}
+
+.table {
+  border: hidden;
+  border-color: var(--pst-color-table-inner-border);
+}
+
+td {
+  border-style: none solid solid none;
+}
+
+tr:first-child td:first-child {
+  border-top-left-radius: var(--bs-border-radius-lg);
+}
+
+tr:first-child td:last-child {
+  border-top-right-radius: var(--bs-border-radius-lg);
+}
+
+tr:last-child td:first-child {
+  border-bottom-left-radius: var(--bs-border-radius-lg);
+}
+
+tr:last-child td:last-child {
+  border-bottom-right-radius: var(--bs-border-radius-lg);
+}
+
+tr:first-child td {
+  border-top-style: solid;
+}
+
+tr td:first-child {
+  border-left-style: solid;
+}
+
+html div.bd-page-width {
+  max-width: 100%;
+}
+html div.bd-container > div.bd-page-width > main.bd-main {
+  width: -webkit-fill-available;
+}
+html div.bd-container > div.bd-page-width > main.bd-main > div.bd-content {
+  justify-content: space-between;
+  width: -webkit-fill-available;
+}
+html div.bd-container > div.bd-page-width > main.bd-main > div.bd-content:has(.bd-sidebar-secondary) > div.bd-article-container {
+  max-width: 61.8%;
+}
+html div.bd-container > div.bd-page-width > main.bd-main > div.bd-content:not(:has(.bd-sidebar-secondary)) > div.bd-article-container {
+  width: -webkit-fill-available;
+  max-width: 90%;
+}
+html a:hover {
+  text-decoration-thickness: inherit;
+}
+html a:has(code):hover {
+  text-decoration-line: none !important;
+}
+html a:has(code):hover code {
+  border-color: var(--pst-color-secondary);
+}
+html .toctree-wrapper li a {
+  padding: 0.5em;
+  padding-top: 0.25em;
+  border-radius: 1em;
+}
+html .toctree-wrapper li a:hover {
+  background-color: var(--pst-color-secondary-bg);
+}
+html a.right-next p.prev-next-title,
+html a.left-prev p.prev-next-title {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+  padding: 0.5em 1em;
+  border-radius: 1em;
+}
+html a.right-next p.prev-next-title a,
+html a.left-prev p.prev-next-title a {
+  transition: all var(--transition-fast);
+  -moz-transition: all var(--transition-fast);
+  -webkit-transition: all var(--transition-fast);
+}
+html a.right-next:hover p.prev-next-title,
+html a.left-prev:hover p.prev-next-title {
+  background-color: var(--pst-color-secondary-bg);
+  text-decoration-thickness: inherit;
+}
+html a.viewcode-back {
+  padding: 0.375em 1em;
+  border-radius: 1em;
+}
+html a.viewcode-back:hover {
+  background-color: var(--pst-color-secondary-bg);
+}
+html[data-theme=light] a.right-next:hover p.prev-next-title,
+html[data-theme=light] a.left-prev:hover p.prev-next-title {
+  color: var(--pst-color-secondary-highlight);
+  background-color: var(--pst-color-secondary);
+}
+html[data-theme=light] a.viewcode-back:hover {
+  color: var(--pst-color-secondary-highlight);
+}
+html[data-theme=light] .bd-footer .bd-footer__inner {
+  background-color: var(--pst-color-secondary-bg);
+  color: var(--pst-color-black-text);
+}
+html[data-theme=light] .toctree-wrapper li a:hover {
+  background-color: var(--pst-color-secondary);
+  color: var(--pst-color-secondary-highlight);
+}/*# sourceMappingURL=custom.css.map */

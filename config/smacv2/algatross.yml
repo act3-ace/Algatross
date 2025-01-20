@@ -1,0 +1,309 @@
+common_conspecific_data_keys: &common_conspecific_data_keys
+  - obs
+  - actions
+common_conspecific_utility_keys: &common_conspecific_utility_keys
+  - own_health
+  - dead_enemies
+  - dead_allies
+  - ally_health
+  - battle_won
+conspecific_utility_objectives: &common_conspecific_utility_objectives
+  - max
+  - max
+  - min
+  - max
+  - max
+
+config: &common_island_config
+  env_name: "protoss_5_vs_5"
+  agent_constructors:
+    allies_0: !ConstructorData
+      constructor: !function algatross.agents.on_policy.ppo.TorchPPOAgent
+      config: !include config/smacv2/ppo_agent_base.yml
+    allies_1: !ConstructorData
+      constructor: !function algatross.agents.on_policy.ppo.TorchPPOAgent
+      config: !include config/smacv2/ppo_agent_base.yml
+    allies_2: !ConstructorData
+      constructor: !function algatross.agents.on_policy.ppo.TorchPPOAgent
+      config: !include config/smacv2/ppo_agent_base.yml
+    allies_3: !ConstructorData
+      constructor: !function algatross.agents.on_policy.ppo.TorchPPOAgent
+      config: !include config/smacv2/ppo_agent_base.yml
+    allies_4: !ConstructorData
+      constructor: !function algatross.agents.on_policy.ppo.TorchPPOAgent
+      config: !include config/smacv2/ppo_agent_base.yml
+    # allies_5: !ConstructorData
+    #   constructor: !function algatross.agents.on_policy.ppo.TorchPPOAgent
+    #   config: !include config/smacv2/ppo_agent_base.yml
+    # allies_6: !ConstructorData
+    #   constructor: !function algatross.agents.on_policy.ppo.TorchPPOAgent
+    #   config: !include config/smacv2/ppo_agent_base.yml
+    # allies_7: !ConstructorData
+    #   constructor: !function algatross.agents.on_policy.ppo.TorchPPOAgent
+    #   config: !include config/smacv2/ppo_agent_base.yml
+    # allies_8: !ConstructorData
+    #   constructor: !function algatross.agents.on_policy.ppo.TorchPPOAgent
+    #   config: !include config/smacv2/ppo_agent_base.yml
+    # allies_9: !ConstructorData
+    #   constructor: !function algatross.agents.on_policy.ppo.TorchPPOAgent
+    #   config: !include config/smacv2/ppo_agent_base.yml
+  max_trajectory_length: -50
+
+island_iterations: 1
+mainland_iterations: 1
+softmax_reset_interval: 100
+epochs: 1000
+seed: 1000
+experiment_name: null
+log_dir: "experiments"
+ray_config: {}
+
+environment_map: !include config/smacv2/environments.yml
+
+topology_constructor: !ConstructorData
+  constructor: !function algatross.algorithms.genetic.mo_aim.topology.MOAIMTopology
+  config:
+    nu: 0.01
+    alpha: 0.0003
+
+archipelago_constructor: !ConstructorData
+  constructor: !function algatross.algorithms.genetic.mo_aim.archipelago.RayMOAIMArchipelago
+  config:
+    conspecific_utility_keys: *common_conspecific_utility_keys
+    n_workers: 10
+    n_envs: 2
+    training_iterations: 10
+    warmup_generations: 10
+
+islands:
+  # High Value Asset: Survivor
+  # island_id: 0
+  - island_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMIslandUDI
+      config: *common_island_config
+
+    algorithm_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.algorithm.MOAIMIslandUDA
+      config: !include config/smacv2/island_uda_config_base.yml
+    problem_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.MOAIMIslandUDP
+      config: !merge
+        - !include config/smacv2/island_udp_config_base.yml
+        - fitness_multiplier:
+            - 1.00 # own_health
+            - 0.00 # dead_enemies
+            - 0.00 # dead_allies
+            - 0.00 # ally_health
+            - 0.00 # battle_won
+        - conspecific_data_keys: *common_conspecific_data_keys
+        - conspecific_utility_keys: *common_conspecific_utility_keys
+    population_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.population.MOAIMIslandPopulation
+      config: !include config/smacv2/island_pop_config_base.yml
+
+  # High Value Asset: Medic
+  # island_id: 1
+  - island_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMIslandUDI
+      config: *common_island_config
+
+    algorithm_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.algorithm.MOAIMIslandUDA
+      config: !include config/smacv2/island_uda_config_base.yml
+    problem_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.MOAIMIslandUDP
+      config: !merge
+        - !include config/smacv2/island_udp_config_base.yml
+        - fitness_multiplier:
+            - 0.00 # own_health
+            - 0.00 # dead_enemies
+            - 1.00 # dead_allies
+            - 1.00 # ally_health
+            - 0.00 # battle_won
+        - conspecific_data_keys: *common_conspecific_data_keys
+        - conspecific_utility_keys: *common_conspecific_utility_keys
+    population_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.population.MOAIMIslandPopulation
+      config: !include config/smacv2/island_pop_config_base.yml
+
+  # Interceptor: Protector
+  # island_id: 2
+  - island_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMIslandUDI
+      config: *common_island_config
+
+    algorithm_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.algorithm.MOAIMIslandUDA
+      config: !include config/smacv2/island_uda_config_base.yml
+    problem_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.MOAIMIslandUDP
+      config: !merge
+        - !include config/smacv2/island_udp_config_base.yml
+        - fitness_multiplier:
+            - 0.00 # own_health
+            - 0.00 # dead_enemies
+            - 1.00 # dead_allies
+            - 1.00 # ally_health
+            - 0.00 # battle_won
+        - conspecific_data_keys: *common_conspecific_data_keys
+        - conspecific_utility_keys: *common_conspecific_utility_keys
+    population_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.population.MOAIMIslandPopulation
+      config: !include config/smacv2/island_pop_config_base.yml
+
+  # Interceptor: Destroyer
+  # island_id: 3
+  - island_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMIslandUDI
+      config: *common_island_config
+
+    algorithm_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.algorithm.MOAIMIslandUDA
+      config: !include config/smacv2/island_uda_config_base.yml
+    problem_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.MOAIMIslandUDP
+      config: !merge
+        - !include config/smacv2/island_udp_config_base.yml
+        - fitness_multiplier:
+            - 0.00 # own_health
+            - 1.00 # dead_enemies
+            - 0.00 # dead_allies
+            - 0.00 # ally_health
+            - 0.00 # battle_won
+        - conspecific_data_keys: *common_conspecific_data_keys
+        - conspecific_utility_keys: *common_conspecific_utility_keys
+    population_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.population.MOAIMIslandPopulation
+      config: !include config/smacv2/island_pop_config_base.yml
+
+  # High Value Asset: Flex Tagger
+  # island_id: 4
+  - island_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMIslandUDI
+      config: *common_island_config
+
+    algorithm_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.algorithm.MOAIMIslandUDA
+      config: !include config/smacv2/island_uda_config_base.yml
+    problem_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.MOAIMIslandUDP
+      config: !merge
+        - !include config/smacv2/island_udp_config_base.yml
+        - fitness_multiplier:
+            - 1.00 # own_health
+            - 0.00 # dead_enemies
+            - 0.00 # dead_allies
+            - 0.00 # ally_health
+            - 0.00 # battle_won
+        - conspecific_data_keys: *common_conspecific_data_keys
+        - conspecific_utility_keys: *common_conspecific_utility_keys
+    population_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.population.MOAIMIslandPopulation
+      config: !include config/smacv2/island_pop_config_base.yml
+
+mainlands:
+  # Win at all costs
+  # island_id: 5
+  - island_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMMainlandUDI
+      config: *common_island_config
+
+    algorithm_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.algorithm.MOAIMMainlandUDA
+      config: !merge
+        - !include config/smacv2/mainland_uda_config_base.yml
+        - conspecific_utility_keys: *common_conspecific_utility_keys
+        - conspecific_utility_objectives: *common_conspecific_utility_objectives
+    problem_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.MOAIMMainlandUDP
+      config: !merge
+        - !include config/smacv2/mainland_udp_config_base.yml
+        - fitness_metric_keys:
+            - battle_won
+        - fitness_metric_optimization_type:
+            - max
+    population_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.population.MOAIMMainlandPopulation
+      config: !include config/smacv2/mainland_pop_config_base.yml
+
+  # Survivor
+  # island_id: 6
+  - island_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMMainlandUDI
+      config: *common_island_config
+
+    algorithm_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.algorithm.MOAIMMainlandUDA
+      config: !merge
+        - !include config/smacv2/mainland_uda_config_base.yml
+        - conspecific_utility_keys: *common_conspecific_utility_keys
+        - conspecific_utility_objectives: *common_conspecific_utility_objectives
+    problem_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.MOAIMMainlandUDP
+      config: !merge
+        - !include config/smacv2/mainland_udp_config_base.yml
+        - fitness_metric_keys:
+            - dead_allies
+            - ally_health
+            - battle_won
+        - fitness_metric_optimization_type:
+            - min
+            - max
+            - max
+    population_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.population.MOAIMMainlandPopulation
+      config: !include config/smacv2/mainland_pop_config_base.yml
+
+  # Obliterate
+  # island_id: 7
+  - island_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMMainlandUDI
+      config: *common_island_config
+
+    algorithm_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.algorithm.MOAIMMainlandUDA
+      config: !merge
+        - !include config/smacv2/mainland_uda_config_base.yml
+        - conspecific_utility_keys: *common_conspecific_utility_keys
+        - conspecific_utility_objectives: *common_conspecific_utility_objectives
+    problem_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.MOAIMMainlandUDP
+      config: !merge
+        - !include config/smacv2/mainland_udp_config_base.yml
+        - fitness_metric_keys:
+            - dead_enemies
+            - battle_won
+        - fitness_metric_optimization_type:
+            - max
+            - max
+    population_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.population.MOAIMMainlandPopulation
+      config: !include config/smacv2/mainland_pop_config_base.yml
+
+  # Balanced
+  # island_id: 8
+  - island_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMMainlandUDI
+      config: *common_island_config
+
+    algorithm_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.algorithm.MOAIMMainlandUDA
+      config: !merge
+        - !include config/smacv2/mainland_uda_config_base.yml
+        - conspecific_utility_keys: *common_conspecific_utility_keys
+        - conspecific_utility_objectives: *common_conspecific_utility_objectives
+    problem_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.MOAIMMainlandUDP
+      config: !merge
+        - !include config/smacv2/mainland_udp_config_base.yml
+        - fitness_metric_keys:
+            - dead_allies
+            - dead_enemies
+            - battle_won
+        - fitness_metric_optimization_type:
+            - min
+            - max
+            - max
+    population_constructor: !ConstructorData
+      constructor: !function algatross.algorithms.genetic.mo_aim.population.MOAIMMainlandPopulation
+      config: !include config/smacv2/mainland_pop_config_base.yml

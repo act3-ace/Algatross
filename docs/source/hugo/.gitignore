@@ -1,0 +1,3 @@
+static/documentation
+resources/_gen
+.hugo_build.lock

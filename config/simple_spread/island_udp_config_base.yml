@@ -1,0 +1,42 @@
+trainer_constructor_data: !ConstructorData
+  constructor: !function algatross.environments.mpe.simple_spread.MPESimpleSpreadRunner
+  config:
+    rollout_config:
+      batch_size: 100
+      gamma: 0.85
+      gae_lambda: 0.85
+    train_config:
+      device: cpu
+      sgd_minibatch_size: 30
+      num_sgd_iter: 5
+training_agents: [agent_0]
+ally_teams:
+  allies_0:
+    - agent_0
+    - agent_1
+    - agent_2
+conspecific_data_keys:
+  - obs
+  - actions
+conspecific_utility_keys:
+  - landmarks_occupied
+  - success
+  - time_penalty
+  - collisions
+fitness_metric_keys:
+  - landmarks_occupied
+  - success
+  - time_penalty
+  - collisions
+fitness_metric_optimization_type:
+  - max
+  - max
+  - max
+  - min
+fitness_multiplier:
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+fitness_reduce_fn: sum
+max_envs: 2

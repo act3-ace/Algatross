@@ -1,0 +1,213 @@
+@use "_colors.scss";
+@use "_transitions.scss";
+
+@mixin img-top() {
+    height: 52px;
+    width: 52px;
+    background: none !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@mixin title($color) {
+    color: $color;
+    font-size: var(--pst-font-size-h5);
+    padding: 1rem 0rem 0.5rem 0rem;
+}
+
+@mixin pretty-paragraph() {
+    // make the display flex so we can make the borders on the
+    // main card content align between cards
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin footer() {
+    border: none !important;
+}
+
+@mixin btn-secondary($color) {
+    background-color: #727c83 !important;
+    border-color: #727c83 !important;
+    border-radius: 4em;
+    &:hover {
+        background-color: #6c757d !important;
+        border-color: $color !important;
+        box-shadow: 0rem 0rem 0.75rem $color !important;
+    }
+}
+
+@mixin light-sd-d-grid($color) {
+    // in light theme: button hover color mimic card accent color on hover
+    .sd-d-grid:hover {
+        background-color: transparentize($color, 0.85);
+    }
+}
+
+// mixins for adjusting base shadow color and hover behavior
+@mixin shadow-sm($color) {
+    box-shadow: 0 0 0.5rem $color !important;
+    &:hover {
+        box-shadow: 0 0 1rem $color !important;
+    }
+}
+@mixin shadow-md($color) {
+    box-shadow: 0 0 1rem $color !important;
+    &:hover {
+        box-shadow: 0 0 1.5rem $color !important;
+    }
+}
+@mixin shadow-lg($color) {
+    box-shadow: 0 0 1.5rem $color !important;
+    &:hover {
+        box-shadow: 0 0 2rem $color !important;
+    }
+}
+
+@mixin sd-api-card($color) {
+    // make each card have its own color
+    padding: 10px 10px 20px 10px;
+    border: 1px solid var(--pst-color-border-muted);
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--pst-color-text-muted);
+    &:hover {
+        color: $color !important;
+        border: 1px solid $color !important;
+    }
+    .sd-card-body {
+        @include pretty-paragraph();
+        p.sd-card-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-grow: 1;
+            border-image-source: linear-gradient(to right, #00000000, $color, $color, $color, #00000000);
+            border-image-slice: 1 0 1;
+            border-style: solid;
+            border-width: 3px 0 3px;
+        }
+    }
+    .sd-card-header {
+        .sd-card-text {
+            margin: 0px;
+        }
+    }
+    .sd-card-img-top {
+        @include img-top();
+    }
+    .sd-card-title {
+        @include title(inherit);
+    }
+    .sd-card-footer {
+        @include footer();
+    }
+    .sd-btn-secondary {
+        @include btn-secondary($color);
+    }
+    &.sd-shadow-sm {
+        @include shadow-sm($color);
+    }
+    &.sd-shadow-md {
+        @include shadow-md($color);
+    }
+    &.sd-shadow-lg {
+        @include shadow-lg($color);
+    }
+}
+
+html {
+    // make sphinx design cards pretty and inherit from theme
+    .card {
+        background-color: var(--pst-color-background);
+        img {
+            background-color: var(--pst-color-background);
+        }
+    }
+    div.sd-container-fluid.sd-sphinx-override.sd-mb-4.sd-text-center.docutils > div {
+        max-width: 50rem;
+        margin: auto;
+    }
+    .bd-content .sd-card {
+        .sd-card-header,
+        .sd-card-body,
+        .sd-card-footer {
+            background-color: inherit;
+        }
+    }
+    .sd-card.sd-main-index-card {
+        @include transitions.mixin_transition(var(--transition-fast));
+
+        padding: 30px 10px 20px 10px;
+        border: 1px solid transparent;
+        border-radius: 1em;
+        max-width: 25rem;
+        &:hover {
+            border: 1px solid var(--sd-color-card-border-hover);
+            .sd-btn-secondary {
+                color: #ffffff !important;
+            }
+        }
+        .sd-card-header {
+            .sd-card-text {
+                margin: 0px;
+            }
+        }
+        .sd-card-img-top {
+            @include img-top();
+            color: var(--pst-color-secondary);
+        }
+        .sd-card-title {
+            @include title(colors.$primary);
+        }
+        .sd-card-footer {
+            @include footer();
+        }
+        .sd-btn-secondary {
+            @include btn-secondary(colors.$primary);
+        }
+        .sd-card-body {
+            @include pretty-paragraph();
+            p.sd-card-text {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                flex-grow: 1;
+                margin-left: auto;
+                margin-right: auto;
+                border-image-source: linear-gradient(
+                    to right,
+                    #00000000,
+                    var(--pst-color-secondary),
+                    var(--pst-color-primary),
+                    var(--pst-color-secondary),
+                    #00000000
+                );
+                border-image-slice: 1 0 1;
+                border-style: solid;
+                border-width: 3px 0 3px;
+            }
+        }
+        &.sd-shadow-sm {
+            @include shadow-sm(transparentize(colors.$secondary, 0));
+        }
+        &.sd-shadow-md {
+            @include shadow-md(transparentize(colors.$secondary, 0));
+        }
+        &.sd-shadow-lg {
+            @include shadow-lg(transparentize(colors.$secondary, 0));
+        }
+    }
+
+    &[data-theme="light"] .sd-card {
+        &.sd-shadow-sm {
+            @include shadow-sm(transparentize(colors.$core-a, 0));
+        }
+        &.sd-shadow-md {
+            @include shadow-md(transparentize(colors.$core-a, 0));
+        }
+        &.sd-shadow-lg {
+            @include shadow-lg(transparentize(colors.$core-a, 0));
+        }
+    }
+}

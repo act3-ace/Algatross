@@ -1,0 +1,15 @@
+!merge
+- !include config/ma_inspection/inspection/algatross.yml
+# - debug: True
+- rich_console: false
+- ray_config:
+      log_to_driver: True
+- epochs: 1
+- log_level: 10 # INFO
+- visualize: false
+- island_iterations: 1
+- mainland_iterations: 1
+- ckpt_interval_epochs: 1
+- experiment_name: test-000002
+# - checkpoint_folder: experiments/test-000000
+- log_dir: "experiments"

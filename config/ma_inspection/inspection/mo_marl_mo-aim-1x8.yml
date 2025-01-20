@@ -1,0 +1,20 @@
+!merge
+- !include config/ma_inspection/inspection/algatross.yml
+- rich_console: false
+- epochs: 1
+- log_level: 20 # INFO
+- visualize: false
+- island_iterations: 1
+- mainland_iterations: 1
+- ckpt_interval_epochs: 5
+- experiment_name: ablation
+- log_dir: "placeholder"
+- islands:
+    - !include config/ma_inspection/inspection/mo-aim_island.yml
+    - !include config/ma_inspection/inspection/mo-aim_island.yml
+    - !include config/ma_inspection/inspection/mo-aim_island.yml
+    - !include config/ma_inspection/inspection/mo-aim_island.yml
+    - !include config/ma_inspection/inspection/mo-aim_island.yml
+    - !include config/ma_inspection/inspection/mo-aim_island.yml
+    - !include config/ma_inspection/inspection/mo-aim_island.yml
+    - !include config/ma_inspection/inspection/mo-aim_island.yml

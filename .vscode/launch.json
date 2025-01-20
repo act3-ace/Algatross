@@ -1,0 +1,250 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: Remote Attach",
+            "type": "debugpy",
+            "request": "attach",
+            "connect": {
+                "host": "${input:enterHost}",
+                "port": "${input:enterPort}"
+            },
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}",
+                    "remoteRoot": "."
+                }
+            ],
+            "presentation": {
+                "hidden": false,
+                "group": "0",
+                "order": 0
+            }
+        },
+        {
+            "name": "Python: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "subProcess": true,
+            "env": {
+                "RAY_DEDUP_LOGS": "0",
+                "JAX_ENABLE_X64": "True",
+            },
+            "presentation": {
+                "hidden": false,
+                "group": "0",
+                "order": 1
+            }
+        },
+        {
+            "name": "Python: Current File with Args",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "subProcess": true,
+            "env": {
+                "RAY_DEDUP_LOGS": "0",
+                "JAX_ENABLE_X64": "True",
+            },
+            "presentation": {
+                "hidden": false,
+                "group": "0",
+                "order": 1
+            },
+            "args": [
+                "${input:enterDir}"
+            ]
+        },
+        {
+            "name": "Python: Debug MO-AIM: Spread",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/scripts/training/cleanrl/train_moaim_ppo.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "subProcess": true,
+            "env": {
+                "PYTHONMALLOC": "malloc",
+                "RAY_DEDUP_LOGS": "0",
+                "JAX_ENABLE_X64": "True",
+            },
+            "args": [
+                "config/simple_spread/algatross_debug.yml"
+            ],
+            "presentation": {
+                "hidden": false,
+                "group": "1-mpe",
+                "order": 1
+            }
+        },
+        {
+            "name": "Python: Debug MO-AIM: Tag",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/scripts/training/cleanrl/train_moaim_ppo.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "subProcess": true,
+            "env": {
+                "PYTHONMALLOC": "malloc",
+                "RAY_DEDUP_LOGS": "0",
+                "JAX_ENABLE_X64": "True",
+            },
+            "args": [
+                "config/simple_tag/algatross_debug.yml"
+            ],
+            "presentation": {
+                "hidden": false,
+                "group": "1-mpe",
+                "order": 1.5
+            }
+        },
+        {
+            "name": "Python: Debug MO-AIM: SMACv2",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/scripts/training/cleanrl/train_moaim_ppo.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "subProcess": true,
+            "env": {
+                "PYTHONMALLOC": "malloc",
+                "RAY_DEDUP_LOGS": "0",
+                "JAX_ENABLE_X64": "True",
+            },
+            "args": [
+                "config/smacv2/algatross_debug.yml"
+            ],
+            "presentation": {
+                "hidden": false,
+                "group": "2-smac",
+                "order": 1
+            }
+        },
+        {
+            "name": "Python: Debug MO-AIM: MA-Docking",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/scripts/training/cleanrl/train_moaim_ppo.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "subProcess": true,
+            "env": {
+                "PYTHONMALLOC": "malloc",
+                "RAY_DEDUP_LOGS": "0",
+                "JAX_ENABLE_X64": "True",
+            },
+            "args": [
+                "config/ma_inspection/docking/algatross_debug.yml"
+            ],
+            "presentation": {
+                "hidden": false,
+                "group": "3-sa-sims",
+                "order": 1
+            }
+        },
+        {
+            "name": "Python: Debug MO-AIM: PPO MA-Inspection",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/scripts/training/cleanrl/train_moaim_ppo.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "subProcess": true,
+            "env": {
+                "PYTHONMALLOC": "malloc",
+                "RAY_DEDUP_LOGS": "0",
+                "JAX_ENABLE_X64": "True",
+            },
+            "args": [
+                "config/ma_inspection/inspection/algatross_ppo_debug.yml"
+            ],
+            "presentation": {
+                "hidden": false,
+                "group": "3-sa-sims",
+                "order": 2
+            }
+        },
+        {
+            "name": "Python: Debug MO-AIM: MA-Weighted-Inspection",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/scripts/training/cleanrl/train_moaim_ppo.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "subProcess": true,
+            "env": {
+                "PYTHONMALLOC": "malloc",
+                "RAY_DEDUP_LOGS": "0",
+                "JAX_ENABLE_X64": "True",
+            },
+            "args": [
+                "config/ma_inspection/weighted_inspection/algatross_debug.yml"
+            ],
+            "presentation": {
+                "hidden": false,
+                "group": "3-sa-sims",
+                "order": 2.5
+            }
+        },
+        {
+            "name": "Python: Debug MO-AIM: MA-Six-DoF",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/scripts/training/cleanrl/train_moaim_ppo.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "subProcess": true,
+            "env": {
+                "PYTHONMALLOC": "malloc",
+                "RAY_DEDUP_LOGS": "0",
+                "JAX_ENABLE_X64": "True",
+            },
+            "args": [
+                "config/ma_inspection/six_dof/algatross_debug.yml"
+            ],
+            "presentation": {
+                "hidden": false,
+                "group": "3-sa-sims",
+                "order": 3
+            }
+        },
+        {
+            "name": "Python: Debug CleanRL Train",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/algatross/algorithms/genetic/mo_aim/cleanrl/train.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "subProcess": true,
+        }
+    ],
+    "inputs": [
+        {
+            "id": "enterPort",
+            "type": "promptString",
+            "description": "Enter port number",
+            "default": "5678"
+        },
+        {
+            "id": "enterHost",
+            "type": "promptString",
+            "description": "Enter host url",
+            "default": "localhost"
+        },
+        {
+            "id": "enterDir",
+            "type": "promptString",
+            "description": "Enter directory",
+            "default": "${cwd}"
+        }
+    ]
+}

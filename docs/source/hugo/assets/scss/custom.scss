@@ -1,0 +1,96 @@
+@use "_buttons.scss";
+@use "_cards.scss";
+@use "_code-highlight.scss";
+@use "_colors.scss";
+@use "_mod_index.scss";
+@use "_logos.scss";
+@use "_navbars.scss";
+@use "_search.scss";
+@use "_signatures.scss";
+@use "_tables.scss";
+@use "_transitions.scss";
+
+html {
+    // make the signature take up as much of the page as possible
+    div.bd-page-width {
+        max-width: 100%;
+    }
+    div.bd-container {
+        & > div.bd-page-width > main.bd-main {
+            width: -webkit-fill-available;
+            & > div.bd-content {
+                justify-content: space-between;
+                width: -webkit-fill-available;
+                &:has(.bd-sidebar-secondary) > div.bd-article-container {
+                    max-width: 61.8%;
+                }
+                &:not(:has(.bd-sidebar-secondary)) > div.bd-article-container {
+                    width: -webkit-fill-available;
+                    max-width: 90%;
+                }
+            }
+        }
+    }
+
+    a:hover {
+        text-decoration-thickness: inherit;
+    }
+    a:has(code):hover {
+        text-decoration-line: none !important;
+        code {
+            border-color: var(--pst-color-secondary);
+        }
+    }
+    .toctree-wrapper li a {
+        padding: 0.5em;
+        padding-top: 0.25em;
+        border-radius: 1em;
+        &:hover {
+            background-color: var(--pst-color-secondary-bg);
+        }
+    }
+    a.right-next,
+    a.left-prev {
+        p.prev-next-title {
+            @include transitions.mixin_transition(var(--transition-fast));
+            a {
+                @include transitions.mixin_transition(var(--transition-fast));
+            }
+            padding: 0.5em 1em;
+            border-radius: 1em;
+        }
+        &:hover p.prev-next-title {
+            background-color: var(--pst-color-secondary-bg);
+            text-decoration-thickness: inherit;
+        }
+    }
+    a.viewcode-back {
+        padding: 0.375em 1em;
+        border-radius: 1em;
+        &:hover {
+            background-color: var(--pst-color-secondary-bg);
+        }
+    }
+    &[data-theme="light"] {
+        a.right-next,
+        a.left-prev {
+            &:hover p.prev-next-title {
+                color: var(--pst-color-secondary-highlight);
+                background-color: var(--pst-color-secondary);
+            }
+        }
+
+        a.viewcode-back:hover {
+            color: var(--pst-color-secondary-highlight);
+        }
+        .bd-footer .bd-footer__inner {
+            background-color: var(--pst-color-secondary-bg);
+            color: var(--pst-color-black-text);
+        }
+
+        .toctree-wrapper li a:hover {
+            background-color: var(--pst-color-secondary);
+            color: var(--pst-color-secondary-highlight);
+        }
+    }
+}

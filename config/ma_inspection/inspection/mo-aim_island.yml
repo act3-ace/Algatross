@@ -1,0 +1,30 @@
+island_constructor: !ConstructorData &common_island_constructor
+  constructor: !function algatross.algorithms.genetic.mo_aim.islands.RayMOAIMIslandUDI
+  config: &common_island_config
+    env_name: "sa_sims_inspection"
+    agent_constructors:
+      deputy_0: !ConstructorData
+        constructor: !function algatross.agents.on_policy.ppo.TorchPPOAgent
+        config: !include config/ma_inspection/ppo_agent_base.yml
+      deputy_1: !ConstructorData
+        constructor: !function algatross.agents.on_policy.ppo.TorchPPOAgent
+        config: !include config/ma_inspection/ppo_agent_base.yml
+    max_trajectory_length: null
+
+algorithm_constructor: !ConstructorData
+  constructor: !function algatross.algorithms.genetic.mo_aim.algorithm.MOAIMIslandUDA
+  config: !include config/ma_inspection/island_uda_config_base.yml
+problem_constructor: !ConstructorData
+  constructor: !function algatross.algorithms.genetic.mo_aim.MOAIMIslandUDP
+  config: !merge
+    - !include config/ma_inspection/island_udp_config_base.yml
+    - fitness_multiplier:
+        - 1.00 # rewards
+    - conspecific_data_keys: &common_conspecific_data_keys
+        - obs
+        - actions
+    - conspecific_utility_keys: &common_conspecific_utility_keys
+        - rewards
+population_constructor: !ConstructorData
+  constructor: !function algatross.algorithms.genetic.mo_aim.population.MOAIMIslandPopulation
+  config: !include config/ma_inspection/island_pop_config_base.yml

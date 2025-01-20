@@ -1,0 +1,205 @@
+multiprocessing:
+  Connection: :class:`~multiprocessing.connection.Connection`
+  defaultdict: :class:`~collections.defaultdict`
+  Pipe: :func:`~multiprocessing.Pipe`
+  Process: :class:`~multiprocessing.Process`
+asyncio:
+  QueueEmpty: :exc:`~asyncio.QueueEmpty`
+importlib_metadata:
+  importlib_metadata.Distribution: :class:`~importlib_metadata.Distribution`
+collections:
+  Callable: :class:`~collections.abc.Callable`
+typing:
+  IO: :class:`~typing.IO`
+  Sequence: :class:`~typing.Sequence`
+  Iterable: :class:`~typing.Iterable`
+  Literal: :obj:`~typing.Literal`
+  Any: :class:`~typing.Any`
+pathlib:
+  Path: :class:`~pathlib.Path`
+
+ray:
+  Empty: :exc:`~ray.util.queue.Empty`
+  Full: :exc:`~ray.util.queue.Full`
+  MultiAgentBatch: :class:`~ray.rllib.policy.MultiAgentBatch`
+  MultiAgentEnv: :class:`~ray.rllib.MultiAgentEnv`
+  Queue: :class:`~ray.util.queue.Queue`
+  SampleBatch: :class:`~ray.rllib.policy.SampleBatch`
+
+rich:
+  Console: :class:`~rich.console.Console`
+  Group: :class:`~rich.console.Group`
+  Panel: :class:`~rich.panel.Panel`
+  Table: :class:`~rich.table.Table`
+  Text: :class:`~rich.text.Text`
+  rich.console.Group: :class:`~rich.console.Group`
+  rich.panel.Panel: :class:`~rich.panel.Panel`
+  rich.table.Table: :class:`~rich.table.Table`
+  rich.text.Text: :class:`~rich.text.Text`
+
+matplotlib:
+  Axes: :class:`~matplotlib.axes.Axes`
+  mpl.axes.Axes: :class:`~matplotlib.axes.Axes`
+  mpl.figure.Figure: :class:`~matplotlib.axes.Axes`
+  mpl.colors.Colormap: :class:`~matplotlib.colors.Colormap`
+
+ribs:
+  AddStatus: :class:`~ribs.archives.AddStatus`
+  ArchiveBase: :class:`~ribs.archives.ArchiveBase`
+  CQDScoreResult: :class:`~ribs.archives.CQDScoreResult`
+  EmitterBase: :class:`~ribs.emitters.EmitterBase`
+  GridArchive: :class:`~ribs.archives.GridArchive`
+
+pymoo:
+  CrowdingDiversity: :class:`~pymoo.operators.survival.rank_and_crowding.metrics.CrowdingDiversity`
+
+scipy:
+  KDTree: :class:`~scipy.spatial.KDTree`
+
+torch:
+  nn.Module: :class:`~torch.nn.Module`
+  nn.Parameter: :class:`~torch.nn.Parameter`
+  Distribution: :class:`~torch.distributions.distribution.Distribution`
+  Tensor: ":class:`~torch.Tensor` "
+  torch.Tensor: ":class:`~torch.Tensor` "
+  torch.dtype: ":class:`~torch.dtype` "
+  torch.device: ":class:`~torch.device` "
+
+gymnasium:
+  Space: :class:`~gymnasium.spaces.Space`
+
+pettingzoo:
+  AECEnv: :class:`~pettingzoo.utils.env.AECEnv`
+  ParallelEnv: :class:`~pettingzoo.utils.env.ParallelEnv`
+
+dask:
+  da.Array: :class:`~dask.array.Array`
+
+pandas:
+  pd.DataFrame: :class:`~pandas.DataFrame`
+  DataFrame: :class:`~pandas.DataFrame`
+
+builtins:
+  "None": ":data:`python:None`"
+  "bool": ":ref:`bool <python:bltin-boolean-values>`"
+  "boolean": ":ref:`bool <python:bltin-boolean-values>`"
+  "True": ":data:`python:True`"
+  "False": ":data:`python:False`"
+  "list": ":class:`python:list`"
+  "tuple": ":class:`python:tuple`"
+  "str": ":class:`python:str`"
+  "string": ":class:`python:str`"
+  "dict": ":class:`python:dict`"
+  "float": ":class:`python:float`"
+  "int": ":class:`python:int`"
+  "callable": ":func:`python:callable`"
+  "iterable": ":term:`python:iterable`"
+  "sequence": ":term:`python:sequence`"
+  "contextmanager": ":func:`python:contextlib.contextmanager`"
+  "namedtuple": ":func:`python:collections.namedtuple`"
+  "generator": ":term:`python:generator`"
+
+numpy:
+  ArrayLike: :obj:`~numpy.typing.ArrayLike`
+  "array": ":class:`~numpy.ndarray`"
+  "ndarray": ":class:`~numpy.ndarray`"
+  "np.ndarray": ":class:`~numpy.ndarray`"
+  "array-like": ":term:`array-like<array_like>`"
+  "array_like": ":term:`array_like`"
+  "scalar": ":ref:`scalar <numpy:arrays.scalars>`"
+  "RandomState": ":class:`numpy.random.RandomState`"
+  "np.random.RandomState": ":class:`~numpy.random.RandomState`"
+  "np.inf": ":data:`~numpy.inf`"
+  "np.nan": ":data:`~numpy.nan`"
+  "numpy": ":mod:`numpy`"
+
+harl:
+  OffPolicyBase: :class:`~harl.algorithms.actors.off_policy_base.OffPolicyBase`
+  OffPolicyBufferBase: :class:`~harl.common.buffers.off_policy_buffer_base.OffPolicyBufferBase`
+  OffPolicyBufferEP: :class:`~harl.common.buffers.off_policy_buffer_ep.OffPolicyBufferEP`
+  OffPolicyBufferFP: :class:`~harl.common.buffers.off_policy_buffer_fp.OffPolicyBufferFP`
+  OnPolicyBufferEP: :class:`~harl.common.buffers.on_policy_buffer_ep.OnPolicyBufferEP`
+  OnPolicyBufferFP: :class:`~harl.common.buffers.on_policy_buffer_fp.OffPolicyBufferFP`
+  VCritic: :class:`~harl.algorithms.critics.v_critic.VCritic`
+
+algatross:
+  # agents
+  BaseAgent: :class:`~algatross.agents.base.BaseAgent`
+  BaseMultiAgent: :class:`~algatross.agents.base.BaseMultiAgent`
+  TorchBaseAgent: :class:`~algatross.agents.torch_base.TorchBaseAgent`
+  TorchBaseMARLAgent: :class:`~algatross.agents.torch_base.TorchBaseMARLAgent`
+  TorchHAPPOActorBase: :class:`~algatross.agents.on_policy.harl.happo.TorchHAPPOActorBase`
+  # algorithms
+  BehaviorClassificationConfig: ":class:`~algatross.algorithms.genetic.mo_aim.configs.BehaviorClassificationConfig`"
+  IslandServer: ":class:`~algatross.algorithms.genetic.mo_aim.islands.ray_islands.IslandServer`"
+  MOAIMIslandPopulation: ":class:`~algatross.algorithms.genetic.mo_aim.population.MOAIMIslandPopulation`"
+  MOAIMIslandPopulationConfig: ":class:`~algatross.algorithms.genetic.mo_aim.configs.MOAIMIslandPopulationConfig`"
+  MOAIMIslandUDA: :class:`~algatross.algorithms.genetic.mo_aim.algorithm.MOAIMIslandUDA`
+  MOAIMIslandUDAConfig: :class:`~algatross.algorithms.genetic.mo_aim.configs.MOAIMIslandUDAConfig`
+  MOAIMIslandUDI: :class:`~algatross.algorithms.genetic.mo_aim.islands.base.MOAIMIslandUDI`
+  MOAIMIslandUDP: :class:`~algatross.algorithms.genetic.mo_aim.problem.MOAIMIslandUDP`
+  MOAIMMainlandPopulation: :class:`~algatross.algorithms.genetic.mo_aim.population.MOAIMMainlandPopulation`
+  MOAIMMainlandPopulationConfig: :class:`~algatross.algorithms.genetic.mo_aim.configs.MOAIMMainlandPopulationConfig`
+  MOAIMMainlandUDA: :class:`~algatross.algorithms.genetic.mo_aim.algorithm.MOAIMMainlandUDA`
+  MOAIMMainlandUDAConfig: :class:`~algatross.algorithms.genetic.mo_aim.configs.MOAIMMainlandUDAConfig`
+  MOAIMMainlandUDI: :class:`~algatross.algorithms.genetic.mo_aim.islands.base.MOAIMMainlandUDI`
+  MOAIMMainlandUDP: :class:`~algatross.algorithms.genetic.mo_aim.problem.MOAIMMainlandUDP`
+  MOAIMPopulation: :class:`~algatross.algorithms.genetic.mo_aim.population.MOAIMPopulation`
+  MOAIMRLPopulation: :class:`~algatross.algorithms.genetic.mo_aim.classic_rl.population.MOAIMRLPopulation`
+  MOAIMRLUDA: :class:`~algatross.algorithms.genetic.mo_aim.classic_rl.algorithm.MOAIMRLUDA`
+  MOAIMRLUDAConfig: :class:`~algatross.algorithms.genetic.mo_aim..configs.MOAIMRLUDAConfig`
+  MOAIMRLUDP: :class:`~algatross.algorithms.genetic.mo_aim.classic_rl.problem.MOAIMRLUDP`
+  MOAIMTopology: :class:`~algatross.algorithms.genetic.mo_aim.topology.MOAIMTopology`
+  NonDominatedSorting: :class:`~algatross.algorithms.genetic.mo_aim.pymoo.nds.NonDominatedSorting`
+  PopulationServer: :class:`~algatross.algorithms.genetic.mo_aim.population.PopulationServer`
+  RandomizedArgsorter: :class:`~algatross.algorithms.genetic.mo_aim.pymoo.argsort.RandomizedArgsorter`
+  RankAndCrowding: :class:`~algatross.algorithms.genetic.mo_aim.pymoo.survival.RankAndCrowding`
+  RayMOAIMArchipelago: :class:`~algatross.algorithms.genetic.mo_aim.archipelago.ray_archipelago.RayMOAIMArchipelago`
+  RemoteUDI: :class:`~algatross.algorithms.genetic.mo_aim.islands.base.RemoteUDI`
+  UDA: :class:`~algatross.algorithms.genetic.mo_aim.algorithm.UDA`
+  UDP: :class:`~algatross.algorithms.genetic.mo_aim.problem.UDP`
+  # models
+  BaseEncoder: :class:`~algatross.models.encoders.base.BaseEncoder`
+  # configs
+  HAPPOAgentConfigHARLAgentConfig: :class:`~algatross.configs.harl.agents.HAPPOAgentConfig`
+  HARLAgentConfig: :class:`~algatross.configs.harl.agents.HARLAgentConfig`
+  HARLRunnerConfig: :class:`~algatross.configs.harl.runners.HARLRunnerConfig`
+  # environments
+  BaseRunner: :class:`~algatross.environments.runners.BaseRunner`
+  ShareSubprocVecEnv: :class:`~algatross.environments.harl.env_tools.ShareSubprocVecEnv`
+  ShareDummyVecEnv: :class:`~algatross.environments.harl.env_tools.ShareDummyVecEnv`
+  shareworker: :class:`~algatross.environments.harl.env_tools.shareworker`
+  # utils
+  AgentID: :class:`~algatross.utils.types.AgentID`
+  BaseLogger: :class:`~algatross.utils.loggers.base_loggers.BaseLogger`
+  ConstructorData: :class:`~algatross.utils.types.ConstructorData`
+  ConstructorDataDict: :class:`~algatross.utils.types.ConstructorDataDict`
+  CNNLayerType: :class:`~algatross.utils.types.CNNLayerType`
+  FileLogger: :class:`~algatross.utils.loggers.base_loggers.FileLogger`
+  InhabitantID: :class:`~algatross.utils.types.InhabitantID`
+  InitNotCalledError: :class:`~algatross.utils.exceptions.InitNotCalledError`
+  IslandFlock: :class:`~algatross.utils.types.IslandFlock`
+  IslandID: :class:`~algatross.utils.types.IslandID`
+  IslandSample: :class:`~algatross.utils.types.IslandSample`
+  IslandTypeStr: :class:`~algatross.utils.types.IslandTypeStr`
+  JSONLogger: :class:`~algatross.utils.loggers.json_logger.JSONLogger`
+  LogConsole: :class:`~algatross.utils.loggers.console_logger.LogConsole`
+  MainlandID: :class:`~algatross.utils.types.MainlandID`
+  MigrantData: :class:`~algatross.utils.types.MigrantData`
+  MigrantFlock: :class:`~algatross.utils.types.MigrantFlock`
+  MigrantQueue: :class:`~algatross.utils.types.MigrantQueue`
+  MOAIMIslandInhabitant: :class:`~algatross.utils.types.MOAIMIslandInhabitant`
+  MultiQueue: :class:`~algatross.utils.queue.MultiQueue`
+  NumpyRandomSeed: :class:`~algatross.utils.types.NumpyRandomSeed`
+  OptimizationTypeEnum: :class:`~algatross.utils.types.OptimizationTypeEnum`
+  PlatformID: :class:`~algatross.utils.types.PlatformID`
+  RolloutData: :class:`~algatross.utils.types.RolloutData`
+  SampleBatchBuilder: :class:`~algatross.utils.types.SampleBatchBuilder`
+  SharedBuffer: :class:`~algatross.utils.loggers.shared_buffer.SharedBuffer`
+  TeamID: :class:`~algatross.utils.types.TeamID`
+  TeammateID: :class:`~algatross.utils.types.TeammateID`
+  TensorboardLogger: :class:`~algatross.utils.loggers.tensorboard.TensorboardLogger`
+  Timer: :class:`~algatross.utils.timer.Timer`
+  TimerError: :exc:`~algatross.utils.timer.TimerError`
+  # plotting
+  IslandMetaData: :class:`~algatross.utils.plotting.IslandMetaData`
